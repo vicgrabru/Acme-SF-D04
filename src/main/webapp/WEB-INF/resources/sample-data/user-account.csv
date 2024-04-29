@@ -1,0 +1,41 @@
+key,enabled,identity,password,username
+user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
+user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
+user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
+user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-provider-03,true,"UserIdentity{name: 'Extenseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', surname: 'Provider', email: 'extense@acme.com'}",provider3,provider3
+user-account-provider-04,true,"UserIdentity{name: 'S', surname: 'P', email: 'short@acme.com'}",provider4,prov4
+user-account-provider-05,true,"UserIdentity{name: 'Extenseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', surname: 'Provider', email: 'extensee@acme.com'}",provider5,provider5
+user-account-provider-06,true,"UserIdentity{name: '沐宸', surname: 'Provider', email: 'strange@acme.com'}",provider6,provider6
+user-account-administrator-02,true,"UserIdentity{name: 'Administrator1', surname: 'Acme', email: 'administrator1@acme.com'}",administrator1,administrator1
+user-account-administrator-03,true,"UserIdentity{name: 'Administrator2', surname: 'Acme', email: 'administrator2@acme.com'}",administrator2,administrator2
+user-account-manager-01,true,"UserIdentity{name: 'John', surname: 'Manager', email: 'manager1@acme.com'}",manager1,manager1
+user-account-manager-02,true,"UserIdentity{name: 'Jane', surname: 'Manager', email: 'manager2@acme.com'}",manager2,manager2
+user-account-manager-03,true,"UserIdentity{name: 'Pedro', surname: 'Manager', email: 'manager3@acme.com'}",manager3,manager3
+user-account-manager-04,true,"UserIdentity{name: 'Manolo', surname: 'Manager', email: 'manager4@acme.com'}",manager4,manager4
+user-account-manager-05,true,"UserIdentity{name: 'Juan', surname: 'Manager', email: 'manager5@acme.com'}",manager5,manager5
+user-account-manager-06,true,"UserIdentity{name: 'Victor', surname: 'Manager', email: 'manager6@acme.com'}",manager6,manager6
+user-account-manager-07,true,"UserIdentity{name: 'Alberto', surname: 'Manager', email: 'manager7@acme.com'}",manager7,manager7
+user-account-manager-08,true,"UserIdentity{name: 'Jesus', surname: 'Manager', email: 'manager8@acme.com'}",manager8,manager8
+user-account-manager-09,true,"UserIdentity{name: 'Diana', surname: 'Manager', email: 'manager9@acme.com'}",manager9,manager9
+user-account-manager-10,true,"UserIdentity{name: 'Laura', surname: 'Manager', email: 'manager10@acme.com'}",manager10,manager10
+user-account-manager-11,true,"UserIdentity{name: 'Nerea', surname: 'Manager', email: 'manager11@acme.com'}",manager11,manager11
+user-account-client-01,true,"UserIdentity{name: 'Mike', surname: 'Client', email: 'client1@acme.com'}",client1,client1
+user-account-client-02,true,"UserIdentity{name: 'William', surname: 'Client', email: 'client2@acme.com'}",client2,client2
+user-account-client-03,true,"UserIdentity{name: 'Afton', surname: 'Client', email: 'client3@acme.com'}",client3,client3
+user-account-client-04,true,"UserIdentity{name: 'Elizabeth', surname: 'Client', email: 'client4@acme.com'}",client4,client4
+user-account-client-05,true,"UserIdentity{name: 'Henry', surname: 'Client', email: 'client5@acme.com'}",client5,client5
+user-account-client-06,true,"UserIdentity{name: 'Jeremy', surname: 'Client', email: 'client6@acme.com'}",client6,client6
+user-account-developer-01,true,"UserIdentity{name: 'Albert', surname: 'Developer', email: 'albert@acme.com'}",developer1,developer1
+user-account-developer-02,true,"UserIdentity{name: 'Andrew', surname: 'Developer', email: 'andrew@acme.com'}",developer2,developer2
+user-account-sponsor-01,true,"UserIdentity{name: 'Peter', surname: 'Sponsor', email: 'peter@acme.com'}",sponsor1,sponsor1
+user-account-sponsor-02,true,"UserIdentity{name: 'John', surname: 'Sponsor', email: 'john@acme.com'}",sponsor2,sponsor2
+user-account-sponsor-03,true,"UserIdentity{name: 'Alice', surname: 'Sponsor', email: 'alice@acme.com'}",sponsor3,sponsor3
+user-account-sponsor-04,true,"UserIdentity{name: 'Emma', surname: 'Sponsor', email: 'emma@acme.com'}",sponsor4,sponsor4
+user-account-sponsor-05,true,"UserIdentity{name: 'David', surname: 'Sponsor', email: 'david@acme.com'}",sponsor5,sponsor5
+user-account-sponsor-06,true,"UserIdentity{name: 'Sophia', surname: 'Sponsor', email: 'sophia@acme.com'}",sponsor6,sponsor6
+user-account-sponsor-07,true,"UserIdentity{name: 'James', surname: 'Sponsor', email: 'james@acme.com'}",sponsor7,sponsor7
+user-account-sponsor-08,true,"UserIdentity{name: 'Olivia', surname: 'Sponsor', email: 'olivia@acme.com'}",sponsor8,sponsor8
+user-account-sponsor-09,true,"UserIdentity{name: 'William', surname: 'Sponsor', email: 'william@acme.com'}",sponsor9,sponsor9
+user-account-auditor-01,true,"UserIdentity{name: 'Au', surname: 'Ditor', email: 'auditor@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: 'Ditor', surname: 'Au', email: 'ditorau@acme.com'}",auditor2,auditor2

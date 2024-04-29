@@ -1,0 +1,33 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+auditor.audit-record.list.title = Lista de registros de auditoría
+auditor.audit-record.form.title = Detalles de registro de auditoría
+
+auditor.audit-record.list.label.code = Código
+auditor.audit-record.list.label.mark = Nota
+auditor.audit-record.list.label.draft-mode = Modo borrador
+
+auditor.audit-record.form.label.code = Código
+auditor.audit-record.form.label.period-start = Inicio del periodo
+auditor.audit-record.form.label.period-end = Final del periodo
+auditor.audit-record.form.label.mark = Nota
+auditor.audit-record.form.label.link = Más información (opcional)
+auditor.audit-record.form.label.draft-mode = Modo borrador
+
+auditor.audit-record.list.button.create = Crear
+auditor.audit-record.form.button.create = Crear
+auditor.audit-record.form.button.update = Actualizar
+auditor.audit-record.form.button.delete = Eliminar
+auditor.audit-record.form.button.publish = Publicar
+
+auditor.audit-record.form.error.duplicated-record-id = Código duplicado
+auditor.audit-record.form.error.spam = El texto introducido contiene palabras reconocidas como spam
+auditor.audit-record-form-error.not-enugh-time = Debe haber al menos una hora entre el principio y el final del periodo

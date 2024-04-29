@@ -1,0 +1,9 @@
+key,code,registration-time,due-date,quantity,tax,link,draft-mode,key:sponsorship
+invoice-01,IN-0001-0001,2020/03/03 12:00,2020/04/06 12:00,EUR 50,21,null,true,sponsorship-01
+invoice-02,IN-0001-0002,2020/03/05 13:30,2020/04/05 13:30,EUR 70.50,18,https://example.com/link1,false,sponsorship-02
+invoice-03,IN-0001-0003,2020/05/07 14:45,2020/06/07 14:45,EUR 80,19,https://example.com/link2,true,sponsorship-03
+invoice-04,IN-0001-0004,2021/07/10 16:00,2021/08/10 16:00,EUR 90.75,20,https://example.com/link3,false,sponsorship-04
+invoice-05,IN-0001-0005,2021/09/12 17:15,2021/10/12 17:15,EUR 100,21,https://example.com/link4,true,sponsorship-04
+invoice-06,IN-0001-0006,2021/11/15 18:30,2021/12/15 18:30,EUR 110.25,22,https://example.com/link5,false,sponsorship-06
+invoice-07,IN-0001-0007,2022/01/17 19:45,2022/02/17 19:45,EUR 120,23,https://example.com/link6,true,sponsorship-07
+invoice-08,IN-9999-9999,2022/03/20 21:00,2022/04/20 21:00,EUR 130.50,24,https://example.com/link7,false,sponsorship-08

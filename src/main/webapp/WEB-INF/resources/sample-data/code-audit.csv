@@ -1,0 +1,9 @@
+key,code,execution-date,type,corrective-actions,mark,link,draft-mode,key:project,key:auditor
+code-audit-01,AAA-000,2020/08/08 20:20,DYNAMIC,Acciones correctivas,None,https://www.example.com,false,project-01,auditor-01
+code-audit-02,ZZZ-999,2020/08/08 20:20,STATIC,Acciones correctivas,None,https://www.example.com,false,project-02,auditor-02
+code-audit-03,NNN-555,2020/08/08 20:20,STATIC,Acciones correctivas,None,https://www.informatica.us.es/,false,project-03,auditor-01
+code-audit-04,AAA-001,2022/07/29 23:59,STATIC,Acciones correctivas,None,https://www.example.com,false,project-04,auditor-02
+code-audit-05,AAA-002,2022/02/22 22:22,STATIC,Acciones correctivas,None,https://www.example.com,true,project-04,auditor-01
+code-audit-06,AAA-003,2022/02/22 22:22,DYNAMIC,0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789,None,https://www.example.com,true,project-06,auditor-02
+code-audit-07,AAA-004,2022/02/22 22:22,DYNAMIC,ññкоза თხა,None,https://www.example.com,true,project-07,auditor-01
+code-audit-08,AAA-005,2022/02/22 22:22,DYNAMIC,@@@@@@,None,,true,project-07,auditor-01

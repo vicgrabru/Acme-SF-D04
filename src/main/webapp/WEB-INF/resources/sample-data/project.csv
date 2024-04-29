@@ -1,0 +1,12 @@
+key,code,title,abstract-field,has-fatal-errors,cost,optional-link,draft-mode,key:manager
+project-01,AAA-1234,Test title,Test abstract,false,EUR 26.99,https://www.example.com,false,manager-01
+project-02,AAA-2345,a,Project con title de 1 caracter,false,EUR 30,https://www.example.com,false,manager-02
+project-03,AAB-1234,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,Project con title de 75 caracteres,false,EUR 26.99,https://www.example.com,false,manager-03
+project-04,ABC-1234,貸んい建濯よ芝弾テソ,Project con caracteres japoneses en title,false,EUR 26.99,https://www.example.com,false,manager-04
+project-05,BCD-2345,Project con abstractField de 1 caracter,a,false,EUR 26.99,https://www.example.com,true,manager-05
+project-06,CDE-3456,Project con abstractField de 100 caracteres,Lorem ipsum dolor sit amets consectetur adipiscing elits Curabitur tortor lectuss viverra non augues,false,EUR 5.98,https://www.example.com,false,manager-06
+project-07,DEF-4567,Project con caracteres japoneses en abstractField,貸んい建濯よ芝弾テソ,false,EUR 26.99,https://www.example.com,false,manager-07
+project-08,EFG-5678,Project con valor 0,Test abstract,true,EUR 0.00,https://www.example.com,true,manager-08
+project-09,FGH-6789,Project sin link,Test abstract,false,EUR 26.99,,true,manager-09
+project-10,HIJ-7890,Project con link null,Test abstract,false,EUR 26.99,null,true,manager-10
+project-11,IJK-8901,Project para manager 11,Test abstract,false,EUR 4.87,https://www.example.com,true,manager-10

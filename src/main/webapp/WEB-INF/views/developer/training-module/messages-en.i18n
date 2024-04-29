@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.training-module.list.title= Training Modules
+developer.training-module.list.label.code= Code
+developer.training-module.list.label.creationMoment= Creation moment
+developer.training-module.list.label.draftMode= Is DraftMode
+
+developer.training-module.list.button.create= Create training module
+developer.training-module.form.button.create=Create training module
+developer.training-module.form.button.update=Update training module
+developer.training-module.form.button.delete=Delete training module
+developer.training-module.form.button.publish=Publish training module
+
+developer.training-module.form.title=Training Modules
+developer.training-module.form.label.code=Code
+developer.training-module.form.label.creationMoment= Creation moment
+developer.training-module.form.label.details= Details
+developer.training-module.form.label.difficulty=Difficulty
+developer.training-module.form.label.updateMoment= Update moment
+developer.training-module.form.label.startTotalTime=Start of total time
+developer.training-module.form.label.endTotalTime= End of total time
+developer.training-module.form.label.link= Link
+developer.training-module.form.label.draftMode= Is DraftMode
+
+developer.training-module.form.training-session=Training sessions
+
+developer.training-module.form.error.spam=Spam Detected
+
+developer.training-module.form.error.startTotalTime.not-after-creationMoment=Start of total time date must be after creation moment date
+developer.training-module.form.error.endTotalTime.not-after-startTotalTime=End of total time date must be after start of total time date

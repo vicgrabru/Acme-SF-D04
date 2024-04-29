@@ -1,0 +1,21 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+manager.user-story-assign.form.title = User Story Assignment form
+
+manager.user-story-assign.form.label.project = Project
+
+manager.user-story-assign.form.button.create = Add to Project
+manager.user-story-assign.form.button.delete = Remove from Project
+
+manager.user-story-assign.form.error.project-is-published = The project is already published
+manager.user-story-assign.form.error.user-story-already-assigned-to-project = The User Story is already assigned to the Project
+manager.user-story-assign.form.error.unassigning-user-story-not-assigned-to-project = The User Story is not assigned to the Project
+manager.user-story-assign.form.error.project-is-null = You must select a Project

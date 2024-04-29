@@ -1,0 +1,44 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+client.contract.list.title = Lista de contratos
+client.contract.form.title = Detalles de contrato
+
+client.contract.list.label.code = Código
+client.contract.list.label.project = Proyecto
+client.contract.list.label.budget = Presupuesto
+
+client.contract.list.label.draft-mode = Modo borrador
+
+client.contract.form.label.code = Código
+client.contract.form.label.goals = Objetivos
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.exchanged-budget = Presupuesto (Divisa del sistema)
+client.contract.form.label.remaining-cost = Coste restante
+client.contract.form.label.provider-name = Nombre de proveedor
+client.contract.form.label.customer-name = Nombre de cliente
+client.contract.form.label.instantiation-moment = Momento de creación
+client.contract.form.label.draft-mode = Modo borrador
+client.contract.form.label.project = Proyecto
+client.contract.form.button.progress-log.list = Registros de progresos
+
+client.contract.list.button.create = Crear
+client.contract.form.button.create = Crear
+client.contract.form.button.update = Actualizar
+client.contract.form.button.delete = Eliminar
+client.contract.form.button.publish = Publicar
+client.contract.form.button.project = Proyecto
+
+client.contract.form.error.bugdet.invalid-currency = La divisa introducida no es una divisa aceptada
+client.contract.form.error.bugdet.negative-budget = El presupuesto no puede ser negativo
+client.contract.form.error.budget.budget-over-project-cost = La cantidad de presupuesto no puede ser superior al coste del proyecto
+client.contract.form.error.duplicated-code = Código duplicado
+client.contract.form.error.project-cost-exceeded = El coste del proyecto no puede ser superado por los presupuestos del contrato
+client.contract.form.error.spam = Hay spam

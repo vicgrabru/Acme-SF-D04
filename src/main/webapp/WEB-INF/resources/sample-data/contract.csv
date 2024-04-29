@@ -1,0 +1,18 @@
+key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
+contract-01,A-001,2002/04/14 08:00,Laurel,Mike,Make a lot of money,EUR 1.00,false,project-01,client-01
+contract-02,A-002,2022/07/29 23:59,Laurel,Customer example,Test last minute,EUR 1.00,false,project-01,client-01
+contract-03,A-003,2002/04/14 08:00,S,Customer example,Test short provider name,EUR 1.00,false,project-01,client-01
+contract-04,A-004,2002/04/14 08:00,Extenseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee,Customer example,Test extense provider name,EUR 1.00,false,project-01,client-01
+contract-05,A-005,2002/04/14 08:00,沐宸,Customer example,Test strange characters provider name,EUR 1.00,false,project-01,client-01
+contract-06,A-006,2002/04/14 08:00,Laurel,C,Test short customer name,EUR 1.00,false,project-01,client-02
+contract-07,A-007,2002/04/14 08:00,Laurel,Extenseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee,Test extense customer name,EUR 1.00,false,project-01,client-03
+contract-08,A-008,2002/04/14 08:00,Laurel,额外客户,Test strange characters customer name,EUR 1.00,false,project-01,client-04
+contract-09,A-009,2002/04/14 08:00,Laurel,Customer example,A,EUR 1.00,false,project-01,client-05
+contract-10,A-010,2002/04/14 08:00,Laurel,Customer example,Test extense goaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal,EUR 1.00,false,project-01,client-06
+contract-11,A-011,2002/04/14 08:00,Laurel,Customer example,測試奇怪的角色目標,EUR 1.00,false,project-01,client-01
+contract-12,A-012,2002/04/14 08:00,Laurel,Customer example,Test minimum budget,EUR 0.00,false,project-01,client-01
+contract-13,A-013,2002/04/14 08:00,Laurel,Customer example,Test maximum budget,EUR 30.00,false,project-02,client-01
+contract-14,A-014,2002/04/14 08:00,Laurel,Customer example,Test different money budget,USD 1.00,false,project-01,client-01
+contract-15,A-015,2002/04/14 08:00,Laurel,Customer example,Test true draft mode,EUR 1.00,true,project-01,client-01
+contract-16,A-016,2002/04/14 08:00,Laurel,Customer example,Test different project,EUR 1.00,false,project-03,client-01
+contract-17,AAA-001,2002/04/14 08:00,Laurel,Customer example,Test extense code,EUR 1.00,false,project-01,client-01

@@ -1,0 +1,33 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.banner.form.title = Banner form
+administrator.banner.list.title = Listing of banners
+
+administrator.banner.list.label.slogan = Slogan
+administrator.banner.list.label.instantiation-moment = Instantiation/Update Moment
+administrator.banner.list.label.period-start = Display Period Start
+administrator.banner.list.label.period-end = Display Period End
+
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.picture-link = Picture link
+administrator.banner.form.label.period-start = Display Period Start
+administrator.banner.form.label.period-end = Display Period End
+administrator.banner.form.label.instantiation-moment = Instantiation/Update Moment
+administrator.banner.form.label.web-document-link = Web Document Link
+
+administrator.banner.list.button.create = Create
+administrator.banner.form.button.create = Create
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+
+administrator.banner.form.error.period-start.not-after-instantiation = The display period must start after the Instantiation/Update moment
+administrator.banner.form.error.period-too-short = The display period is too short. It must last at least one week
+administrator.banner.form.error.spam-in-slogan = There is spam in the slogan

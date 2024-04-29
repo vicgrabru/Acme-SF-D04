@@ -1,0 +1,17 @@
+key,code,period-start,period-end,mark,link,key:code-audit
+audit-record-01,AU-0000-000,2022/02/22 10:10,2022/02/22 22:22,A,https://example.com,code-audit-01
+audit-record-02,AU-9999-999,2022/02/22 10:10,2022/02/22 22:22,A,,code-audit-02
+audit-record-03,AU-5555-555,2020/02/22 10:10,2022/02/22 22:22,C,https://www.informatica.us.es/,code-audit-03
+audit-record-04,AU-1234-123,2022/02/22 10:10,2022/07/29 23:59,A,https://example.com,code-audit-04
+audit-record-05,AU-1000-000,2022/02/22 10:10,2022/02/22 22:22,A,https://example.com,code-audit-01
+audit-record-06,AU-2000-000,2022/02/22 10:10,2022/02/22 22:22,B,https://example.com,code-audit-01
+audit-record-07,AU-3000-000,2022/02/22 10:10,2022/02/22 22:22,B,https://example.com,code-audit-01
+audit-record-08,AU-4000-000,2022/02/22 10:10,2022/02/22 22:22,B,https://example.com,code-audit-01
+audit-record-09,AU-5000-000,2022/02/22 10:10,2022/02/22 22:22,B,https://example.com,code-audit-01
+audit-record-10,AU-6000-000,2022/02/22 10:10,2022/02/22 22:22,A,https://example.com,code-audit-01
+audit-record-11,AU-7000-000,2022/02/22 10:10,2022/02/22 22:22,A,https://example.com,code-audit-05
+audit-record-12,AU-8000-000,2022/02/22 10:10,2022/02/22 22:22,A,https://example.com,code-audit-05
+audit-record-13,AU-9000-000,2022/02/22 10:10,2022/02/22 22:22,A,https://example.com,code-audit-05
+audit-record-14,AU-1900-000,2022/02/22 10:10,2022/02/22 22:22,F,https://example.com,code-audit-07
+audit-record-15,AU-1100-000,2022/02/22 10:10,2022/02/22 22:22,F,https://example.com,code-audit-07
+audit-record-16,AU-1200-000,2022/02/22 10:10,2022/02/22 22:22,F,https://example.com,code-audit-07

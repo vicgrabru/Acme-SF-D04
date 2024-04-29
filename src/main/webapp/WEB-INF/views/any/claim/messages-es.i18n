@@ -1,0 +1,37 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.claim.form.title = Detalles de reclamación
+any.claim.list.title = Lista de reclamaciones
+
+any.claim.form.label.code = Código 
+any.claim.form.label.instantiationMoment = Momento de instanciación
+any.claim.form.label.heading = Cabecera
+any.claim.form.label.description = Descripción
+any.claim.form.label.department = Departamento
+any.claim.form.label.email = Email (Opcional)
+any.claim.form.label.link = Enlace (Opcional)
+any.claim.form.confirmation = Estoy seguro de publicar
+
+any.claim.list.label.code = Código
+any.claim.list.label.instantiationMoment = Momento de instanciación
+any.claim.list.label.heading = Cabecera
+any.claim.list.label.description = Descripción
+any.claim.list.label.department = Departamento
+any.claim.list.label.email = Email 
+any.claim.list.label.link = Enlace
+
+any.claim.form.button.publish = Publicar
+any.claim.form.button.create = Publicar nueva reclamación
+any.claim.list.button.create = Publicar nueva reclamación
+
+any.claim.form.error.duplicated = Código duplicado
+any.claim.form.error.not-confirmed = No confirmado
+any.claim.form.error.spam = Spam encontrado

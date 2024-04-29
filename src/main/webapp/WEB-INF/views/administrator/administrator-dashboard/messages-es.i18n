@@ -1,0 +1,34 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.administrator-dashboard.form.title = Panel de indicadores de administrador
+
+administrator.administrator-dashboard.form.label.number-administrator-principals = Número de usuarios con el rol Administrator
+administrator.administrator-dashboard.form.label.number-auditor-principals = Número de usuarios con el rol Auditor
+administrator.administrator-dashboard.form.label.number-client-principals = Número de usuarios con el rol Client
+administrator.administrator-dashboard.form.label.number-consumer-principals = Número de usuarios con el rol Consumer
+administrator.administrator-dashboard.form.label.number-developer-principals = Número de usuarios con el rol Developer
+administrator.administrator-dashboard.form.label.number-manager-principals = Número de usuarios con el rol Manager
+administrator.administrator-dashboard.form.label.number-provider-principals = Número de usuarios con el rol Provider
+administrator.administrator-dashboard.form.label.number-sponsor-principals = Número de usuarios con el rol Sponsor
+
+administrator.administrator-dashboard.form.label.ratio-of-notices-with-email-and-link = Proporción de avisos con dirección de correo electrónico y enlace
+administrator.administrator-dashboard.form.label.ratio-of-critical-objectives = Proporción de objetivos críticos
+administrator.administrator-dashboard.form.label.ratio-of-non-critical-objectives = Proporción de objetivos no críticos
+
+administrator.administrator-dashboard.form.label.avg-risk-value = Media del valor de los riesgos
+administrator.administrator-dashboard.form.label.min-risk-value = Mínimo valor de los riesgos
+administrator.administrator-dashboard.form.label.max-risk-value = Máximo valor de los riesgos
+administrator.administrator-dashboard.form.label.std-risk-value = Desviación estándar del valor de los riesgos
+
+administrator.administrator-dashboard.form.label.avg-number-claims = Media del número de reclamaciones durante las últimas 10 semanas
+administrator.administrator-dashboard.form.label.min-number-claims = Mínimo número de reclamaciones durante las últimas 10 semanas
+administrator.administrator-dashboard.form.label.max-number-claims = Máximo número de reclamaciones durante las últimas 10 semanas
+administrator.administrator-dashboard.form.label.std-number-claims = Desviación estándar del número de reclamaciones durante las últimas 10 semanas

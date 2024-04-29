@@ -1,0 +1,9 @@
+key,code,moment,start-duration,end-duration,amount,type,email,link,draft-mode,key:project,key:sponsor
+sponsorship-01,A-000,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,null,true,project-01,sponsor-01
+sponsorship-02,ZZZ-999,2019/05/03 12:00,2019/06/06 12:00,2019/07/07 12:00,EUR 40,IN_KIND,example@example.com,https://www.example.com,false,project-02,sponsor-01
+sponsorship-03,ABC-001,2019/12/23 14:00,2020/01/24 14:00,2020/02/25 14:00,EUR 69.99,FINANCIAL,example@example.com,https://www.example.com,true,project-03,sponsor-02
+sponsorship-04,CCC-002,2018/09/13 22:00,2018/10/15 22:00,2018/11/16 22:00,EUR 30,IN_KIND,example@example.com,https://www.example.com,false,project-02,sponsor-03
+sponsorship-05,XYZ-003,2019/01/03 00:00,2019/02/07 08:00,2019/03/08 08:00,EUR 70,FINANCIAL,example@example.com,https://www.example.com,true,project-05,sponsor-04
+sponsorship-06,HUF-999,2019/05/03 12:00,2020/06/06 12:00,2020/07/07 12:00,EUR 80,IN_KIND,example@example.com,https://www.example.com,false,project-04,sponsor-05
+sponsorship-07,EEE-456,2015/04/09 21:00,2015/05/11 21:00,2015/06/12 21:00,EUR 44.99,IN_KIND,null,https://www.example.com,true,project-04,sponsor-07
+sponsorship-08,JOL-521,2017/11/11 11:00,2017/12/13 22:00,2018/01/14 22:00,EUR 55,FINANCIAL,example@example.com,null,false,project-06,sponsor-09

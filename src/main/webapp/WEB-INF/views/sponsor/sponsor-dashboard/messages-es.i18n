@@ -1,0 +1,24 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsor-dashboard.form.title = Panel de indicadores de patrocinador
+
+sponsor.sponsor-dashboard.form.title.general-indicators = Indicadores generales
+
+sponsor.sponsor-dashboard.form.label.total-number-of-invoices-with-less-or-equal-than-21 = Total de facturas con impuestos menores o iguales a 21
+sponsor.sponsor-dashboard.form.label.total-number-of-sponsorships-with-link = Total de patrocinios con enlace
+sponsor.sponsor-dashboard.form.label.avg-amount-of-sponsorships = Promedio de cantidad de patrocinios
+sponsor.sponsor-dashboard.form.label.dev-amount-of-sponsorships = Desviación estándar de la cantidad de patrocinios
+sponsor.sponsor-dashboard.form.label.min-amount-of-sponsorships = Mínimo de cantidad de patrocinios
+sponsor.sponsor-dashboard.form.label.max-amount-of-sponsorships = Máximo de cantidad de patrocinios
+sponsor.sponsor-dashboard.form.label.avg-quantity-of-invoices = Promedio de cantidad de facturas
+sponsor.sponsor-dashboard.form.label.dev-quantity-of-invoices = Desviación estándar de la cantidad de facturas
+sponsor.sponsor-dashboard.form.label.min-quantity-of-invoices = Mínimo de cantidad de facturas
+sponsor.sponsor-dashboard.form.label.max-quantity-of-invoices = Máximo de cantidad de facturas

@@ -1,0 +1,14 @@
+key,record-id,completeness,comment,registration-moment,responsible-person,draft-mode,key:contract
+progress-log-01,PG-A-0001,50.0,This is a comment,2002/04/14 08:00,Responsable example,false,contract-01
+progress-log-02,PG-A-0002,0.01,Test minimum completeness,2002/04/14 08:00,Responsable example,false,contract-02
+progress-log-03,PG-A-0003,100.0,Test maximum completeness,2002/04/14 08:00,Responsable example,false,contract-03
+progress-log-04,PG-A-0004,50.0,a,2002/04/14 08:00,Responsable example,false,contract-04
+progress-log-05,PG-A-0005,50.0,奇怪的人物評論,2002/04/14 08:00,Responsable example,false,contract-05
+progress-log-06,PG-A-0006,50.0,Extense commeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeent,2002/04/14 08:00,Responsable example,false,contract-01
+progress-log-07,PG-A-0007,50.0,Test last minute,2022/07/29 23:59,Responsable example,false,contract-02
+progress-log-08,PG-A-0008,50.0,Test short responsible Person,2002/04/14 08:00,R,false,contract-06
+progress-log-09,PG-A-0009,50.0,Test extense responsible Person,2002/04/14 08:00,Extenseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee,false,contract-07
+progress-log-10,PG-A-0010,50.0,Test strange responsible Person,2002/04/14 08:00,负责任的额外人员,false,contract-08
+progress-log-11,PG-A-0011,50.0,Test same contract,2002/04/14 08:00,Responsable example,false,contract-01
+progress-log-12,PG-A-0012,50.0,Test Draft Mode,2002/04/14 08:00,Responsable example,true,contract-01
+progress-log-13,PG-AA-0001,50.0,Test extense record id,2002/04/14 08:00,Responsable example,false,contract-09

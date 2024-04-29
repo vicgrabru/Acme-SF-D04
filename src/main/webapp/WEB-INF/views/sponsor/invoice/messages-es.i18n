@@ -1,0 +1,38 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.invoice.form.title = Detalles de factura
+sponsor.invoice.list.title = Lista de facturas
+
+sponsor.invoice.form.label.code = Código
+sponsor.invoice.form.label.registrationTime = Tiempo de registro
+sponsor.invoice.form.label.dueDate = Fecha límite
+sponsor.invoice.form.label.quantity = Cantidad
+sponsor.invoice.form.label.exchanged-quantity = Cantidad (Divisa del sistema)	
+sponsor.invoice.form.label.tax = Impuesto
+sponsor.invoice.form.label.link = Enlace
+sponsor.invoice.form.label.sponsorship = Patrocinio
+sponsor.invoice.form.label.draftmode = ¿Es borrador?
+sponsor.invoice.form.label.exchanged-quantity
+
+sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.registrationTime = Tiempo de registro
+sponsor.invoice.list.label.quantity  = Cantidad
+sponsor.invoice.list.label.tax = Impuesto
+
+sponsor.invoice.list.button.create = Crear
+
+sponsor.invoice.form.button.update = Actualizar
+sponsor.invoice.form.button.delete = Eliminar
+sponsor.invoice.form.button.publish = Publicar
+sponsor.invoice.form.button.create = Crear
+
+sponsor.invoice.form.error.duplicated = Código duplicado
+sponsor.invoice.form.error.atLeast1MonthLong = La fecha límite debe ser al menos un mes

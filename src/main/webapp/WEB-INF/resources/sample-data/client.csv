@@ -1,0 +1,7 @@
+key,key:user-account,identification,company-name,type,email,optional-link
+client-01,user-account-client-01,CLI-0001,Example company,INDIVIDUAL,client1@acme.com,http://client1.com
+client-02,user-account-client-02,CLI-0002,C,INDIVIDUAL,client2@acme.com,http://client2.com
+client-03,user-account-client-03,CLI-0003,Extense companyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy,INDIVIDUAL,client3@acme.com,http://client3.com
+client-04,user-account-client-04,CLI-0004,Компания со странными персонажами,INDIVIDUAL,client4@acme.com,http://client4.com
+client-05,user-account-client-05,CLI-0005,Different type,COMPANY,client5@acme.com,http://client5.com
+client-06,user-account-client-06,CLI-0006,No link,INDIVIDUAL,client6@acme.com,

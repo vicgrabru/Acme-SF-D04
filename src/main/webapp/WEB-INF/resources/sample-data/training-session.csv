@@ -1,0 +1,4 @@
+key,code,start-period,end-period,location,instructor,contact-email,link,draft-mode,key:training-module
+training-session-01,TS-Z-222,2022/08/15 15:00,2022/08/15 17:30,Sevilla,Alberto,alberto@gmail.com,https://hola.com,true,training-module-01
+training-session-02,TS-BBB-444,2022/08/15 15:00,2022/09/15 17:00,987654321098765432109876543210987654321098765432109876543210123456789012345,987654321098765432109876543210987654321098765432109876543210123456789012345,alberto@gmail.com,https://hola.com,true,training-module-02
+training-session-03,TS-XX-777,2022/08/15 15:00,2022/08/15 17:00,a,b,alberto@hotmail.com,https://hola.com,true,training-module-03

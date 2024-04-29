@@ -1,0 +1,13 @@
+key,code,instantiation-moment,heading,description,department,email,link,draft-mode
+claim-01,C-0000,1985/03/01 8:00,Primera Reclamación,"Reclamación con mínimo de código, correo y enlace",Departamento 1,example@example.com,https://www.informatica.us.es/,false
+claim-02,C-9999,2020/12/31 23:59,Segunda Reclamación,"Reclamación con máximo de código, correo y enlace",Departamento 1,example@example.com,https://www.informatica.us.es/,false
+claim-03,C-0001,2022/07/29 23:59,Tercera Reclamación,"Reclamación con fecha un minuto antes del momento presente, correo y enlace",Departamento 1,example@example.com,https://www.informatica.us.es/,false
+claim-04,C-0002,1576/05/23 13:13,Cuarta Reclamación,"Reclamación con fecha muy lejana, correo y enlace",Departamento 1,example@example.com,https://www.informatica.us.es/,false
+claim-05,C-0003,2018/06/15 12:12,a,"Reclamación con cabecera mínima, correo y enlace",Departamento 1,example@example.com,https://www.informatica.us.es/,false
+claim-06,C-0004,2019/03/04 11:00,Reclamación con encabezado máximo de 75 caracteres sin espacio.,Reclamación con cabecera maxima correo y enlace,Departamento 1,example@example.com,https://www.informatica.us.es/,false
+claim-07,C-0005,2010/09/08 05:25,Séptima Reclamación,a,Departamento 1,example@example.com,https://www.informatica.us.es/,true
+claim-08,C-0006,2017/09/22 07:22,Octava Reclamación,1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890,Departamento 1,example@example.com,https://www.informatica.us.es/,true
+claim-09,C-0007,2018/01/04 15:15,Novena Reclamación,"Reclamación con departamento mínimo, correo y enlace",1,example@example.com,https://www.informatica.us.es/,true
+claim-10,C-0008,2016/04/24 4:45,Décima Reclamación,"Reclamación con departamento maximo, correo y enlace",1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890,example@example.com,https://www.informatica.us.es/,true
+claim-11,C-0009,2021/11/06 18:38,Undécima Reclamación,Reclamación sin correo,Departamento 1,null,https://www.informatica.us.es/,true
+claim-12,C-0010,2014/09/22 12:27,Duodécima Reclamación,Reclamación sin enlace,Departamento 1,example@example.com,null,true

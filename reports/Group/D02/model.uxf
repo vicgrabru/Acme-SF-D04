@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <help_text/>
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>256</x>
+      <y>424</y>
+      <w>400</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+SystemConfiguration
+--
++systemCurrency: String {NotBlank, Pattern(regexp=[A-Z]{3})}
++acceptedCurrencies: String {NotBlank, Pattern(regexp=[A-Z]{3}(,[A-Z]{3})*)}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>280</y>
+      <w>328</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Objective
+--
++instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++title: String {NotBlank, Length(max=75)}
++description: String {NotBlank, Length(max=100)}
++priority: Priority
++isCritical: boolean
++duration: Date {TemporalType(TIMESTAMP)}
+-link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>256</x>
+      <y>280</y>
+      <w>328</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Banner
+--
++instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++periodStart: Date {TemporalType(TIMESTAMP)}
++periodEnd: Date {TemporalType(TIMESTAMP)}
++pictureLink: String {URL}
++slogan: String {NotBlank, Length(max=75)}
++webDocumentlink: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>256</x>
+      <y>112</y>
+      <w>328</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Notice
+--
++instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++title: String {NotBlank, Length(max=75)}
++author: String {NotBlank, Length(max=75)}
++message: String {NotBlank, Length(max=100)}
+-email: String {Email}
+-link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>688</x>
+      <y>112</y>
+      <w>328</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Claim
+--
++code: String {Unique, NotBlank, Pattern(regexp = C-[0-9]{4})}
++instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++heading: String {NotBlank, Length(max=75)}
++description: String {NotBlank, Length(max=100)}
++department: String {NotBlank, Length(max=100)}
+-email: String {Email}
+-link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>768</x>
+      <y>536</y>
+      <w>168</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Project
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>592</x>
+      <y>560</y>
+      <w>192</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+&lt; Has</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>848</x>
+      <y>400</y>
+      <w>48</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+^ Has</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>640</x>
+      <y>584</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>+project
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>808</x>
+      <y>464</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>+project
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>256</x>
+      <y>520</y>
+      <w>344</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+Risk
+--
++reference: String {Unique, NotBlank, Pattern(regexp = R-[0-9]{3})}
++identificationDate: Date {Past, TemporalType(TIMESTAMP)}
++impact: Double {Positive}
++probability: Double
++description: String {NotBlank, Length(max=100)}
+-link: String {URL}
++/ value: Double {Transient}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>632</y>
+      <w>328</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Entity&gt;&gt;
+ExchangeRate
+--
++source: String {NotBlank, Pattern(regexp=[A-Z]{3})}
++target: String {NotBlank, Pattern(regexp=[A-Z]{3})}
++rate: double {Positive}
++instantiationMoment: LocalDate {NotNull}</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

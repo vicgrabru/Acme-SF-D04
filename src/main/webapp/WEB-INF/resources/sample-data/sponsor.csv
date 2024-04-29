@@ -1,0 +1,10 @@
+key,name,benefits,web-page,email,key:user-account
+sponsor-01,Sponsor 1,Exclusive product discounts,https://www.sponsor1.com,null,user-account-sponsor-01
+sponsor-02,Sponsor 2,Priority access to events,https://www.sponsor2.com,sponsor2@sponsor2.com,user-account-sponsor-02
+sponsor-03,Sponsor 3,Advertisement opportunities,https://www.sponsor3.com,sponsor3@sponsor3.com,user-account-sponsor-03
+sponsor-04,Sponsor 4,Networking opportunities,https://www.sponsor4.com,sponsor4@sponsor4.com,user-account-sponsor-04
+sponsor-05,A,Branding on event materials,https://www.sponsor5.com,null,user-account-sponsor-05
+sponsor-06,Sponsor 6,Short,https://www.sponsor6.com,sponsor6@sponsor6.com,user-account-sponsor-06
+sponsor-07,This is a very long sponsor name with many characters,Long benefits,null,sponsor7@sponsor7.com,user-account-sponsor-07
+sponsor-08,Sponsor 8,Y,https://www.sponsor8.com,sponsor8@sponsor8.com,user-account-sponsor-08
+sponsor-09,Sponsor 9,1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890,https://www.sponsor9.com,sponsor9@sponsor9.com,user-account-sponsor-09

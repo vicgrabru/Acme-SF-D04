@@ -1,0 +1,43 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+client.contract.list.title = Listing of contracts
+client.contract.form.title = Contract form
+
+client.contract.list.label.code = Code
+client.contract.list.label.project = Project
+client.contract.list.label.budget = Budget
+client.contract.list.label.draft-mode = Draft mode
+
+client.contract.form.label.code = Code
+client.contract.form.label.goals = Goals
+client.contract.form.label.budget = Budget
+client.contract.form.label.exchanged-budget = Budget (System Currency)
+client.contract.form.label.remaining-cost = Remaining cost
+client.contract.form.label.provider-name = Provider name
+client.contract.form.label.customer-name = Customer name
+client.contract.form.label.instantiation-moment = Instantiation moment
+client.contract.form.label.draft-mode = Draft mode
+client.contract.form.label.project = Project
+
+client.contract.list.button.create = Create
+client.contract.form.button.create = Create
+client.contract.form.button.update = Update
+client.contract.form.button.delete = Delete
+client.contract.form.button.publish = Publish
+client.contract.form.button.project = Project
+client.contract.form.button.progress-log.list = Progress logs
+
+client.contract.form.error.bugdet.invalid-currency = The introduced currency is not a accepted currency
+client.contract.form.error.bugdet.negative-budget = The budget can't be negative
+client.contract.form.error.budget.budget-over-project-cost = The budget amount can't be higher than the project cost
+client.contract.form.error.duplicated-code = Duplicated code
+client.contract.form.error.project-cost-exceeded = Project cost can't be exceeded by its contract budgets
+client.contract.form.error.spam = There is a spam

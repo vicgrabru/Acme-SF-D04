@@ -1,0 +1,34 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.administrator-dashboard.form.title = Administrator dashboard
+
+administrator.administrator-dashboard.form.label.number-administrator-principals = Number of principals with Administrator role
+administrator.administrator-dashboard.form.label.number-auditor-principals = Number of principals with Auditor role
+administrator.administrator-dashboard.form.label.number-client-principals = Number of principals with Client role
+administrator.administrator-dashboard.form.label.number-consumer-principals = Number of principals with Consumer role
+administrator.administrator-dashboard.form.label.number-developer-principals = Number of principals with Developer role
+administrator.administrator-dashboard.form.label.number-manager-principals = Number of principals with Manager role
+administrator.administrator-dashboard.form.label.number-provider-principals = Number of principals with Provider role
+administrator.administrator-dashboard.form.label.number-sponsor-principals = Number of principals with Sponsor role
+
+administrator.administrator-dashboard.form.label.ratio-of-notices-with-email-and-link = Ratio of Notices with both an email adress and a link
+administrator.administrator-dashboard.form.label.ratio-of-critical-objectives = Ratio of critical Objectives
+administrator.administrator-dashboard.form.label.ratio-of-non-critical-objectives = Ratio of non-critical Objectives
+
+administrator.administrator-dashboard.form.label.avg-risk-value = Average value in the risks
+administrator.administrator-dashboard.form.label.min-risk-value = Minimum value in the risks
+administrator.administrator-dashboard.form.label.max-risk-value = Maximum value in the risks
+administrator.administrator-dashboard.form.label.std-risk-value = Standard deviation of the value in the risks
+
+administrator.administrator-dashboard.form.label.avg-number-claims = Average number of claims over the last 10 weeks
+administrator.administrator-dashboard.form.label.min-number-claims = Minimum number of claims over the last 10 weeks
+administrator.administrator-dashboard.form.label.max-number-claims = Maximum number of claims over the last 10 weeks
+administrator.administrator-dashboard.form.label.std-number-claims = Standard deviation of the number of claims over the last 10 weeks

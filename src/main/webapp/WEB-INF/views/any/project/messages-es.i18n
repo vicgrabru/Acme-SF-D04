@@ -1,0 +1,26 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.project.form.title = Detalles de proyecto
+any.project.list.title = Lista de proyectos publicados
+
+any.project.list.label.code = Código
+any.project.list.label.title = Título
+any.project.list.label.manager-username = Manager
+
+any.project.form.label.code = Código
+any.project.form.label.title = Título
+any.project.form.label.abstract-field = Abstracto
+any.project.form.label.has-fatal-errors = Tiene errores graves
+any.project.form.label.cost = Coste
+any.project.form.label.exchanged-cost = Coste (Cambiado a la divisa del sistema)
+any.project.form.label.optional-link = Enlace opcional
+any.project.form.label.draft-mode = Borrador
+any.project.form.label.manager-username = Nombre de usuario del manager
