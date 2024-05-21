@@ -12,11 +12,10 @@
 
 package acme.components;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.client.helpers.RandomHelper;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.banner.Banner;
 
@@ -32,15 +31,13 @@ public interface BannerRepository extends AbstractRepository {
 	default Banner getRandomBanner() {
 		Banner result;
 		int count, index;
-		ThreadLocalRandom random;
 		Banner[] banners;
 
 		count = this.countDisplayableBanners();
 		if (count == 0)
 			result = null;
 		else {
-			random = ThreadLocalRandom.current();
-			index = random.nextInt(0, count);
+			index = RandomHelper.nextInt(0, count);
 			banners = this.findAllDisplayableBanners();
 			result = banners.length == 0 ? null : banners[index];
 		}
