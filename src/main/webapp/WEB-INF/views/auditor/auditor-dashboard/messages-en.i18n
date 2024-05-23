@@ -1,0 +1,24 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+auditor.auditor-dashboard.form.title = Auditor dashboard
+
+auditor.auditor-dashboard.form-label.total-number-of-static-code-audits = Total number of static code audits
+auditor.auditor-dashboard.form-label.total-number-of-dynamic-code-audits = Total number of dynamic code audits
+
+auditor.auditor-dashboard.form-label.avg-audit-records-per-code-audit = Average number of audit records per code audit
+auditor.auditor-dashboard.form-label.min-audit-records-per-code-audit = Minimum number of audit records per code audit
+auditor.auditor-dashboard.form-label.max-audit-records-per-code-audit = Maximum number of audit records per code audit
+auditor.auditor-dashboard.form-label.std-audit-records-per-code-audit = Standard deviation of audit records per code audit
+
+auditor.auditor-dashboard.form-label.avg-audit-record-period-length = Average audit record period length per code audit (in seconds)
+auditor.auditor-dashboard.form-label.min-audit-record-period-length = Minimum audit record period length per code audit (in seconds)
+auditor.auditor-dashboard.form-label.max-audit-record-period-length = Maximum audit record period length per code audit (in seconds)
+auditor.auditor-dashboard.form-label.std-audit-record-period-length = Standard deviation audit record period length per code audit (in seconds)
