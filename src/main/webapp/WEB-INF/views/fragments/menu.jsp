@@ -88,6 +88,7 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.auditor-dashboard" action="/auditor/auditor-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.auditor.code-audit" action="/auditor/code-audit/list"/>
 		</acme:menu-option>
 

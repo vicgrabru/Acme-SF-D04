@@ -39,3 +39,4 @@ user-account-sponsor-08,true,"UserIdentity{name: 'Olivia', surname: 'Sponsor', e
 user-account-sponsor-09,true,"UserIdentity{name: 'William', surname: 'Sponsor', email: 'william@acme.com'}",sponsor9,sponsor9
 user-account-auditor-01,true,"UserIdentity{name: 'Au', surname: 'Ditor', email: 'auditor@acme.com'}",auditor1,auditor1
 user-account-auditor-02,true,"UserIdentity{name: 'Ditor', surname: 'Au', email: 'ditorau@acme.com'}",auditor2,auditor2
+user-account-auditor-03,true,"UserIdentity{name: '국민경제의 발전을', surname: '국민경제의 발전을', email: 'a@a.a'}",auditor3,auditor3

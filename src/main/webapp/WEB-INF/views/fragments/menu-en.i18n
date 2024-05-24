@@ -83,7 +83,8 @@ master.menu.client.contract = Contract list
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.code-audit = Code audits
+master.menu.auditor.code-audit = My code audits
+master.menu.auditor.auditor-dashboard = Auditor dashboard
 
 # master.menu.developer ##########################################################
 
