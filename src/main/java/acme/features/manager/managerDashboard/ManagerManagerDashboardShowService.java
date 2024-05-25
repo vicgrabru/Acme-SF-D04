@@ -133,6 +133,14 @@ public class ManagerManagerDashboardShowService extends AbstractService<Manager,
 	@Override
 	public void unbind(final ManagerDashboard object) {
 		Dataset dataset;
+		int managerId;
+		Integer numberOfProjects;
+		Integer numberOfUserStories;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		numberOfProjects = this.repository.numberOfProjectsByManagerId(managerId);
+		numberOfUserStories = this.repository.numberOfUserStoriesByManagerId(managerId);
 
 		dataset = super.unbind(object, //
 			"totalNumberOfUserStoriesWithMustPriority", "totalNumberOfUserStoriesWithShouldPriority", //
@@ -141,6 +149,8 @@ public class ManagerManagerDashboardShowService extends AbstractService<Manager,
 			"maxEstimatedCostOfUserStories", "stdEstimatedCostOfUserStories", //
 			"avgCostOfProjects", "minCostOfProjects", //
 			"maxCostOfProjects", "stdCostOfProjects");
+		dataset.put("zeroProjects", numberOfProjects == 0);
+		dataset.put("zeroUserStories", numberOfUserStories == 0);
 
 		super.getResponse().addData(dataset);
 	}

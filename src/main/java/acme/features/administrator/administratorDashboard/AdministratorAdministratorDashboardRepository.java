@@ -23,6 +23,18 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AdministratorAdministratorDashboardRepository extends AbstractRepository {
 
+	@Query("select count(n) from Notice n")
+	Integer numberOfNotices();
+
+	@Query("select count(o) from Objective o")
+	Integer numberOfObjectives();
+
+	@Query("select count(r) from Risk r")
+	Integer numberOfRisks();
+
+	@Query("select count(c) from Claim c")
+	Integer numberOfClaims();
+
 	@Query("select count(a) from Administrator a")
 	Long numberOfPrincipalsWithAdministratorRole();
 
