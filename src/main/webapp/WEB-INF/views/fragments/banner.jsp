@@ -19,7 +19,7 @@
 <jstl:choose>
 		<jstl:when test="${nAvailableBanners>0}">
 			<div class="rounded" style="background: <acme:message code='master.banner.background'/>">
-				<img src="${bannerToDisplay.pictureLink}" id="imagenBanner" style="width: 100% !important;max-height: 300px"
+				<img src="${bannerToDisplay.pictureLink}" id="imagenBanner" style="width: 100% !important;max-height: 150px"
 					alt="<acme:message code='master.banner.alt'/>" class="img-fluid mx-auto d-block rounded" />
 			</div>
 		</jstl:when>
