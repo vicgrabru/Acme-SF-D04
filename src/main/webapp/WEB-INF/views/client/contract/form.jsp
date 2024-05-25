@@ -21,7 +21,7 @@
 	<acme:input-money code="client.contract.form.label.budget" path="budget"/>
 	<jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">
 		<acme:input-money readonly="true" code="client.contract.form.label.exchanged-budget" path="exchangedBudget"/>
-		<jstl:if test="${acme:anyOf(_command, 'show|publish|update') && draftMode == true}">
+		<jstl:if test="${draftMode}">
 			<acme:input-money readonly="true" code="client.contract.form.label.remaining-cost" path="remainingCost"/>
 		</jstl:if>
 	</jstl:if>
