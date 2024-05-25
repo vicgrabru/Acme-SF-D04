@@ -20,70 +20,132 @@
 </h2>
 
 <table class="table table-sm">
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.avg-cost-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${avgEstimatedCostOfUserStories}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.min-cost-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${minEstimatedCostOfUserStories}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.max-cost-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${maxEstimatedCostOfUserStories}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.std-cost-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${stdEstimatedCostOfUserStories}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.avg-cost-projects"/>
-		</th>
-		<td>
-			<acme:print value="${avgCostOfProjects}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.min-cost-projects"/>
-		</th>
-		<td>
-			<acme:print value="${minCostOfProjects}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.max-cost-projects"/>
-		</th>
-		<td>
-			<acme:print value="${maxCostOfProjects}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.manager-dashboard.form.label.std-cost-projects"/>
-		</th>
-		<td>
-			<acme:print value="${stdCostOfProjects}"/>
-		</td>
-	</tr>
+	<jstl:choose>
+		<jstl:when test="${zeroUserStories}">
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.avg-cost-user-stories"/>
+				</th>
+				<td> - </td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.min-cost-user-stories"/>
+				</th>
+				<td> - </td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.max-cost-user-stories"/>
+				</th>
+				<td> - </td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.std-cost-user-stories"/>
+				</th>
+				<td> - </td>
+			</tr>
+		</jstl:when>
+		
+		<jstl:otherwise>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.avg-cost-user-stories"/>
+				</th>
+				<td>
+					<acme:print value="${avgEstimatedCostOfUserStories}"/>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.min-cost-user-stories"/>
+				</th>
+				<td>
+					<acme:print value="${minEstimatedCostOfUserStories}"/>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.max-cost-user-stories"/>
+				</th>
+				<td>
+					<acme:print value="${maxEstimatedCostOfUserStories}"/>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.std-cost-user-stories"/>
+				</th>
+				<td>
+					<acme:print value="${stdEstimatedCostOfUserStories}"/>
+				</td>
+			</tr>
+		</jstl:otherwise>
+	</jstl:choose>
+	
+	<jstl:choose>
+		<jstl:when test="${zeroProjects}">
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.avg-cost-projects"/>
+				</th>
+				<td> - </td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.min-cost-projects"/>
+				</th>
+				<td> - </td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.max-cost-projects"/>
+				</th>
+				<td> - </td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.std-cost-projects"/>
+				</th>
+				<td> - </td>
+			</tr>
+		</jstl:when>
+		<jstl:otherwise>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.avg-cost-projects"/>
+				</th>
+				<td>
+					<acme:print value="${avgCostOfProjects}"/>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.min-cost-projects"/>
+				</th>
+				<td>
+					<acme:print value="${minCostOfProjects}"/>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.max-cost-projects"/>
+				</th>
+				<td>
+					<acme:print value="${maxCostOfProjects}"/>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<acme:message code="manager.manager-dashboard.form.label.std-cost-projects"/>
+				</th>
+				<td>
+					<acme:print value="${stdCostOfProjects}"/>
+				</td>
+			</tr>
+		</jstl:otherwise>
+	</jstl:choose>
 </table>
 
 <h2>
