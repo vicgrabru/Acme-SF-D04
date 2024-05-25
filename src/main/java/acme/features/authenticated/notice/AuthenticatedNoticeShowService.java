@@ -12,11 +12,15 @@
 
 package acme.features.authenticated.notice;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.notice.Notice;
 
@@ -36,10 +40,13 @@ public class AuthenticatedNoticeShowService extends AbstractService<Authenticate
 		boolean status;
 		int noticeId;
 		Notice notice;
+		Date lastMonthMoment;
 
 		noticeId = super.getRequest().getData("id", int.class);
 		notice = this.repository.findNoticeById(noticeId);
-		status = notice != null;
+
+		lastMonthMoment = MomentHelper.deltaFromMoment(MomentHelper.getCurrentMoment(), -1, ChronoUnit.MONTHS);
+		status = notice != null && notice.getInstantiationMoment().after(lastMonthMoment);
 
 		super.getResponse().setAuthorised(status);
 	}

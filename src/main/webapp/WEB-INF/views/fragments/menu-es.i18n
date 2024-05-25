@@ -82,7 +82,8 @@ master.menu.client.client-dashboard = Panel de indicadores de Cliente
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.code-audit = Auditorías de código
+master.menu.auditor.code-audit = Mis auditorías de código
+master.menu.auditor.auditor-dashboard = Panel de indicadores de auditor
 
 # master.menu.developer ##########################################################
 master.menu.developer=Desarrollador
