@@ -17,12 +17,9 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
-import acme.entities.project.Project;
 import acme.roles.Client;
 
 @Service
@@ -83,26 +80,6 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 			this.repository.deleteAll(relationships);
 
 		this.repository.delete(object);
-	}
-
-	@Override
-	public void unbind(final Contract object) {
-		assert object != null;
-
-		Dataset dataset;
-		SelectChoices choicesProject;
-
-		Collection<Project> projects;
-
-		projects = this.repository.findPublishedProjects();
-
-		choicesProject = SelectChoices.from(projects, "title", object.getProject());
-
-		dataset = super.unbind(object, "code", "goals", "budget", "customerName", "providerName", "instantiationMoment", "draftMode");
-		dataset.put("project", choicesProject.getSelected());
-		dataset.put("projects", choicesProject);
-
-		super.getResponse().addData(dataset);
 	}
 
 }
