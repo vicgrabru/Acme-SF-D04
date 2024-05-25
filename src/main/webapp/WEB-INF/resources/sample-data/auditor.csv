@@ -1,7 +1,7 @@
 key,key:user-account,firm,professional-id,certifications,link
 auditor-01,user-account-auditor-01,"Lorem ipsum","Lorem ipsum","Lorem ipsum","http://www.lorem-ipsum.org"
 auditor-02,user-account-auditor-02,"L","L","L",""
-auditor-03,user-account-auditor-03,"Lo","Lo","Lo","ftp://ab"
+auditor-03,user-account-auditor-03,"Lo","Lo","Lo",null
 auditor-04,user-account-auditor-04,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod te","Lorem ipsum dolor sit am","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore","ftp://a"
 auditor-05,user-account-auditor-05,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem","Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore*","ftp://a.b"
 auditor-06,user-account-auditor-06,"<h1>!</h1>","<h1>!</h1>","<h1>!</h1>","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/"
