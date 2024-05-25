@@ -47,6 +47,12 @@ user-account-manager-35,true,"UserIdentity{name: 'Manager35', surname: 'Manager'
 user-account-manager-36,true,"UserIdentity{name: 'Manager36', surname: 'Manager', email: 'manager36@acme.com'}",manager36,manager36
 user-account-manager-37,true,"UserIdentity{name: 'Manager37', surname: 'Manager', email: 'manager37@acme.com'}",manager37,manager37
 user-account-manager-38,true,"UserIdentity{name: 'Manager38', surname: 'Manager', email: 'manager38@acme.com'}",manager38,manager38
+user-account-manager-39,true,"UserIdentity{name: 'Manager39', surname: 'Manager', email: 'manager39@acme.com'}",manager39,manager39
+user-account-manager-40,true,"UserIdentity{name: 'Manager40', surname: 'Manager', email: 'manager40@acme.com'}",manager40,manager40
+user-account-manager-41,true,"UserIdentity{name: 'Manager41', surname: 'Manager', email: 'manager41@acme.com'}",manager41,manager41
+user-account-manager-42,true,"UserIdentity{name: 'Manager42', surname: 'Manager', email: 'manager42@acme.com'}",manager42,manager42
+user-account-manager-43,true,"UserIdentity{name: 'Manager43', surname: 'Manager', email: 'manager43@acme.com'}",manager43,manager43
+user-account-manager-44,true,"UserIdentity{name: 'Manager44', surname: 'Manager', email: 'manager44@acme.com'}",manager44,manager44
 user-account-client-01,true,"UserIdentity{name: 'Mike', surname: 'Client', email: 'client1@acme.com'}",client1,client1
 user-account-client-02,true,"UserIdentity{name: 'William', surname: 'Client', email: 'client2@acme.com'}",client2,client2
 user-account-client-03,true,"UserIdentity{name: 'Afton', surname: 'Client', email: 'client3@acme.com'}",client3,client3
