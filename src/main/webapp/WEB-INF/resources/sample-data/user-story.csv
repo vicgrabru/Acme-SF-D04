@@ -28,5 +28,28 @@ user-story-26,User Story con priority Must,Test description,10,Test acceptance c
 user-story-27,User Story con priority Should,Test description,10,Test acceptance criteria,SHOULD,https://www.example.com,false,manager-05
 user-story-28,User Story con priority Could,Test description,10,Test acceptance criteria,COULD,https://www.example.com,false,manager-01
 user-story-29,User Story con priority Wont,Test description,27,Test acceptance criteria,WONT,https://www.example.com,false,manager-02
-user-story-30,User Story sin link,Test description,10,Test acceptance criteria,MUST,,false,manager-03
-user-story-31,User Story con link null,Test description,10,Test acceptance criteria,MUST,null,false,manager-04
+user-story-30,User Story con coste minimo,Test description,1,Test acceptance criteria,MUST,null,false,manager-04
+user-story-31,User Story con coste minimo mas 1,Test description,2,Test acceptance criteria,MUST,null,false,manager-04
+user-story-32,User Story con coste 1000000,Test description,1000000,Test acceptance criteria,MUST,null,false,manager-04
+user-story-33,User Story sin link,Test description,10,Test acceptance criteria,MUST,,false,manager-03
+user-story-34,User Story con link null,Test description,10,Test acceptance criteria,MUST,null,false,manager-04
+user-story-35,User Story con link minimo,Test description,10,Test acceptance criteria,MUST,ftp://a,false,manager-04
+user-story-36,User Story con link minimo mas delta,Test description,10,Test acceptance criteria,MUST,ftp://a.b,false,manager-08
+user-story-37,User Story con link maximo menos delta,Test description,10,Test acceptance criteria,MUST,http://www.lorem-ipsum.org/dolor/sit/amets/consectetur/adipiscing/elits/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/,false,manager-02
+user-story-38,User Story con link maximo,Test description,10,Test acceptance criteria,MUST,http://www.lorem-ipsum.org/dolor/sit/amets/consectetur/adipiscing/elits/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,false,manager-06
+user-story-39,User Story con link de test 1,Test description,10,Test acceptance criteria,MUST,https://www.lorem-ipsum.org,false,manager-05
+user-story-40,User Story con link de test 2,Test description,10,Test acceptance criteria,MUST,ftp://www.lorem-ipsum.org,false,manager-08
+user-story-41,User Story con link de test 3,Test description,10,Test acceptance criteria,MUST,https://www.lorem-ipsum.org/sit.html,false,manager-09
+user-story-42,User Story con link de test 4,Test description,10,Test acceptance criteria,MUST,https://www.lorem-ipsum.org/sit.html#dolor,false,manager-10
+user-story-43,User Story con link de test 5,Test description,10,Test acceptance criteria,MUST,http://example.org?a=1&b=2,false,manager-04
+user-story-44,User Story con link de test 6,Test description,10,Test acceptance criteria,MUST,http://example.org?,false,manager-04
+user-story-45,User Story con link de test 7,Test description,10,Test acceptance criteria,MUST,http://example.org?a,false,manager-22
+user-story-46,User Story con link de test 8,Test description,10,Test acceptance criteria,MUST,http://example.org?a&b,false,manager-04
+user-story-47,User Story con link de test 9,Test description,10,Test acceptance criteria,MUST,http://example.org/,false,manager-14
+user-story-48,User Story con link de test 10,Test description,10,Test acceptance criteria,MUST,http://example.org/a,false,manager-19
+user-story-49,User Story con link de test 11,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b,false,manager-17
+user-story-50,User Story con link de test 12,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?,false,manager-20
+user-story-51,User Story con link de test 13,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-52,ZUser Story para publicar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
+user-story-53,ZUser Story para borrar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-54,ZUser Story para asignar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
