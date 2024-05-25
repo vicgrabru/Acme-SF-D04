@@ -1,7 +1,29 @@
 key,key:user-account,identification,company-name,type,email,optional-link
-client-01,user-account-client-01,CLI-0001,Example company,INDIVIDUAL,client1@acme.com,http://client1.com
-client-02,user-account-client-02,CLI-0002,C,INDIVIDUAL,client2@acme.com,http://client2.com
-client-03,user-account-client-03,CLI-0003,Extense companyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy,INDIVIDUAL,client3@acme.com,http://client3.com
-client-04,user-account-client-04,CLI-0004,Компания со странными персонажами,INDIVIDUAL,client4@acme.com,http://client4.com
-client-05,user-account-client-05,CLI-0005,Different type,COMPANY,client5@acme.com,http://client5.com
-client-06,user-account-client-06,CLI-0006,No link,INDIVIDUAL,client6@acme.com,
+client-01,user-account-client-01,CLI-0001,Example company,COMPANY,client1@acme.com,http://client1.com
+client-02,user-account-client-02,CLI-0002,C,COMPANY,client2@acme.com,http://client2.com
+client-03,user-account-client-03,CLI-0003,Co,COMPANY,client3@acme.com,http://client3.com
+client-04,user-account-client-04,CLI-0004,Extense companyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy,COMPANY,client4@acme.com,http://client4.com
+client-05,user-account-client-05,CLI-0005,Extense companyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy,COMPANY,client5@acme.com,http://client5.com
+client-06,user-account-client-06,CLI-0006,국민경제의 발전을,COMPANY,client6@acme.com,http://client6.com
+client-07,user-account-client-07,CLI-0007,العظمى واعتلاء,COMPANY,client7@acme.com,http://client7.com
+client-08,user-account-client-08,CLI-0008,<h1>!</h1>,COMPANY,client8@acme.com,http://client8.com
+client-09,user-account-client-09,CLI-0009,' or 'A'='A,COMPANY,client9@acme.com,http://client9.com
+client-10,user-account-client-10,CLI-0010,Different type,INDIVIDUAL,client10@acme.com,http://client10.com
+client-11,user-account-client-11,CLI-0011,Min email,INDIVIDUAL,a@b.c,http://client11.com
+client-12,user-account-client-12,CLI-0012,Min email + 1,INDIVIDUAL,a@b.cd,http://client12.com
+client-13,user-account-client-13,CLI-0013,Max email,INDIVIDUAL,lorem.ipsum@dolor.sit.amets.consectetur.adipiscing.elits.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.orgs,http://client13.com
+client-14,user-account-client-14,CLI-0014,Max email - 1,INDIVIDUAL,lorem.ipsum@dolor.sit.amets.consectetur.adipiscing.elits.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.esr,http://client14.com
+client-15,user-account-client-15,CLI-0015,Strange email 1,INDIVIDUAL,국민경제의@acme.com,http://client15.com
+client-16,user-account-client-16,CLI-0016,Strange email 2,INDIVIDUAL,واعتلاء@acme.com,http://client16.com
+client-17,user-account-client-17,CLI-0017,Empty link,COMPANY,client17@acme.com,
+client-18,user-account-client-18,CLI-0018,Null link,COMPANY,client18@acme.com,null
+client-19,user-account-client-19,CLI-0019,Min link,COMPANY,client19@acme.com,ftp://a
+client-20,user-account-client-20,CLI-0020,Min link + 1,COMPANY,client20@acme.com,ftp://a.b
+client-21,user-account-client-21,CLI-0021,Max link,COMPANY,client21@acme.com,http://www.lorem-ipsum.org/dolor/sit/amets/consectetur/adipiscing/elits/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X
+client-22,user-account-client-22,CLI-0022,Max link - 1,COMPANY,client22@acme.com,http://www.lorem-ipsum.org/dolor/sit/amets/consectetur/adipiscing/elits/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/
+client-23,user-account-client-23,CLI-0023,Test link 1,COMPANY,client23@acme.com,https://www.lorem-ipsum.org
+client-24,user-account-client-24,CLI-0024,Test link 2,COMPANY,client24@acme.com,http://www.lorem-ipsum.org/dolor/sit.html#dolor
+client-25,user-account-client-25,CLI-0025,Test link 3,COMPANY,client25@acme.com,http://example.org?a=1&b=2
+client-26,user-account-client-26,CLI-0026,Test link 4,COMPANY,client26@acme.com,http://example.org?a&b
+client-27,user-account-client-27,CLI-0027,Test link 5,COMPANY,client27@acme.com,http://example.org/a/b?a&b
+client-28,user-account-client-28,CLI-9999,Max identification,COMPANY,client28@acme.com,http://client28.com
