@@ -51,5 +51,5 @@ user-story-49,User Story con link de test 11,Test description,10,Test acceptance
 user-story-50,User Story con link de test 12,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?,false,manager-20
 user-story-51,User Story con link de test 13,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
 user-story-52,ZUser Story para publicar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
-user-story-53,ZUser Story para borrar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
-user-story-54,ZUser Story para asignar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-53,ZUser Story para borrar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
+user-story-54,ZUser Story asignada,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
