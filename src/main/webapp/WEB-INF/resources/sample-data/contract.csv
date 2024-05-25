@@ -33,7 +33,7 @@ contract-31,A-028,2002/04/14 08:00,Provider,Customer,Goals,EUR 0.01,true,project
 contract-32,A-029,2002/04/14 08:00,Provider,Customer,Goals,EUR 26.99,true,project-17,client-02
 contract-33,A-030,2002/04/14 08:00,Provider,Customer,Goals,EUR 26.98,true,project-17,client-02
 contract-34,A-031,2002/04/14 08:00,Provider,Customer,Goals,EUR 9999999999.99,true,project-23,client-02
-contract-35,A-032,2002/04/14 08:00,Provider,Customer,Goals,EUR 9999999999.98,true,project-23,client-02
+contract-35,A-032,2002/04/14 08:00,Provider,Customer,Goals,EUR 9999999999.98,false,project-22,client-02
 contract-37,A-033,2002/04/14 08:00,Provider,Customer,Goals,USD 0.00,true,project-24,client-02
 contract-38,A-034,2002/04/14 08:00,Provider,Customer,Goals,GBP 0.00,true,project-25,client-02
 contract-39,BP-000,2002/04/14 08:00,Provider,Customer,Goals,EUR 10.00,true,project-01,client-01
