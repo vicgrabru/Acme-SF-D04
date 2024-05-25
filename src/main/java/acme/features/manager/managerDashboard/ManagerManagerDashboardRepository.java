@@ -24,6 +24,12 @@ import acme.entities.configuration.SystemConfiguration;
 @Repository
 public interface ManagerManagerDashboardRepository extends AbstractRepository {
 
+	@Query("select count(p) from Project p where p.manager.id = :id and p.draftMode = false")
+	Integer numberOfProjectsByManagerId(int id);
+
+	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false")
+	Integer numberOfUserStoriesByManagerId(int id);
+
 	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.Priority.MUST")
 	Long totalNumberOfUserStoriesWithMustPriorityByManagerId(int id);
 

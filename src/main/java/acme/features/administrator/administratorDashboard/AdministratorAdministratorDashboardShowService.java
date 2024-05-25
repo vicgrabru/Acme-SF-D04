@@ -123,6 +123,15 @@ public class AdministratorAdministratorDashboardShowService extends AbstractServ
 	@Override
 	public void unbind(final AdministratorDashboard object) {
 		Dataset dataset;
+		Integer numberOfNotices;
+		Integer numberOfObjectives;
+		Integer numberOfRisks;
+		Integer numberOfClaims;
+
+		numberOfNotices = this.repository.numberOfNotices();
+		numberOfObjectives = this.repository.numberOfObjectives();
+		numberOfRisks = this.repository.numberOfRisks();
+		numberOfClaims = this.repository.numberOfClaims();
 
 		dataset = super.unbind(object, //
 			"numberOfPrincipalsByRole", "ratioOfNoticesWithEmailAdressAndLink", //
@@ -131,6 +140,11 @@ public class AdministratorAdministratorDashboardShowService extends AbstractServ
 			"maxRiskValue", "stdRiskValue", //
 			"avgNumberOfClaims", "minNumberOfClaims", //
 			"maxNumberOfClaims", "stdNumberOfClaims");
+
+		dataset.put("zeroNotices", numberOfNotices == 0);
+		dataset.put("zeroObjectives", numberOfObjectives == 0);
+		dataset.put("zeroRisks", numberOfRisks == 0);
+		dataset.put("zeroClaims", numberOfClaims == 0);
 
 		super.getResponse().addData(dataset);
 	}
