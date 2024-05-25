@@ -50,6 +50,13 @@ user-story-48,User Story con link de test 10,Test description,10,Test acceptance
 user-story-49,User Story con link de test 11,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b,false,manager-17
 user-story-50,User Story con link de test 12,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?,false,manager-20
 user-story-51,User Story con link de test 13,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
-user-story-52,ZUser Story para publicar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
-user-story-53,ZUser Story para borrar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
-user-story-54,ZUser Story asignada,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-52,XUser Story asignada,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-53,XUser Story asignada1,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-54,XUser Story asignada2,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-55,XUser Story asignada3,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-56,XUser Story asignada sin publicar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
+user-story-57,ZUser Story para borrar positivo,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
+user-story-58,ZUser Story para borrar negativo,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-59,ZUser Story para publicar positivo,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
+user-story-60,ZUser Story para publicar negativo,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
+user-story-61,ZUser Story para actualizar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
