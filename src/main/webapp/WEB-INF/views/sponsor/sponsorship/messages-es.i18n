@@ -41,3 +41,4 @@ sponsor.sponsorship.form.error.atLeast1MonthLong = La duración debe durar al me
 sponsor.sponsorship.form.error.notEqualAmount = La cantidad debe ser igual a la suma de las facturas
 sponsor.sponsorship.form.error.AllInvoicesMustBePublished = Todas las facturas tienen que estar publicadas
 sponsor.sponsorship.form.error.amount.no-negative = Dinero no negativo
+sponsor.sponsorship.form.error.amount.invalid-currency = Moneda no valida
