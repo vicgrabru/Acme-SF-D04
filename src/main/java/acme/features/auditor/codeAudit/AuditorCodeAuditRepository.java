@@ -45,7 +45,11 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("select ar from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
 	Collection<AuditRecord> findAuditRecordsByCodeAuditId(int codeAuditId);
 
-	@Query("select ar.mark, count(ar.mark) as markCount " + "from AuditRecord ar " + "where ar.codeAudit.id = :codeAuditId " + "group by ar.mark " + "order by markCount desc")
+	@Query("select ar.mark, count(ar.mark) as markCount " //
+		+ "from AuditRecord ar " //
+		+ "where ar.codeAudit.id = :codeAuditId and ar.draftMode = false " //
+		+ "group by ar.mark " //
+		+ "order by markCount desc")
 	Collection<Mark> findOrderedMarkAmountsByCodeAuditId(int codeAuditId);
 
 }
