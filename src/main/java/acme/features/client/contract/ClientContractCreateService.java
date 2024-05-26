@@ -89,8 +89,6 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(this.exchangeRepo.exchangeMoney(object.getBudget()).getAmount() <= this.exchangeRepo.exchangeMoney(object.getProject().getCost()).getAmount(), "budget", "client.contract.form.error.budget.budget-over-project-cost");
 
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(object.getCode()), "code", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("goals"))
 			super.state(!SpamDetector.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("providerName"))
