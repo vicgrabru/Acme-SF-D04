@@ -24,18 +24,21 @@ import acme.entities.training.TrainingSession;
 @Repository
 public interface DeveloperDashBoardRepository extends AbstractRepository {
 
-	@Query("SELECT AVG(t.endTotalTime-t.startTotalTime) FROM TrainingModule t")
+	@Query(value = "select avg(timestampdiff(second,t.startTotalTime,t.endTotalTime)) from TrainingModule t", nativeQuery = true)
 	public Double averageTrainingModuleTime();
-	@Query("SELECT STDDEV(t.endTotalTime-t.startTotalTime) FROM TrainingModule t")
+	@Query(value = "select stddev(timestampdiff(second,t.startTotalTime,t.endTotalTime)) from TrainingModule t", nativeQuery = true)
 	public Double deviationTrainingModuleTime();
-	@Query("SELECT MAX(t.endTotalTime-t.startTotalTime) FROM TrainingModule t")
+	@Query(value = "select max(timestampdiff(second,t.startTotalTime,t.endTotalTime)) from TrainingModule t", nativeQuery = true)
 	public Double maxTrainingModuleTime();
-	@Query("SELECT MIN(t.endTotalTime-t.startTotalTime) FROM TrainingModule t")
+	@Query(value = "select min(timestampdiff(second,t.startTotalTime,t.endTotalTime)) from TrainingModule t", nativeQuery = true)
 	public Double minTrainingModuleTime();
-
-	@Query("SELECT t FROM TrainingModule t")
+	@Query("select count(t) from TrainingModule t where t.updateMoment!=null")
+	public Integer numberOfTrainingModulesWithUpdateMoment();
+	@Query("select count(t) from TrainingModule t where t.link!=null")
+	public Integer numberOfTrainingSessionWithLink();
+	@Query("select t from TrainingModule t")
 	public Collection<TrainingModule> findTrainingModules();
 
-	@Query("SELECT t FROM TrainingSession t")
+	@Query("select t from TrainingSession t")
 	public Collection<TrainingSession> findTrainingSessions();
 }
