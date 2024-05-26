@@ -75,9 +75,9 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(object.getQuantity().getAmount() >= 0., "amount", "sponsor.invoice.form.error.amount.no-negative");
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
+			Invoice existing;
 
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
+			existing = this.repository.findOneInvoiceByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
 		}
 
