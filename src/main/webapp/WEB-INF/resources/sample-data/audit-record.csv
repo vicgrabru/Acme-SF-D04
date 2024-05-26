@@ -45,7 +45,7 @@ audit-record-43,AU-7357-043,2020/02/28 16:00,2020/02/28 19:00,A,http://www.lorem
 audit-record-44,AU-7357-044,2020/02/28 16:00,2020/02/28 19:00,F,http://www.lorem-ipsum.org,false,code-audit-41
 audit-record-45,AU-7357-045,2020/02/28 16:00,2020/02/28 19:00,A,http://www.lorem-ipsum.org,true,code-audit-41
 audit-record-46,AU-7357-046,2020/02/28 16:00,2020/02/28 19:00,B,http://www.lorem-ipsum.org,false,code-audit-42
-audit-record-47,AU-7357-047,2020/02/28 16:00,2020/02/28 19:00,B,http://www.lorem-ipsum.org,false,code-audit-42
+audit-record-47,AU-7357-047,2020/02/28 16:00,2020/02/28 19:00,None,http://www.lorem-ipsum.org,true,code-audit-42
 audit-record-48,AU-7357-048,2020/02/28 16:00,2020/02/28 19:00,B,http://www.lorem-ipsum.org,false,code-audit-42
 audit-record-49,AU-7357-049,2020/02/28 16:00,2020/02/28 19:00,FMinus,http://www.lorem-ipsum.org,false,code-audit-43
 audit-record-50,AU-7357-050,2020/02/28 16:00,2020/02/28 19:00,A,http://www.lorem-ipsum.org,false,code-audit-43
