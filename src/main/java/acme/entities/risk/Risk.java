@@ -49,6 +49,7 @@ public class Risk extends AbstractEntity {
 
 	@NotNull
 	@Positive
+	@Digits(integer = 5, fraction = 2)
 	private Double				impact;
 
 	@NotNull
