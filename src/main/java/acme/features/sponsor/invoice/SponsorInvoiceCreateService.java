@@ -12,7 +12,6 @@ import acme.client.services.AbstractService;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
-import spamDetector.SpamDetector;
 
 @Service
 public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoice> {
@@ -72,6 +71,9 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			currencies = this.repository.findAcceptedCurrencies();
 			super.state(currencies.contains(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.quantity.invalid-currency");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getAmount() >= 0., "amount", "sponsor.invoice.form.error.amount.no-negative");
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing;
 
@@ -81,11 +83,6 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(MomentHelper.isLongEnough(object.getRegistrationTime(), object.getDueDate(), 1, ChronoUnit.MONTHS), "dueDate", "sponsor.invoice.form.error.atLeast1MonthLong");
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "sponsor.invoice.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "sponsor.invoice.form.error.spam");
-
 	}
 
 	@Override
