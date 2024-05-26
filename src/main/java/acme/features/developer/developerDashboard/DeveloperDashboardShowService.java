@@ -12,11 +12,16 @@
 
 package acme.features.developer.developerDashboard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.training.TrainingModule;
+import acme.entities.training.TrainingSession;
 import acme.forms.DeveloperDashboard;
 import acme.roles.Developer;
 
@@ -39,12 +44,28 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	@Override
 	public void load() {
 		DeveloperDashboard dashboard = new DeveloperDashboard();
-		Double avgTrainingModuleTime = this.repository.averageTrainingModuleTime();
-		Double devTrainingModuleTime = this.repository.deviationTrainingModuleTime();
-		Double minTrainingModuleTime = this.repository.minTrainingModuleTime();
-		Double maxTrainingModuleTime = this.repository.maxTrainingModuleTime();
+		double avgTrainingModuleTime = 0.;
+		double devTrainingModuleTime = 0.;
+		double minTrainingModuleTime = Double.MAX_VALUE;
+		double maxTrainingModuleTime = Double.MIN_VALUE;
 		Integer numberOfTrainingModulesWithUpdateMoment = this.repository.numberOfTrainingModulesWithUpdateMoment();
 		Integer numberOfTrainingSessionWithLink = this.repository.numberOfTrainingSessionWithLink();
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules());
+		for (TrainingModule tm : trainingModules) {
+			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
+			if (seconds < minTrainingModuleTime)
+				minTrainingModuleTime = seconds;
+			if (seconds > maxTrainingModuleTime)
+				maxTrainingModuleTime = seconds;
+			avgTrainingModuleTime += seconds;
+		}
+		avgTrainingModuleTime = avgTrainingModuleTime / trainingModules.size();
+		double devSum = 0.;
+		for (TrainingModule tm : trainingModules) {
+			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
+			devSum += (seconds - avgTrainingModuleTime) * (seconds - avgTrainingModuleTime);
+		}
+		devTrainingModuleTime = Math.sqrt(devSum / trainingModules.size());
 		dashboard.setAverageTrainingModuleTime(avgTrainingModuleTime);
 		dashboard.setDeviationTrainingModuleTime(devTrainingModuleTime);
 		dashboard.setMaximumTrainingModuleTime(maxTrainingModuleTime);
@@ -57,9 +78,19 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	@Override
 	public void unbind(final DeveloperDashboard object) {
 		Dataset dataset;
-
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules());
+		List<TrainingSession> trainingSessions = new ArrayList<>(this.repository.findTrainingSessions());
 		dataset = super.unbind(object, "numberOfTrainingModulesWithUpdateMoment", "numberOfTrainingSessionWithLink", "averageTrainingModuleTime", "deviationTrainingModuleTime", "maximumTrainingModuleTime", "minimumTrainingModuleTime");
-
+		if (trainingModules.isEmpty()) {
+			dataset.put("numberOfTrainingModulesWithUpdateMoment", " ");
+			dataset.put("numberOfTrainingModulesWithUpdateMoment", " ");
+			dataset.put("averageTrainingModuleTime", " ");
+			dataset.put("deviationTrainingModuleTime", " ");
+			dataset.put("maximumTrainingModuleTime", " ");
+			dataset.put("minimumTrainingModuleTime", " ");
+		}
+		if (trainingSessions.isEmpty())
+			dataset.put("numberOfTrainingSessionWithLink", " ");
 		super.getResponse().addData(dataset);
 	}
 
