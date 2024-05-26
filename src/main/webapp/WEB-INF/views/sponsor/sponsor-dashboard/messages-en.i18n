@@ -12,7 +12,7 @@ sponsor.sponsor-dashboard.form.title = Sponsor dashboard
 
 sponsor.sponsor-dashboard.form.title.general-indicators = General indicators
 
-sponsor.sponsor-dashboard.form.label.total-number-of-invoices-with-less-or-equal-than-21 = Total number of invoices with less or equal than 21
+sponsor.sponsor-dashboard.form.label.total-number-of-invoices-with-less-or-equal-than-21 = Total number of invoices with tax less or equal than 21
 sponsor.sponsor-dashboard.form.label.total-number-of-sponsorships-with-link = Total number of sponsorships with link
 sponsor.sponsor-dashboard.form.label.avg-amount-of-sponsorships = Average amount of sponsorships
 sponsor.sponsor-dashboard.form.label.dev-amount-of-sponsorships = Deviation amount of sponsorships
