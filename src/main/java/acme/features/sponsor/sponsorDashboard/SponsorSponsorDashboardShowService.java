@@ -105,16 +105,23 @@ public class SponsorSponsorDashboardShowService extends AbstractService<Sponsor,
 
 		dashboard.setTotalNumberOfSponsorshipsWithLink(totalNumberOfSponsorshipsWithLink);
 
-		dashboard.setAvgAmountOfSponsorships(avgAmountOfSponsorships);
-		dashboard.setDevAmountOfSponsorships(devAmountOfSponsorships);
-		dashboard.setMinAmountOfSponsorships(minAmountOfSponsorships);
-		dashboard.setMaxAmountOfSponsorships(maxAmountOfSponsorships);
+		if (avgAmountOfSponsorships.getAmount() != 0.0)
+			dashboard.setAvgAmountOfSponsorships(avgAmountOfSponsorships);
+		if (devAmountOfSponsorships.getAmount() != 0.0)
+			dashboard.setDevAmountOfSponsorships(devAmountOfSponsorships);
+		if (minAmountOfSponsorships.getAmount() != 0.0)
+			dashboard.setMinAmountOfSponsorships(minAmountOfSponsorships);
+		if (maxAmountOfSponsorships.getAmount() != 0.0)
+			dashboard.setMaxAmountOfSponsorships(maxAmountOfSponsorships);
 
-		dashboard.setAvgQuantityOfInvoices(avgQuantityOfInvoices);
-		dashboard.setDevQuantityOfInvoices(devQuantityOfInvoices);
-		dashboard.setMinQuantityOfInvoices(minQuantityOfInvoices);
-		dashboard.setMaxQuantityOfInvoices(maxQuantityOfInvoices);
-
+		if (avgQuantityOfInvoices.getAmount() != 0.0)
+			dashboard.setAvgQuantityOfInvoices(avgQuantityOfInvoices);
+		if (devQuantityOfInvoices.getAmount() != 0.0)
+			dashboard.setDevQuantityOfInvoices(devQuantityOfInvoices);
+		if (minQuantityOfInvoices.getAmount() != 0.0)
+			dashboard.setMinQuantityOfInvoices(minQuantityOfInvoices);
+		if (maxQuantityOfInvoices.getAmount() != 0.0)
+			dashboard.setMaxQuantityOfInvoices(maxQuantityOfInvoices);
 		super.getBuffer().addData(dashboard);
 
 	}
