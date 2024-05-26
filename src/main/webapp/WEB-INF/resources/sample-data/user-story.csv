@@ -2,8 +2,8 @@ key,title,description,estimated-cost,acceptance-criteria,priority,optional-link,
 user-story-01,Test title,Test description,10,Test acceptance criteria,MUST,https://www.example.com,false,manager-01
 user-story-02,a,User Story con title de 1 caracter,10,Test acceptance criteria,MUST,https://www.example.com,false,manager-02
 user-story-03,aa,User Story con title de 2 caracteres,10,Test acceptance criteria,MUST,null,false,manager-04
-user-story-04,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nun,User Story con title de 74 caracteres,10,Test acceptance criteria,MUST,null,false,manager-04
-user-story-05,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,User Story con title de 75 caracteres,10,Test acceptance criteria,WONT,https://www.example.com,false,manager-03
+user-story-04,Lorem ipsum dolor sit amets consectetur adipiscing elits sed do eiusmod te,User Story con title de 74 caracteres,10,Test acceptance criteria,MUST,null,false,manager-04
+user-story-05,Lorem ipsum dolor sit amets consectetur adipiscing elits sed do eiusmod tem,User Story con title de 75 caracteres,10,Test acceptance criteria,WONT,https://www.example.com,false,manager-03
 user-story-06,국민경제의 발전을,User Story con caracteres extranjeros 1 en el title,30,Test acceptance criteria,SHOULD,https://www.example.com,false,manager-04
 user-story-07,العظمى واعتلاء,User Story con caracteres extranjeros 2 en el title,30,Test acceptance criteria,SHOULD,https://www.example.com,false,manager-04
 user-story-08,<h1>!</h1>,User Story con title de hacking 1,10,Test acceptance criteria,MUST,https://www.example.com,false,manager-02
