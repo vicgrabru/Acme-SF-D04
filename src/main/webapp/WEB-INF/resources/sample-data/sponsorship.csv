@@ -1,6 +1,6 @@
 key,code,moment,start-duration,end-duration,amount,type,email,link,draft-mode,key:project,key:sponsor
-sponsorship-01,A-000,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,null,true,project-01,sponsor-01
-sponsorship-02,ZZZ-999,2019/05/03 12:00,2019/06/06 12:00,2019/07/07 12:00,EUR 40,IN_KIND,example@example.com,https://www.example.com,false,project-02,sponsor-01
+sponsorship-01,A-000,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,null,true,project-01,sponsor-03
+sponsorship-02,ZZZ-999,2019/05/03 12:00,2019/06/06 12:00,2019/07/07 12:00,EUR 40,IN_KIND,example@example.com,https://www.example.com,false,project-02,sponsor-04
 sponsorship-03,ABC-001,2019/12/23 14:00,2020/01/24 14:00,2020/02/25 14:00,EUR 69.99,FINANCIAL,example@example.com,https://www.example.com,true,project-02,sponsor-02
 sponsorship-04,CCC-002,2018/09/13 22:00,2018/10/15 22:00,2018/11/16 22:00,EUR 30,IN_KIND,example@example.com,https://www.example.com,false,project-02,sponsor-03
 sponsorship-05,XYZ-003,2019/01/03 00:00,2019/02/07 08:00,2019/03/08 08:00,EUR 70,FINANCIAL,example@example.com,https://www.example.com,true,project-02,sponsor-04
@@ -21,3 +21,15 @@ sponsorship-19,P-009,2000/01/14 22:00,2015/06/12 21:00,2028/09/28 20:00,EUR 9493
 sponsorship-20,KL-007,2015/06/12 21:00,2017/12/13 22:00,2018/12/28 10:00,EUR 449.24,IN_KIND,correo_prueba654@gmail.com,http://example.org?a&b,true,project-01,sponsor-08
 sponsorship-21,L-007,2000/01/01 00:00,2000/01/01 00:00,2000/02/01 00:01,USD 0.00,IN_KIND,,http://example.org?a&b,true,project-01,sponsor-08
 sponsorship-22,Z-999,2012/06/12 20:00,2014/12/13 22:00,2015/12/28 10:00,GBP 0.00,IN_KIND,correo_prueba654@gmail.com,,false,project-02,sponsor-08
+sponsorship-23,T-000,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 0.00,FINANCIAL,null,http://publicar0invoice.com,true,project-01,sponsor-01
+sponsorship-24,T-001,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://borrar0invoice.com,true,project-01,sponsor-01
+sponsorship-25,T-002,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://publicar1invoice.com,true,project-01,sponsor-01
+sponsorship-26,T-003,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://borrar1invoice.com,true,project-01,sponsor-01
+sponsorship-27,T-004,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 181.5,FINANCIAL,null,http://publicar3invoice.com,true,project-01,sponsor-01
+sponsorship-28,T-005,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://borrar3invoice.com,true,project-01,sponsor-01
+sponsorship-29,T-006,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://actualizar.com,true,project-01,sponsor-01
+sponsorship-30,T-007,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://publicar0invoicenegativo.com,true,project-01,sponsor-01
+sponsorship-31,T-008,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://publicar1invoicenegativo.com,true,project-01,sponsor-01
+sponsorship-32,T-009,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://publicar3invoicenegativo.com,true,project-01,sponsor-01
+sponsorship-33,T-010,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://actualizarnegativo.com,true,project-01,sponsor-01
+sponsorship-34,T-011,2020/03/03 12:00,2020/03/06 12:00,2020/04/07 12:00,EUR 60.5,FINANCIAL,null,http://testinvoice,true,project-01,sponsor-01
