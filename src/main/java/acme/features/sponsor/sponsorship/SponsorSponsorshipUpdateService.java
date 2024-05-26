@@ -17,7 +17,6 @@ import acme.entities.sponsorship.Sponsorship;
 import acme.entities.sponsorship.Type;
 import acme.roles.Sponsor;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
 
 @Service
 public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sponsorship> {
@@ -89,13 +88,6 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		if (!super.getBuffer().getErrors().hasErrors("endDuration"))
 			super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getEndDuration(), 1, ChronoUnit.MONTHS), "endDuration", "sponsor.sponsorship.form.error.atLeast1MonthLong");
-
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "sponsor.sponsorship.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("email"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("email", String.class)), "email", "sponsor.sponsorship.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "sponsor.sponsorship.form.error.spam");
 
 	}
 

@@ -14,7 +14,6 @@ import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
 
 @Service
 public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoice> {
@@ -79,10 +78,6 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(MomentHelper.isLongEnough(object.getRegistrationTime(), object.getDueDate(), 1, ChronoUnit.MONTHS), "dueDate", "sponsor.invoice.form.error.atLeast1MonthLong");
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "sponsor.invoice.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "sponsor.invoice.form.error.spam");
 	}
 
 	@Override
