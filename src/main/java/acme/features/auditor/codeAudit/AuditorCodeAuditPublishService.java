@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.codeAudit.AuditRecord;
 import acme.entities.codeAudit.CodeAudit;
 import acme.entities.codeAudit.Mark;
 import acme.entities.codeAudit.Type;
@@ -72,6 +73,13 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
+		Collection<AuditRecord> auditRecords;
+		int codeAuditId;
+
+		codeAuditId = super.getRequest().getData("id", int.class);
+
+		auditRecords = this.repository.findAuditRecordsByCodeAuditId(codeAuditId);
+
 		Mark mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
 			.stream() //
 			.sorted(Comparator.comparingInt(Mark::ordinal)) //
@@ -84,11 +92,18 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		pass.add(Mark.B);
 		pass.add(Mark.C);
 
-		System.out.println(object.getMark());
+		super.state(!auditRecords.isEmpty(), "*", //
+			"auditor.code-audit.form.error.no-audit-records");
 
-		if (!super.getBuffer().getErrors().hasErrors("mark"))
-			super.state(pass.contains(mark), //
-				"mark", "auditor.code-audit.form.error.minimum-mark-not-reached");
+		if (!auditRecords.isEmpty()) {
+
+			super.state(auditRecords.stream().allMatch(x -> !x.isDraftMode()), //
+				"*", "auditor.code-audit.form.error.has-draft-audit-records");
+
+			if (!super.getBuffer().getErrors().hasErrors("mark"))
+				super.state(pass.contains(mark), //
+					"mark", "auditor.code-audit.form.error.minimum-mark-not-reached");
+		}
 
 	}
 

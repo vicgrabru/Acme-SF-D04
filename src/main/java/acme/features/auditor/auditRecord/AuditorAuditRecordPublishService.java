@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeAudit.AuditRecord;
+import acme.entities.codeAudit.Mark;
 import acme.roles.Auditor;
 
 @Service
@@ -63,6 +64,9 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+
+		super.state(!object.getMark().equals(Mark.None), //
+			"mark", "auditor.audit-record.form.none-mark");
 	}
 
 	@Override
