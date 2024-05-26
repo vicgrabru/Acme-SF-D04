@@ -83,6 +83,9 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			super.state(currencies.contains(object.getAmount().getCurrency()), "amount", "sponsor.sponsorship.form.error.amount.invalid-currency");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() >= 0., "amount", "sponsor.sponsorship.form.error.amount.no-negative");
+
 		if (!super.getBuffer().getErrors().hasErrors("startDuration"))
 			super.state(MomentHelper.isAfter(object.getStartDuration(), object.getMoment()), "startDuration", "sponsor.sponsorship.form.error.durationAfter");
 

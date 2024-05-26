@@ -36,3 +36,4 @@ sponsor.invoice.form.button.create = Crear
 
 sponsor.invoice.form.error.duplicated = Código duplicado
 sponsor.invoice.form.error.atLeast1MonthLong = La fecha límite debe ser al menos un mes
+sponsor.invoice.form.error.amount.no-negative = No negative money
