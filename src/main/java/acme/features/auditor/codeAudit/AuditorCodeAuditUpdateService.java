@@ -13,6 +13,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -109,7 +110,10 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		choicesType = SelectChoices.from(Type.class, object.getType());
 
 		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
-			.stream().findFirst().orElse(Mark.None);
+			.stream() //
+			.sorted(Comparator.comparingInt(Mark::ordinal)) //
+			.findFirst() //
+			.orElse(Mark.None);
 
 		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "auditor", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());

@@ -14,6 +14,7 @@ package acme.features.auditor.codeAudit;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,7 +73,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		Mark mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
-			.stream().findFirst().orElse(Mark.None);
+			.stream() //
+			.sorted(Comparator.comparingInt(Mark::ordinal)) //
+			.findFirst() //
+			.orElse(Mark.None);
 
 		Collection<Mark> pass = new ArrayList<Mark>();
 		pass.add(Mark.APlus);
