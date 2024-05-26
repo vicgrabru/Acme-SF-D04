@@ -36,5 +36,5 @@ sponsor.invoice.form.button.create = Create
 
 sponsor.invoice.form.error.duplicated = Code Duplicated
 sponsor.invoice.form.error.atLeast1MonthLong = Due Date must be at least 1 month after
-sponsor.invoice.form.error.amount.no-negative = No negative money
-sponsor.invoice.form.error.amount.invalid-currency = Invalid currency
+sponsor.invoice.form.error.quantity.no-negative = No negative money
+sponsor.invoice.form.error.quantity.invalid-currency = Invalid currency
