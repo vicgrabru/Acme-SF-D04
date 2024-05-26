@@ -17,7 +17,7 @@
 
 <acme:form>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
-	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>
+	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment" readonly="true"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.startDuration" path="startDuration"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.endDuration" path="endDuration"/>
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>

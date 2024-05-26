@@ -10,6 +10,10 @@
 
 developer.developer-dashboard.form.title= Developer Dashboard
 
+developer.developer-dashboard.form.label.numUpdateMoments=Training modules with update moment
+
+developer.developer-dashboard.form.label.numLinks=Training sessions with link
+
 developer.developer-dashboard.form.label.avg=Average time in training modules
 
 developer.developer-dashboard.form.label.deviation=Deviation time in training modules

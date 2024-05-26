@@ -10,6 +10,10 @@
 
 developer.developer-dashboard.form.title= Panel de Desarrollador
 
+developer.developer-dashboard.form.label.numUpdateMoments=Módulos de entrenamiento con momento de actualización
+
+developer.developer-dashboard.form.label.numLinks=Sesiones de entrenamiento con enlace
+
 developer.developer-dashboard.form.label.avg=Media de tiempo en módulos de entrenamiento
 
 developer.developer-dashboard.form.label.deviation=Desviación de tiempo en módulos de entrenamiento

@@ -18,6 +18,22 @@
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
+			<acme:message code="developer.developer-dashboard.form.label.numUpdateMoments"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfTrainingModulesWithUpdateMoment}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="developer.developer-dashboard.form.label.numLinks"/>
+		</th>
+		<td>
+			<acme:print value="${numberOfTrainingSessionWithLink}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
 			<acme:message code="developer.developer-dashboard.form.label.avg"/>
 		</th>
 		<td>
