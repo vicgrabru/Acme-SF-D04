@@ -1,12 +1,12 @@
 key,code,start-period,end-period,location,instructor,contact-email,link,draft-mode,key:training-module
 training-session-01,TS-Z-222,2022/08/15 15:00,2022/08/25 17:30,t,Alberto,alberto@gmail.com,https://hola.com,true,training-module-01
 training-session-02,TS-ZZZ-353,2022/08/15 15:00,2022/08/25 17:30,t2,Alberto,alberto@gmail.com,https://hola.com,true,training-module-02
-training-session-03,TS-SF-356,2022/08/15 15:00,2022/08/25 17:30,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nun,Alberto,alberto@gmail.com,https://hola.com,true,training-module-07
-training-session-04,TS-J-353,2022/08/15 15:00,2022/08/25 17:30,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,Alberto,alberto@gmail.com,https://hola.com,true,training-module-08
+training-session-03,TS-SF-356,2022/08/15 15:00,2022/08/25 17:30,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,Alberto,alberto@gmail.com,https://hola.com,true,training-module-07
+training-session-04,TS-J-353,2022/08/15 15:00,2022/08/25 17:30,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunca,Alberto,alberto@gmail.com,https://hola.com,true,training-module-09
 training-session-05,TS-E-467,2022/08/15 15:00,2022/08/25 17:30,Sevilla,t,alberto@gmail.com,https://hola.com,true,training-module-01
 training-session-06,TS-WFH-756,2022/08/15 15:00,2022/08/25 17:30,Sevilla,t2,alberto@gmail.com,https://hola.com,true,training-module-02
-training-session-07,TS-Y-735,2022/08/15 15:00,2022/08/25 17:30,Sevilla,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nun,alberto@gmail.com,https://hola.com,true,training-module-07
-training-session-08,TS-WR-635,2022/08/15 15:00,2022/08/25 17:30,Sevilla,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,alberto@gmail.com,https://hola.com,true,training-module-08
+training-session-07,TS-Y-735,2022/08/15 15:00,2022/08/25 17:30,Sevilla,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,alberto@gmail.com,https://hola.com,true,training-module-07
+training-session-08,TS-WR-635,2022/08/15 15:00,2022/08/25 17:30,Sevilla,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunca,alberto@gmail.com,https://hola.com,true,training-module-06
 training-session-09,TS-WX-657,2022/08/15 15:00,2022/08/25 17:30,국민경제의 발전을,Alberto,alberto@gmail.com,https://hola.com,true,training-module-03
 training-session-10,TS-WR-467,2022/08/15 15:00,2022/08/25 17:30,العظمى واعتلاء,Alberto,alberto@gmail.com,https://hola.com,true,training-module-04
 training-session-11,TS-GRE-356,2022/08/15 15:00,2022/08/25 17:30,<h1>!</h1>,Alberto,alberto@gmail.com,https://hola.com,true,training-module-05
