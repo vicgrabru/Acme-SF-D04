@@ -29,9 +29,9 @@
 		</jstl:when>
 	</jstl:choose>
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-		<acme:submit code="auditor.audit-record.form.button.update" action="/auditor/audit-record/update"/>
-		<acme:submit code="auditor.audit-record.form.button.delete" action="/auditor/audit-record/delete"/>
-		<acme:submit code="auditor.audit-record.form.button.publish" action="/auditor/audit-record/publish"/>
+		<acme:submit code="auditor.audit-record.form.button.update" action="/auditor/audit-record/update?id=${auditRecordId}"/>
+		<acme:submit code="auditor.audit-record.form.button.delete" action="/auditor/audit-record/delete?id=${auditRecordId}"/>
+		<acme:submit code="auditor.audit-record.form.button.publish" action="/auditor/audit-record/publish?id=${auditRecordId}"/>
 	</jstl:if>
 	
 </acme:form>
