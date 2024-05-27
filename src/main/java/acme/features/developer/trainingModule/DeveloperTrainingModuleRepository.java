@@ -21,15 +21,19 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
+import acme.roles.Developer;
 
 @Repository
 public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
-	@Query("select t from TrainingModule t")
-	Collection<TrainingModule> findTrainingModules();
+	@Query("select t from TrainingModule t where t.developer.id = :id")
+	Collection<TrainingModule> findTrainingModules(int id);
 
 	@Query("select p from Project p")
 	Collection<Project> findProjects();
+
+	@Query("select d from Developer d where d.id = :id")
+	Developer findDeveloper(int id);
 
 	@Query("select t from TrainingModule t where t.id = :id")
 	TrainingModule findTrainingModuleById(int id);

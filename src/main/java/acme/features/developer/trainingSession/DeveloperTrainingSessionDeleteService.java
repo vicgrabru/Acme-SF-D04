@@ -33,12 +33,9 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingSessionId;
-		TrainingSession trainingSession;
-
-		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingSession = this.repository.findTrainingSessionById(trainingSessionId);
-		status = trainingSession != null;
+		int sessionId = super.getRequest().getData("id", int.class);
+		TrainingSession session = this.repository.findTrainingSessionById(sessionId);
+		status = session != null && session.isDraftMode() && super.getRequest().getPrincipal().hasRole(session.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
