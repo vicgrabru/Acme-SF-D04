@@ -6,11 +6,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.training.Difficulty;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 import spamDetector.SpamDetector;
@@ -80,23 +77,5 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 		object.setDraftMode(false);
 		this.repository.save(object);
-	}
-
-	@Override
-	public void unbind(final TrainingModule object) {
-		assert object != null;
-
-		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "project");
-		final SelectChoices difficultyChoices;
-		final SelectChoices projectChoices;
-		difficultyChoices = SelectChoices.from(Difficulty.class, object.getDifficulty());
-		dataset.put("difficulty", difficultyChoices.getSelected().getKey());
-		dataset.put("difficulties", difficultyChoices);
-		projectChoices = SelectChoices.from(this.repository.findProjects(), "title", object.getProject());
-		dataset.put("project", projectChoices.getSelected().getKey());
-		dataset.put("projects", projectChoices);
-		super.getResponse().addData(dataset);
 	}
 }
