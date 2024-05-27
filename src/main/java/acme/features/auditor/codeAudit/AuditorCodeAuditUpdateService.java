@@ -73,17 +73,10 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(object.getCode()), //
-				"code", "auditor.code-audit.form.error.spam");
-
 		if (!super.getBuffer().getErrors().hasErrors("correctiveActions"))
 			super.state(!SpamDetector.checkTextValue(object.getCorrectiveActions()), //
 				"correctiveActions", "auditor.code-audit.form.error.spam");
 
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(object.getLink()), //
-				"link", "auditor.code-audit.form.error.spam");
 	}
 
 	@Override

@@ -71,13 +71,19 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		assert object != null;
 		String currencies;
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Invoice existing;
+
+			existing = this.repository.findOneInvoiceByCode(object.getCode());
+			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
 			currencies = this.repository.findAcceptedCurrencies();
 			super.state(currencies.contains(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.quantity.invalid-currency");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0., "amount", "sponsor.invoice.form.error.amount.no-negative");
+			super.state(object.getQuantity().getAmount() >= 0., "quantity", "sponsor.invoice.form.error.quantity.no-negative");
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(MomentHelper.isLongEnough(object.getRegistrationTime(), object.getDueDate(), 1, ChronoUnit.MONTHS), "dueDate", "sponsor.invoice.form.error.atLeast1MonthLong");

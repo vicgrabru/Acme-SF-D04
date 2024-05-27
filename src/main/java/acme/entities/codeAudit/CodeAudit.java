@@ -55,6 +55,7 @@ public class CodeAudit extends AbstractEntity {
 	private Mark				mark;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	private boolean				draftMode;
