@@ -29,7 +29,6 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 	@Autowired
 	private DeveloperTrainingSessionRepository repository;
-
 	// AbstractService interface ----------------------------------------------
 
 
@@ -43,6 +42,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		Collection<TrainingSession> objects;
 		int masterId = super.getRequest().getData("masterId", int.class);
 		objects = this.repository.findTrainingSessionsOfTrainingModule(masterId);
+		super.getResponse().addGlobal("masterId", masterId);
 		super.getBuffer().addData(objects);
 	}
 	@Override

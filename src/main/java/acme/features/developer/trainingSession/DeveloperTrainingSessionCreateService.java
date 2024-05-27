@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 import spamDetector.SpamDetector;
@@ -39,25 +40,34 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 	@Override
 	public void load() {
-		TrainingSession object;
+		TrainingSession session;
+		TrainingModule module;
 		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findTrainingSessionById(id);
+		id = super.getRequest().getData("masterId", int.class);
+		module = this.repository.findTrainingModuleById(id);
 
-		super.getBuffer().addData(object);
+		session = new TrainingSession();
+		session.setTrainingModule(module);
+		session.setDraftMode(true);
+
+		super.getBuffer().addData(session);
 	}
 
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link");
 	}
 
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean duplicatedCode = this.repository.findTrainingSessions().stream().anyMatch(ts -> ts.getCode().equals(object.getCode()));
+			super.state(!duplicatedCode, "code", "developer.training-session.form.error.duplicatedCode");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("location"))
@@ -70,6 +80,9 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
 			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
+		long weekSeconds = 7 * 24 * 60 * 60;
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+			super.state((object.getEndPeriod().getTime() - object.getStartPeriod().getTime()) / 1000 >= weekSeconds, "endPeriod", "developer.training-session.form.error.periodNotDuringOneWeek");
 	}
 
 	@Override
@@ -85,7 +98,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link");
 
 		super.getResponse().addData(dataset);
 	}

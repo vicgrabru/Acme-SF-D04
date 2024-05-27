@@ -33,6 +33,7 @@ developer.training-module.form.label.draftMode= Is DraftMode
 developer.training-module.form.training-session=Training sessions
 
 developer.training-module.form.error.spam=Spam Detected
+developer.training-module.form.error.duplicatedCode=Duplicated Code
 
 
 developer.training-module.form.error.emptyTrainingSessions= You do not have any Training session associated

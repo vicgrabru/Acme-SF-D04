@@ -59,12 +59,16 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
+		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link");
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean duplicatedCode = this.repository.findTrainingModules().stream().anyMatch(tr -> tr.getCode().equals(object.getCode()));
+			super.state(!duplicatedCode, "code", "developer.training-module.form.error.duplicatedCode");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("details"))
@@ -92,7 +96,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link");
 		final SelectChoices choices;
 		choices = SelectChoices.from(Difficulty.class, object.getDifficulty());
 		dataset.put("difficulty", choices.getSelected().getKey());
