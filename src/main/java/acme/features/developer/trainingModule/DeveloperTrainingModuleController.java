@@ -40,6 +40,7 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 
 	@Autowired
 	private DeveloperTrainingModuleDeleteService	deleteService;
+
 	@Autowired
 	private DeveloperTrainingModulePublishService	publishService;
 

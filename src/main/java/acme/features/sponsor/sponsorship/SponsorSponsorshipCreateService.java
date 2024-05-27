@@ -111,6 +111,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 		dataset.put("types", choicesType);
+		dataset.put("readOnlyCode", false);
 
 		super.getResponse().addData(dataset);
 	}

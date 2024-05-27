@@ -15,7 +15,6 @@ package acme.features.developer.trainingSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
@@ -34,12 +33,9 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingSessionId;
-		TrainingSession trainingSession;
-
-		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingSession = this.repository.findTrainingSessionById(trainingSessionId);
-		status = trainingSession != null;
+		int sessionId = super.getRequest().getData("id", int.class);
+		TrainingSession session = this.repository.findTrainingSessionById(sessionId);
+		status = session != null && session.isDraftMode() && super.getRequest().getPrincipal().hasRole(session.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -58,7 +54,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link");
 	}
 
 	@Override
@@ -74,17 +70,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 		assert object != null;
 		object.setDraftMode(false);
 		this.repository.save(object);
-	}
-
-	@Override
-	public void unbind(final TrainingSession object) {
-		assert object != null;
-
-		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
-
-		super.getResponse().addData(dataset);
 	}
 
 }

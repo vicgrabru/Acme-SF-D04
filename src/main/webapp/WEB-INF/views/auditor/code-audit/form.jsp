@@ -39,7 +39,7 @@
 
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 		<acme:submit code="auditor.code-audit.form.button.update" action="/auditor/code-audit/update?id=${codeAuditId}"/>
-		<acme:submit code="auditor.code-audit.form.button.delete" action="/auditor/code-audit/delete"/>
+		<acme:submit code="auditor.code-audit.form.button.delete" action="/auditor/code-audit/delete?id=${codeAuditId}"/>
 		<acme:submit code="auditor.code-audit.form.button.publish" action="/auditor/code-audit/publish?id=${codeAuditId}"/>
 	</jstl:if>
 	

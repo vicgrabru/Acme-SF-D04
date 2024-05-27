@@ -36,12 +36,9 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingModuleId;
-		TrainingModule trainingModule;
-
-		trainingModuleId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findTrainingModuleById(trainingModuleId);
-		status = trainingModule != null;
+		int moduleId = super.getRequest().getData("id", int.class);
+		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
+		status = module != null && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -63,11 +60,15 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
-		final SelectChoices choices;
-		choices = SelectChoices.from(Difficulty.class, object.getDifficulty());
-		dataset.put("difficulty", choices.getSelected().getKey());
-		dataset.put("difficulties", choices);
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode", "project");
+		final SelectChoices difficultyChoices;
+		final SelectChoices projectChoices;
+		difficultyChoices = SelectChoices.from(Difficulty.class, object.getDifficulty());
+		dataset.put("difficulty", difficultyChoices.getSelected().getKey());
+		dataset.put("difficulties", difficultyChoices);
+		projectChoices = SelectChoices.from(this.repository.findProjects(), "title", object.getProject());
+		dataset.put("project", projectChoices.getSelected().getKey());
+		dataset.put("projects", projectChoices);
 		super.getResponse().addData(dataset);
 	}
 

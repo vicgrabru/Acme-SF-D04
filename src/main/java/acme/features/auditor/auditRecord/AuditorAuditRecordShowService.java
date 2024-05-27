@@ -72,6 +72,8 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 		dataset.put("mark", choicesMark.getSelected());
 		dataset.put("marks", choicesMark);
 
+		dataset.put("auditRecordId", object.getId());
+
 		super.getResponse().addData(dataset);
 	}
 
