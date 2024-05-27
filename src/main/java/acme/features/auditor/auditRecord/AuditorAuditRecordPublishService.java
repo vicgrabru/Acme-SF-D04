@@ -86,6 +86,8 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		dataset = super.unbind(object, "code", "periodStart", "periodEnd", "mark", "link", "draftMode");
 		dataset.put("readOnlyCode", true);
 
+		dataset.put("auditRecordId", object.getId());
+
 		super.getResponse().addData(dataset);
 	}
 
