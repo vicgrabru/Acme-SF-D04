@@ -83,6 +83,13 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			super.state(currencies.contains(object.getAmount().getCurrency()), "amount", "sponsor.sponsorship.form.error.amount.invalid-currency");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing;
+
+			existing = this.repository.findOneSponsorshipByCode(object.getCode());
+			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
 			super.state(object.getAmount().getAmount() >= 0., "amount", "sponsor.sponsorship.form.error.amount.no-negative");
 
@@ -118,8 +125,10 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		dataset.put("projects", choicesProject);
 		dataset.put("types", choicesType);
 
-		Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());
-		dataset.put("exchangedAmount", eb);
+		if (object.getAmount() != null) {
+			Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());
+			dataset.put("exchangedAmount", eb);
+		}
 
 		super.getResponse().addData(dataset);
 	}
