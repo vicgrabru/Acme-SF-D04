@@ -64,6 +64,7 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 
 		Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
 		dataset.put("exchangedQuantity", eb);
+		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);
 	}
