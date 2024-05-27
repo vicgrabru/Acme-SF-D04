@@ -121,6 +121,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());
 			dataset.put("exchangedAmount", eb);
 		}
+		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);
 	}
