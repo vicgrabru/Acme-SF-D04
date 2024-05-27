@@ -99,8 +99,10 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 		dataset.put("masterId", object.getSponsorship().getId());
 
-		Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
-		dataset.put("exchangedQuantity", eb);
+		if (object.getQuantity() != null) {
+			Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
+			dataset.put("exchangedQuantity", eb);
+		}
 		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);
