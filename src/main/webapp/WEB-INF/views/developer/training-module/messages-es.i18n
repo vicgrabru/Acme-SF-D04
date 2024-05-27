@@ -34,5 +34,6 @@ developer.training-module.form.training-session=Sesiones de entrenamiento
 
 developer.training-module.form.error.spam=Spam Detectado
 
+developer.training-module.form.error.emptyTrainingSessions= No tienes ningún sesión de entrenamiento asociado
 developer.training-module.form.error.startTotalTime.not-after-creationMoment=El comienzo del tiempo total debe ser posterior al momento de creación
 developer.training-module.form.error.endTotalTime.not-after-startTotalTime=El final del tiempo total debe ser posterior al comienzo
