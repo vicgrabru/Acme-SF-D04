@@ -75,6 +75,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());
 		dataset.put("exchangedAmount", eb);
+		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);
 	}
