@@ -13,7 +13,7 @@ administrator.risk.list.title = Lista de riesgos
 
 administrator.risk.list.label.reference = Referencia
 administrator.risk.list.label.identification-date = Fecha de Identificación
-administrator.risk.list.label.risk-value = Valor (Impacto x Probabilidad)
+administrator.risk.list.label.risk-value = Valor (Impacto x Probabilidad / 100)
 
 administrator.risk.form.label.reference = Referencia
 administrator.risk.form.label.identification-date = Fecha de Identificación
@@ -22,6 +22,7 @@ administrator.risk.form.label.probability = Probabilidad
 administrator.risk.form.label.risk-value = Valor (Impacto x Probabilidad)
 administrator.risk.form.label.description = Descripción
 administrator.risk.form.label.link = Enlace
+administrator.risk.form.label.project = Proyecto
 
 administrator.risk.list.button.create = Crear
 administrator.risk.form.button.create = Crear
