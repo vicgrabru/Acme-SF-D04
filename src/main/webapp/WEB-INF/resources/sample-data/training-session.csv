@@ -1,5 +1,5 @@
 key,code,start-period,end-period,location,instructor,contact-email,link,draft-mode,key:training-module
-training-session-01,TS-Z-222,2022/08/15 15:00,2022/08/25 17:30,t,Alberto,alberto@gmail.com,https://hola.com,true,training-module-01
+training-session-01,TS-Z-222,2022/08/15 15:00,2022/08/25 17:30,t,Alberto,alberto@gmail.com,https://hola.com,false,training-module-01
 training-session-02,TS-ZZZ-353,2022/08/15 15:00,2022/08/25 17:30,t2,Alberto,alberto@gmail.com,https://hola.com,true,training-module-02
 training-session-03,TS-SF-356,2022/08/15 15:00,2022/08/25 17:30,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,Alberto,alberto@gmail.com,https://hola.com,true,training-module-07
 training-session-04,TS-J-353,2022/08/15 15:00,2022/08/25 17:30,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunca,Alberto,alberto@gmail.com,https://hola.com,true,training-module-09

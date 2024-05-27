@@ -18,7 +18,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
@@ -76,17 +75,6 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		if (sessions.isEmpty())
 			this.repository.delete(object);
 
-	}
-
-	@Override
-	public void unbind(final TrainingModule object) {
-		assert object != null;
-
-		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
-
-		super.getResponse().addData(dataset);
 	}
 
 }
