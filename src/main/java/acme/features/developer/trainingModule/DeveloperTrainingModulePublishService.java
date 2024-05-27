@@ -73,7 +73,6 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

@@ -12,15 +12,11 @@
 
 package acme.features.developer.trainingSession;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.entities.banner.Banner;
 import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 import spamDetector.SpamDetector;
@@ -43,13 +39,11 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 	@Override
 	public void load() {
-		Banner object;
-		Date instantiationMoment;
+		TrainingSession object;
+		int id;
 
-		instantiationMoment = MomentHelper.getCurrentMoment();
-
-		object = new Banner();
-		object.setInstantiationMoment(instantiationMoment);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrainingSessionById(id);
 
 		super.getBuffer().addData(object);
 	}

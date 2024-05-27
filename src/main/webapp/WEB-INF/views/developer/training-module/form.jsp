@@ -27,6 +27,9 @@
 	<acme:input-checkbox code="developer.training-module.form.label.draftMode" path="draftMode"/>
 	
 	<acme:button code="developer.training-module.form.training-session" action="/developer/training-session/list?masterId=${id}"/>
+	<jstl:if test="${acme:anyOf(_command, 'create')}">
+		<acme:submit code="developer.training-module.form.button.create" action="/developer/training-module/create"/>
+	</jstl:if>
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
 		<acme:submit code="developer.training-module.form.button.update" action="/developer/training-module/update"/>
 		<acme:submit code="developer.training-module.form.button.delete" action="/developer/training-module/delete"/>
