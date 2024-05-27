@@ -42,6 +42,7 @@ public class Banner extends AbstractEntity {
 	private Date				periodEnd;
 
 	@URL
+	@Length(max = 255)
 	private String				pictureLink;
 
 	@NotBlank
@@ -49,6 +50,7 @@ public class Banner extends AbstractEntity {
 	private String				slogan;
 
 	@URL
+	@Length(max = 255)
 	private String				webDocumentLink;
 
 }

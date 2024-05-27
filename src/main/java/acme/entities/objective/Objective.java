@@ -58,6 +58,7 @@ public class Objective extends AbstractEntity {
 	private Date				endDateDuration;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Relationships ----------------------------------------------------------
