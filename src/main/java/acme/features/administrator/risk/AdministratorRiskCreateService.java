@@ -99,7 +99,6 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
-		dataset.put("riskValue", object.getValue());
 		dataset.put("readOnlyReference", false);
 		dataset.put("project", choicesProject.getSelected());
 		dataset.put("projects", choicesProject);
