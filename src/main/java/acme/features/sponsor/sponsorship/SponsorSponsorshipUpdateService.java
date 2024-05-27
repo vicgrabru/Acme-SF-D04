@@ -69,7 +69,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
+		super.bind(object, "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
 		object.setProject(project);
 	}
 
@@ -82,14 +82,6 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			currencies = this.repository.findAcceptedCurrencies();
 			super.state(currencies.contains(object.getAmount().getCurrency()), "amount", "sponsor.sponsorship.form.error.amount.invalid-currency");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
-
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
-		}
-
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
 			super.state(object.getAmount().getAmount() >= 0., "amount", "sponsor.sponsorship.form.error.amount.no-negative");
 
