@@ -24,10 +24,11 @@
 	<acme:input-moment code="developer.training-module.form.label.startTotalTime" path="startTotalTime"/>
 	<acme:input-moment code="developer.training-module.form.label.endTotalTime" path="endTotalTime"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
-	<acme:input-checkbox code="developer.training-module.form.label.draftMode" path="draftMode"/>
-	
+	<acme:input-select code="developer.training-module.form.label.projects" path="project" choices="${projects}"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
 	<acme:button code="developer.training-module.form.training-session" action="/developer/training-session/list?masterId=${id}"/>
-	<jstl:if test="${acme:anyOf(_command, 'create')}">
+	</jstl:if>
+	<jstl:if test="${acme:matches(_command, 'create')}">
 		<acme:submit code="developer.training-module.form.button.create" action="/developer/training-module/create"/>
 	</jstl:if>
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
