@@ -105,6 +105,8 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		dataset.put("mark", choicesMark.getSelected());
 		dataset.put("marks", choicesMark);
 
+		dataset.put("auditRecordId", object.getId());
+
 		super.getResponse().addData(dataset);
 	}
 
