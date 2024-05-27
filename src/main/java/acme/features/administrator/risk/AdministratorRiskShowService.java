@@ -71,7 +71,7 @@ public class AdministratorRiskShowService extends AbstractService<Administrator,
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
-		dataset.put("riskValue", object.getValue());
+		dataset.put("riskValue", object.getProbability() != null && object.getImpact() != null ? object.getValue() : null);
 		dataset.put("readOnlyReference", true);
 		dataset.put("riskId", object.getId());
 		dataset.put("projectId", object.getProject().getId());
