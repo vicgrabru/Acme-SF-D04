@@ -80,13 +80,10 @@ public class ClientClientDashboardShowService extends AbstractService<Client, Cl
 			minContractBudget = MoneyUtils.getMin(budgetOfContracts, systemConfiguration.getSystemCurrency());
 			maxContractBudget = MoneyUtils.getMax(budgetOfContracts, systemConfiguration.getSystemCurrency());
 		} else {
-			Money result = new Money();
-			result.setAmount(0.0);
-			result.setCurrency(systemConfiguration.getSystemCurrency());
-			avgContractBudget = result;
-			stdContractBudget = result;
-			minContractBudget = result;
-			maxContractBudget = result;
+			avgContractBudget = null;
+			stdContractBudget = null;
+			minContractBudget = null;
+			maxContractBudget = null;
 		}
 
 		dashboard = new ClientDashboard();

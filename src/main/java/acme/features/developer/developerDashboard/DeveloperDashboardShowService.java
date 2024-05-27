@@ -12,9 +12,8 @@
 
 package acme.features.developer.developerDashboard;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,37 +44,53 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	@Override
 	public void load() {
 		DeveloperDashboard dashboard = new DeveloperDashboard();
-		Map<Date, Integer> numberOfTrainingModulesPerUpdateMoment = new HashMap<>();
-		for (TrainingModule t : this.repository.findTrainingModules())
-			if (numberOfTrainingModulesPerUpdateMoment.containsKey(t.getUpdateMoment()))
-				numberOfTrainingModulesPerUpdateMoment.put(t.getUpdateMoment(), numberOfTrainingModulesPerUpdateMoment.get(t.getUpdateMoment()) + 1);
-			else
-				numberOfTrainingModulesPerUpdateMoment.put(t.getUpdateMoment(), 1);
-		Map<String, Integer> numberOfTrainingSessionPerLink = new HashMap<>();
-		for (TrainingSession t : this.repository.findTrainingSessions())
-			if (numberOfTrainingSessionPerLink.containsKey(t.getLink()))
-				numberOfTrainingSessionPerLink.put(t.getLink(), numberOfTrainingSessionPerLink.get(t.getLink()) + 1);
-			else
-				numberOfTrainingSessionPerLink.put(t.getLink(), 1);
-		dashboard.setNumberOfTrainingModulesPerUpdateMoment(numberOfTrainingModulesPerUpdateMoment);
-		dashboard.setNumberOfTrainingSessionPerLink(numberOfTrainingSessionPerLink);
-		Double avgTrainingModuleTime = this.repository.averageTrainingModuleTime();
-		Double devTrainingModuleTime = this.repository.deviationTrainingModuleTime();
-		Double minTrainingModuleTime = this.repository.minTrainingModuleTime();
-		Double maxTrainingModuleTime = this.repository.maxTrainingModuleTime();
+		double avgTrainingModuleTime = 0.;
+		double devTrainingModuleTime = 0.;
+		double minTrainingModuleTime = Double.MAX_VALUE;
+		double maxTrainingModuleTime = Double.MIN_VALUE;
+		Integer numberOfTrainingModulesWithUpdateMoment = this.repository.numberOfTrainingModulesWithUpdateMoment(super.getRequest().getPrincipal().getActiveRoleId());
+		Integer numberOfTrainingSessionWithLink = this.repository.numberOfTrainingSessionWithLink(super.getRequest().getPrincipal().getActiveRoleId());
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()));
+		for (TrainingModule tm : trainingModules) {
+			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
+			if (seconds < minTrainingModuleTime)
+				minTrainingModuleTime = seconds;
+			if (seconds > maxTrainingModuleTime)
+				maxTrainingModuleTime = seconds;
+			avgTrainingModuleTime += seconds;
+		}
+		avgTrainingModuleTime = avgTrainingModuleTime / trainingModules.size();
+		double devSum = 0.;
+		for (TrainingModule tm : trainingModules) {
+			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
+			devSum += (seconds - avgTrainingModuleTime) * (seconds - avgTrainingModuleTime);
+		}
+		devTrainingModuleTime = Math.sqrt(devSum / trainingModules.size());
 		dashboard.setAverageTrainingModuleTime(avgTrainingModuleTime);
 		dashboard.setDeviationTrainingModuleTime(devTrainingModuleTime);
 		dashboard.setMaximumTrainingModuleTime(maxTrainingModuleTime);
 		dashboard.setMinimumTrainingModuleTime(minTrainingModuleTime);
+		dashboard.setNumberOfTrainingModulesWithUpdateMoment(numberOfTrainingModulesWithUpdateMoment);
+		dashboard.setNumberOfTrainingSessionWithLink(numberOfTrainingSessionWithLink);
 		super.getBuffer().addData(dashboard);
 	}
 
 	@Override
 	public void unbind(final DeveloperDashboard object) {
 		Dataset dataset;
-
-		dataset = super.unbind(object, "numberOfTrainingModulesPerUpdateMoment", "numberOfTrainingSessionPerLink", "averageTrainingModuleTime", "deviationTrainingModuleTime", "maximumTrainingModuleTime", "minimumTrainingModuleTime");
-
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()));
+		List<TrainingSession> trainingSessions = new ArrayList<>(this.repository.findTrainingSessions(super.getRequest().getPrincipal().getActiveRoleId()));
+		dataset = super.unbind(object, "numberOfTrainingModulesWithUpdateMoment", "numberOfTrainingSessionWithLink", "averageTrainingModuleTime", "deviationTrainingModuleTime", "maximumTrainingModuleTime", "minimumTrainingModuleTime");
+		if (trainingModules.isEmpty()) {
+			dataset.put("numberOfTrainingModulesWithUpdateMoment", " ");
+			dataset.put("numberOfTrainingModulesWithUpdateMoment", " ");
+			dataset.put("averageTrainingModuleTime", " ");
+			dataset.put("deviationTrainingModuleTime", " ");
+			dataset.put("maximumTrainingModuleTime", " ");
+			dataset.put("minimumTrainingModuleTime", " ");
+		}
+		if (trainingSessions.isEmpty())
+			dataset.put("numberOfTrainingSessionWithLink", " ");
 		super.getResponse().addData(dataset);
 	}
 

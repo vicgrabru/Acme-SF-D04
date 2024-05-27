@@ -14,7 +14,6 @@ import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
 
 @Service
 public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoice> {
@@ -63,7 +62,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		super.bind(object, "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 
 	}
 
@@ -77,12 +76,11 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 			super.state(currencies.contains(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.quantity.invalid-currency");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getAmount() >= 0., "quantity", "sponsor.invoice.form.error.quantity.no-negative");
+
 		if (!super.getBuffer().getErrors().hasErrors("dueDate"))
 			super.state(MomentHelper.isLongEnough(object.getRegistrationTime(), object.getDueDate(), 1, ChronoUnit.MONTHS), "dueDate", "sponsor.invoice.form.error.atLeast1MonthLong");
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "sponsor.invoice.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "sponsor.invoice.form.error.spam");
 	}
 
 	@Override
@@ -101,8 +99,11 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 		dataset.put("masterId", object.getSponsorship().getId());
 
-		Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
-		dataset.put("exchangedQuantity", eb);
+		if (object.getQuantity() != null) {
+			Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
+			dataset.put("exchangedQuantity", eb);
+		}
+		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);
 	}

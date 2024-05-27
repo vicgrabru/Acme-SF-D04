@@ -75,17 +75,12 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			boolean duplicatedCode = this.repository.findAllCodeAudits().stream().anyMatch(ca -> ca.getCode().equals(object.getCode()));
 			super.state(!duplicatedCode, "code", "auditor.code-audit.form.error.duplicated-code");
 
-			super.state(!SpamDetector.checkTextValue(object.getCode()), //
-				"code", "auditor.code-audit.form.error.spam");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("correctiveActions"))
 			super.state(!SpamDetector.checkTextValue(object.getCorrectiveActions()), //
 				"correctiveActions", "auditor.code-audit.form.error.spam");
 
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(object.getLink()), //
-				"link", "auditor.code-audit.form.error.spam");
 	}
 
 	@Override

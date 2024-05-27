@@ -22,6 +22,7 @@ master.menu.any.project-list = Lista de proyectos publicados
 master.menu.any.contract-list = Lista de contratos publicados
 master.menu.any.sponsorship-list = Lista de patrocinios
 master.menu.any.training-module-list= Lista de módulos de entrenamiento publicados
+master.menu.any.code-audit-list = Lista de auditorías de código publicadas
 
 # master.menu.anonymous #######################################################
 
@@ -82,7 +83,8 @@ master.menu.client.client-dashboard = Panel de indicadores de Cliente
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.code-audit = Auditorías de código
+master.menu.auditor.code-audit = Mis auditorías de código
+master.menu.auditor.auditor-dashboard = Panel de indicadores de auditor
 
 # master.menu.developer ##########################################################
 master.menu.developer=Desarrollador
@@ -105,6 +107,7 @@ master.menu.user-account.client = Datos de cliente
 master.menu.user-account.become-client = Hazte cliente
 master.menu.user-account.become-developer= Hazte desarrollador
 master.menu.user-account.developer= Datos de desarrollador
-
+master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.auditor = Datos de auditor
 master.menu.authenticated.objective-list = Lista de Objetivos
 master.menu.administrator.create-objective=Crear Objetivo

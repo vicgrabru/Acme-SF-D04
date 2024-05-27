@@ -15,7 +15,6 @@ import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.sponsorship.Type;
 import acme.roles.Sponsor;
-import spamDetector.SpamDetector;
 
 @Service
 public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sponsorship> {
@@ -71,6 +70,9 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(currencies.contains(object.getAmount().getCurrency()), "amount", "sponsor.sponsorship.form.error.amount.invalid-currency");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() >= 0., "amount", "sponsor.sponsorship.form.error.amount.no-negative");
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing;
 
@@ -84,12 +86,6 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("endDuration"))
 			super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getEndDuration(), 1, ChronoUnit.MONTHS), "endDuration", "sponsor.sponsorship.form.error.atLeast1MonthLong");
 
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "sponsor.sponsorship.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("email"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("email", String.class)), "email", "sponsor.sponsorship.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "sponsor.sponsorship.form.error.spam");
 	}
 
 	@Override
@@ -115,6 +111,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 		dataset.put("types", choicesType);
+		dataset.put("readOnlyCode", false);
 
 		super.getResponse().addData(dataset);
 	}

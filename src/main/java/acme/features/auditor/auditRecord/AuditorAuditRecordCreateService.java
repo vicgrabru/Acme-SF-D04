@@ -24,7 +24,6 @@ import acme.entities.codeAudit.AuditRecord;
 import acme.entities.codeAudit.CodeAudit;
 import acme.entities.codeAudit.Mark;
 import acme.roles.Auditor;
-import spamDetector.SpamDetector;
 
 @Service
 public class AuditorAuditRecordCreateService extends AbstractService<Auditor, AuditRecord> {
@@ -83,21 +82,19 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 
 			boolean duplicatedCode = this.repository.findAllAuditRecords().stream() //
 				.anyMatch(ar -> ar.getCode().equals(object.getCode()));
-			super.state(!duplicatedCode, "code", "auditor.audit-record-form-error.duplicated-code");
-
-			super.state(!SpamDetector.checkTextValue(object.getCode()), //
-				"code", "auditor.audit-record.form.error.spam");
+			super.state(!duplicatedCode, "code", "auditor.audit-record.form.error.duplicated-code");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(object.getLink()), //
-				"link", "auditor.audit-record.form.error.spam");
 
 		if (!super.getBuffer().getErrors().hasErrors("periodStart") && //
 			!super.getBuffer().getErrors().hasErrors("periodEnd")) {
-			boolean hourStartToEnd = Duration.between(object.getPeriodStart().toInstant(), //
-				object.getPeriodEnd().toInstant()).toHours() >= 1;
-			super.state(hourStartToEnd, "periodStart", "auditor.audit-record-form-error.not-enugh-time");
+			boolean startBeforeEnd = object.getPeriodStart().before(object.getPeriodEnd());
+			super.state(startBeforeEnd, "*", "auditor.audit-record.form.error.start-not-before-end");
+			if (startBeforeEnd) {
+				boolean hourStartToEnd = Duration.between(object.getPeriodStart().toInstant(), //
+					object.getPeriodEnd().toInstant()).toHours() >= 1;
+				super.state(hourStartToEnd, "*", "auditor.audit-record.form.error.not-enough-time");
+			}
+
 		}
 	}
 

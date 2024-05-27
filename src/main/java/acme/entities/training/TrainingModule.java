@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.project.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,11 +53,14 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				startTotalTime;
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				endTotalTime;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	private boolean				draftMode;
@@ -65,5 +69,10 @@ public class TrainingModule extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	protected Project			project;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	protected Developer			developer;
 
 }

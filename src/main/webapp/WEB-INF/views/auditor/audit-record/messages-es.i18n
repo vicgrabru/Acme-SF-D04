@@ -28,6 +28,7 @@ auditor.audit-record.form.button.update = Actualizar
 auditor.audit-record.form.button.delete = Eliminar
 auditor.audit-record.form.button.publish = Publicar
 
-auditor.audit-record.form.error.duplicated-record-id = Código duplicado
-auditor.audit-record.form.error.spam = El texto introducido contiene palabras reconocidas como spam
-auditor.audit-record-form-error.not-enugh-time = Debe haber al menos una hora entre el principio y el final del periodo
+auditor.audit-record.form.error.duplicated-code = Código duplicado
+auditor.audit-record.form.error.not-enough-time = Debe haber al menos una hora entre el principio y el final del periodo
+auditor.audit-record.form.none-mark = No se puede publicar un registro de auditoría sin calificar
+auditor.audit-record.form.error.start-not-before-end = El inicio del periodo debe ser antes del final

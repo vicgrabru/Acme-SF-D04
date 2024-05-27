@@ -5,8 +5,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>424</y>
+      <x>192</x>
+      <y>344</y>
       <w>400</w>
       <h>72</h>
     </coordinates>
@@ -22,90 +22,93 @@ SystemConfiguration
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>688</x>
-      <y>280</y>
-      <w>328</w>
-      <h>128</h>
+      <x>624</x>
+      <y>184</y>
+      <w>368</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
 Objective
 --
-+instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++instantiationMoment: Date {Past, TemporalType(TIMESTAMP), NotNull}
 +title: String {NotBlank, Length(max=75)}
 +description: String {NotBlank, Length(max=100)}
-+priority: Priority
++priority: Priority {NotNull}
 +isCritical: boolean
++startDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
++endDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
 +duration: Date {TemporalType(TIMESTAMP)}
--link: String {URL}</panel_attributes>
++link: String {URL, Length(max=255)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>280</y>
-      <w>328</w>
+      <x>192</x>
+      <y>200</y>
+      <w>384</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
 Banner
 --
-+instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
-+periodStart: Date {TemporalType(TIMESTAMP)}
-+periodEnd: Date {TemporalType(TIMESTAMP)}
-+pictureLink: String {URL}
++instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++periodStart: Date {NotNull, TemporalType(TIMESTAMP)}
++periodEnd: Date {NotNull, TemporalType(TIMESTAMP)}
++pictureLink: String {URL, Length(max=255)}
 +slogan: String {NotBlank, Length(max=75)}
-+webDocumentlink: String {URL}</panel_attributes>
++webDocumentlink: String {URL, Length(max=255)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>112</y>
-      <w>328</w>
+      <x>192</x>
+      <y>32</y>
+      <w>376</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
 Notice
 --
-+instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
 +title: String {NotBlank, Length(max=75)}
 +author: String {NotBlank, Length(max=75)}
 +message: String {NotBlank, Length(max=100)}
--email: String {Email}
--link: String {URL}</panel_attributes>
++email: String {Email, Length(max=255)}
++link: String {URL, Length(max=255)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>688</x>
-      <y>112</y>
-      <w>328</w>
-      <h>128</h>
+      <x>624</x>
+      <y>16</y>
+      <w>368</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
 Claim
 --
 +code: String {Unique, NotBlank, Pattern(regexp = C-[0-9]{4})}
-+instantiationMoment: Date {Past, TemporalType(TIMESTAMP)}
++instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
 +heading: String {NotBlank, Length(max=75)}
 +description: String {NotBlank, Length(max=100)}
 +department: String {NotBlank, Length(max=100)}
--email: String {Email}
--link: String {URL}</panel_attributes>
++email: String {Email, Length(max=255)}
++link: String {URL, Length(max=255)}
++draftMode: boolean</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>768</x>
-      <y>536</y>
+      <x>704</x>
+      <y>456</y>
       <w>168</w>
       <h>64</h>
     </coordinates>
@@ -120,36 +123,36 @@ Project
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>592</x>
-      <y>560</y>
-      <w>192</w>
+      <x>584</x>
+      <y>480</y>
+      <w>136</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..n
 &lt; Has</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>848</x>
-      <y>400</y>
+      <x>784</x>
+      <y>328</y>
       <w>48</w>
-      <h>152</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..n
 ^ Has</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>640</x>
-      <y>584</y>
+      <x>632</x>
+      <y>496</y>
       <w>80</w>
       <h>56</h>
     </coordinates>
@@ -160,8 +163,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>808</x>
-      <y>464</y>
+      <x>744</x>
+      <y>392</y>
       <w>80</w>
       <h>56</h>
     </coordinates>
@@ -172,9 +175,9 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>256</x>
-      <y>520</y>
-      <w>344</w>
+      <x>192</x>
+      <y>440</y>
+      <w>400</w>
       <h>128</h>
     </coordinates>
     <panel_attributes>bg=green
@@ -182,19 +185,19 @@ style=wordwrap</panel_attributes>
 Risk
 --
 +reference: String {Unique, NotBlank, Pattern(regexp = R-[0-9]{3})}
-+identificationDate: Date {Past, TemporalType(TIMESTAMP)}
-+impact: Double {Positive}
-+probability: Double
++identificationDate: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++impact: Double {NotNull, Positive, Max(100), Digits(integer = 3, fraction = 2)}
++probability: Double {NotNull, Min(0), Max(100), Digits(integer = 3, fraction = 2)}
 +description: String {NotBlank, Length(max=100)}
--link: String {URL}
++link: String {URL, Length(max=255)}
 +/ value: Double {Transient}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
-      <y>632</y>
+      <x>632</x>
+      <y>552</y>
       <w>328</w>
       <h>88</h>
     </coordinates>
@@ -207,5 +210,56 @@ ExchangeRate
 +rate: double {Positive}
 +instantiationMoment: LocalDate {NotNull}</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>600</x>
+      <y>344</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+startDateDuration must be
+before endDateDuration</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>32</x>
+      <y>280</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+periodStart must be
+at least one week before
+periodEnd
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>288</y>
+      <w>40</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;70.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>176</x>
+      <y>256</y>
+      <w>32</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;60.0</additional_attributes>
   </element>
 </diagram>

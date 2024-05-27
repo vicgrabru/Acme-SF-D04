@@ -10,6 +10,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -47,9 +50,14 @@ public class Risk extends AbstractEntity {
 
 	@NotNull
 	@Positive
+	@Max(100)
+	@Digits(integer = 3, fraction = 2)
 	private Double				impact;
 
 	@NotNull
+	@Digits(integer = 3, fraction = 2)
+	@Min(0)
+	@Max(100)
 	private Double				probability;
 
 	@NotBlank
@@ -57,6 +65,7 @@ public class Risk extends AbstractEntity {
 	private String				description;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Derived attributes -----------------------------------------------------
@@ -64,7 +73,7 @@ public class Risk extends AbstractEntity {
 
 	@Transient
 	public Double getValue() {
-		return this.impact * this.probability;
+		return this.impact * this.probability / 100;
 	}
 
 	// Relationships ----------------------------------------------------------

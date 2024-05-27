@@ -18,6 +18,7 @@ developer.training-session.form.button.publish=Publicar sesión de entrenamiento
 developer.training-session.list.label.code= Código
 developer.training-session.list.label.instructor= Instructor
 developer.training-session.list.label.contactEmail=Email de contacto
+developer.training-session.list.label.draftMode=Es borrador
 
 developer.training-session.form.title=Sesiones de entrenamiento
 
@@ -30,5 +31,7 @@ developer.training-session.form.label.contactEmail=Email de contacto
 developer.training-session.form.label.link= Enlace
 developer.training-session.form.label.draftMode=Es borrador
 
-developer.training-module.form.error.spam=Spam Detectectado
+developer.training-session.form.error.spam=Spam Detectectado
+developer.training-session.form.error.duplicatedCode=Código Duplicado
+developer.training-session.form.error.periodNotDuringOneWeek= El periodo debe durar un mínimo de una semana
 developer.training-session.form.error.endPeriod.not-after-startPeriod=La fecha del comienzo del periodo debe ser anterior a la fecha del fin del periodo

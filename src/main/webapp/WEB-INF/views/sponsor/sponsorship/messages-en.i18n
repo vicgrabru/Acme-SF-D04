@@ -40,3 +40,5 @@ sponsor.sponsorship.form.error.durationAfter = Duration must start after moment
 sponsor.sponsorship.form.error.atLeast1MonthLong = Duration must be at least 1 month long
 sponsor.sponsorship.form.error.notEqualAmount = The amount of the sponsorship must be equal to the sum of invoices
 sponsor.sponsorship.form.error.AllInvoicesMustBePublished = All of the sponsorship invoices must be published
+sponsor.sponsorship.form.error.amount.no-negative = No negative money
+sponsor.sponsorship.form.error.amount.invalid-currency = Invalid currency

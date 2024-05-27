@@ -41,8 +41,7 @@ public class DeveloperTrainingModuleListService extends AbstractService<Develope
 	@Override
 	public void load() {
 		Collection<TrainingModule> objects;
-
-		objects = this.repository.findTrainingModules();
+		objects = this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}

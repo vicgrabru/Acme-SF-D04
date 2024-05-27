@@ -1,14 +1,29 @@
 key,record-id,completeness,comment,registration-moment,responsible-person,draft-mode,key:contract
-progress-log-01,PG-A-0001,50.0,This is a comment,2002/04/14 08:00,Responsable example,false,contract-01
-progress-log-02,PG-A-0002,0.01,Test minimum completeness,2002/04/14 08:00,Responsable example,false,contract-02
-progress-log-03,PG-A-0003,100.0,Test maximum completeness,2002/04/14 08:00,Responsable example,false,contract-03
-progress-log-04,PG-A-0004,50.0,a,2002/04/14 08:00,Responsable example,false,contract-04
-progress-log-05,PG-A-0005,50.0,奇怪的人物評論,2002/04/14 08:00,Responsable example,false,contract-05
-progress-log-06,PG-A-0006,50.0,Extense commeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeent,2002/04/14 08:00,Responsable example,false,contract-01
-progress-log-07,PG-A-0007,50.0,Test last minute,2022/07/29 23:59,Responsable example,false,contract-02
-progress-log-08,PG-A-0008,50.0,Test short responsible Person,2002/04/14 08:00,R,false,contract-06
-progress-log-09,PG-A-0009,50.0,Test extense responsible Person,2002/04/14 08:00,Extenseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee,false,contract-07
-progress-log-10,PG-A-0010,50.0,Test strange responsible Person,2002/04/14 08:00,负责任的额外人员,false,contract-08
-progress-log-11,PG-A-0011,50.0,Test same contract,2002/04/14 08:00,Responsable example,false,contract-01
-progress-log-12,PG-A-0012,50.0,Test Draft Mode,2002/04/14 08:00,Responsable example,true,contract-01
-progress-log-13,PG-AA-0001,50.0,Test extense record id,2002/04/14 08:00,Responsable example,false,contract-09
+progress-log-01,PG-A-0000,25.0,Comment,2002/04/14 08:00,Responsable,false,contract-01
+progress-log-02,PG-ZZ-0000,25.0,Comment,2002/04/14 08:00,Responsable,false,contract-01
+progress-log-03,PG-A-0001,0.01,Comment,2002/04/14 08:00,Responsable,false,contract-01
+progress-log-04,PG-A-0002,0.02,Comment,2002/04/14 08:00,Responsable,false,contract-01
+progress-log-05,PG-A-0003,100.0,Comment,2002/04/14 08:00,Responsable,false,contract-02
+progress-log-06,PG-A-0004,99.99,Comment,2002/04/14 08:00,Responsable,false,contract-02
+progress-log-07,PG-A-0005,20.1,C,2002/04/14 08:00,Responsable,true,contract-02
+progress-log-08,PG-A-0006,40.2,Co,2002/04/14 08:00,Responsable,false,contract-03
+progress-log-09,PG-A-0007,60.3,Lorem ipsum dolor sit amets consectetur adipiscing elits Curabitur tortor lectuss viverra non augues,2002/04/14 08:00,Responsable,false,contract-03
+progress-log-10,PG-A-0008,80.4,Lorem ipsum dolor sit amets consectetur adipiscing elits Curabitur tortor lectuss viverra non augue,2002/04/14 08:00,Responsable,true,contract-03
+progress-log-11,PG-A-0009,5.5,국민경제의 발전을,2002/04/14 08:00,Responsable,false,contract-04
+progress-log-12,PG-A-0010,15.6,العظمى واعتلاء,2002/04/14 08:00,Responsable,false,contract-04
+progress-log-13,PG-A-0011,35.7,<h1>!</h1>,2002/04/14 08:00,Responsable,true,contract-04
+progress-log-14,PG-A-0012,45.8,' or 'A'='A,2002/04/14 08:00,Responsable,false,contract-05
+progress-log-15,PG-A-0013,55.9,Comment,2022/07/29 23:59,Responsable,false,contract-05
+progress-log-16,PG-A-0014,65.01,Comment,2022/07/29 23:58,Responsable,true,contract-05
+progress-log-17,PG-A-0015,85.12,Comment,2002/04/14 08:00,R,false,contract-06
+progress-log-18,PG-A-0016,95.23,Comment,2002/04/14 08:00,Re,false,contract-06
+progress-log-19,PG-A-0017,25.34,Comment,2002/04/14 08:00,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunca,true,contract-06
+progress-log-20,PG-A-0018,50.45,Comment,2002/04/14 08:00,Lorem ipsum dolor sit amets consectetur adipiscing elits aenean massa nunc,false,contract-07
+progress-log-21,PG-A-0019,75.56,Comment,2002/04/14 08:00,국민경제의 발전을,false,contract-07
+progress-log-22,PG-A-0020,0.67,Comment,2002/04/14 08:00,العظمى واعتلاء,true,contract-08
+progress-log-23,PG-A-0021,69.69,Comment,2002/04/14 08:00,<h1>!</h1>,false,contract-09
+progress-log-24,PG-A-0022,42.08,Comment,2002/04/14 08:00,' or 'A'='A,false,contract-09
+progress-log-25,PG-BP-0000,50.0,Comment,2002/04/14 08:00,Responsable,true,contract-01
+progress-log-26,PG-BP-0001,50.0,Comment,2002/04/14 08:00,Responsable,true,contract-40
+progress-log-27,PG-BP-0002,50.0,Comment,2002/04/14 08:00,Responsable,true,contract-41
+progress-log-28,PG-BP-0003,50.0,Comment,2002/04/14 08:00,Responsable,true,contract-41

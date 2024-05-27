@@ -17,17 +17,19 @@
 
 <acme:form>
 	<acme:input-textbox code="developer.training-module.form.label.code" path="code"/>
-	<acme:input-moment code="developer.training-module.form.label.creationMoment" path="creationMoment"/>
+	<acme:input-moment code="developer.training-module.form.label.creationMoment" path="creationMoment"  readonly="true"/>
 	<acme:input-textbox code="developer.training-module.form.label.details" path="details"/>
 	<acme:input-select code="developer.training-module.form.label.difficulty" path="difficulty" choices="${difficulties}"/>
 	<acme:input-moment code="developer.training-module.form.label.updateMoment" path="updateMoment"/>
 	<acme:input-moment code="developer.training-module.form.label.startTotalTime" path="startTotalTime"/>
 	<acme:input-moment code="developer.training-module.form.label.endTotalTime" path="endTotalTime"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
-	<acme:input-checkbox code="developer.training-module.form.label.draftMode" path="draftMode"/>
-	
-	<jstl:if test="${acme:anyOf(_command, 'show')&& draftMode==false}">
-		<acme:button code="developer.training-module.form.training-session" action="/developer/training-session/list?masterId=${id}"/>
+	<acme:input-select code="developer.training-module.form.label.projects" path="project" choices="${projects}"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
+	<acme:button code="developer.training-module.form.training-session" action="/developer/training-session/list?masterId=${id}"/>
+	</jstl:if>
+	<jstl:if test="${acme:matches(_command, 'create')}">
+		<acme:submit code="developer.training-module.form.button.create" action="/developer/training-module/create"/>
 	</jstl:if>
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
 		<acme:submit code="developer.training-module.form.button.update" action="/developer/training-module/update"/>

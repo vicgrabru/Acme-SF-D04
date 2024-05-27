@@ -23,6 +23,18 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AdministratorAdministratorDashboardRepository extends AbstractRepository {
 
+	@Query("select count(n) from Notice n")
+	Integer numberOfNotices();
+
+	@Query("select count(o) from Objective o")
+	Integer numberOfObjectives();
+
+	@Query("select count(r) from Risk r")
+	Integer numberOfRisks();
+
+	@Query("select count(c) from Claim c")
+	Integer numberOfClaims();
+
 	@Query("select count(a) from Administrator a")
 	Long numberOfPrincipalsWithAdministratorRole();
 
@@ -56,16 +68,16 @@ public interface AdministratorAdministratorDashboardRepository extends AbstractR
 	@Query("select 1.0 * count(a) / (select count(b) from Objective b) from Objective a where a.isCritical = false")
 	Double ratioOfNonCriticalObjectives();
 
-	@Query("select avg(r.impact * r.probability) from Risk r")
+	@Query("select avg(r.impact * r.probability / 100) from Risk r")
 	Double avgRiskValue();
 
-	@Query("select min(r.impact * r.probability) from Risk r")
+	@Query("select min(r.impact * r.probability / 100) from Risk r")
 	Double minRiskValue();
 
-	@Query("select max(r.impact * r.probability) from Risk r")
+	@Query("select max(r.impact * r.probability / 100) from Risk r")
 	Double maxRiskValue();
 
-	@Query("select stddev(r.impact * r.probability) from Risk r")
+	@Query("select stddev(r.impact * r.probability / 100) from Risk r")
 	Double stdRiskValue();
 
 	@Query("select day(c.instantiationMoment), count(c) from Claim c where c.instantiationMoment > :thresholdDate group by day(c.instantiationMoment)")

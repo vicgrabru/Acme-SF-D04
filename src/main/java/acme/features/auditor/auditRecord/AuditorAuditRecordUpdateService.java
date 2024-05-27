@@ -12,6 +12,8 @@
 
 package acme.features.auditor.auditRecord;
 
+import java.time.Duration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,6 @@ import acme.client.views.SelectChoices;
 import acme.entities.codeAudit.AuditRecord;
 import acme.entities.codeAudit.Mark;
 import acme.roles.Auditor;
-import spamDetector.SpamDetector;
 
 @Service
 public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, AuditRecord> {
@@ -70,13 +71,17 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void validate(final AuditRecord object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(object.getCode()), //
-				"code", "auditor.audit-record.form.error.spam");
+		if (!super.getBuffer().getErrors().hasErrors("periodStart") && //
+			!super.getBuffer().getErrors().hasErrors("periodEnd")) {
+			boolean startBeforeEnd = object.getPeriodStart().before(object.getPeriodEnd());
+			super.state(startBeforeEnd, "*", "auditor.audit-record.form.error.start-not-before-end");
+			if (startBeforeEnd) {
+				boolean hourStartToEnd = Duration.between(object.getPeriodStart().toInstant(), //
+					object.getPeriodEnd().toInstant()).toHours() >= 1;
+				super.state(hourStartToEnd, "*", "auditor.audit-record.form.error.not-enough-time");
+			}
 
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(object.getLink()), //
-				"link", "auditor.audit-record.form.error.spam");
+		}
 	}
 
 	@Override
@@ -99,6 +104,8 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		dataset.put("readOnlyCode", true);
 		dataset.put("mark", choicesMark.getSelected());
 		dataset.put("marks", choicesMark);
+
+		dataset.put("auditRecordId", object.getId());
 
 		super.getResponse().addData(dataset);
 	}

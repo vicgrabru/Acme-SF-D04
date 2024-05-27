@@ -1,4 +1,21 @@
-key,code,creation-moment,details,difficulty,update-moment,start-total-time,end-total-time,link,draft-mode,key:project
-training-module-01,AAA-111,2022/01/13 15:00,Detalles,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-01
-training-module-02,ZZ-888,2022/01/13 15:00,9876543210987654321098765432109876543210987654321098765432101234567890123456789012345678901234567890,Intermediate,2022/06/13 15:00,2022/08/13 15:00,2022/08/21 17:00,https://hola.com,true,project-02
-training-module-03,F-333,2022/01/02 23:59,g,Advanced,2022/06/13 15:00,2022/08/13 15:00,2022/08/15 17:00,https://hola.com,true,project-03
+key,code,creation-moment,details,difficulty,update-moment,start-total-time,end-total-time,link,draft-mode,key:project,key:developer
+training-module-01,AAA-111,2022/06/06 23:59,t,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,false,project-01,developer-01
+training-module-02,AA-222,2022/06/06 23:59,t2,Intermediate,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,false,project-02,developer-02
+training-module-03,A-036,2022/06/06 23:59,Lorem ipsum dolor sit amets consectetur adipiscing elits Curabitur tortor lectuss viverra non augue,Advanced,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-05,developer-01
+training-module-04,FSG-167,2022/06/06 23:59,Lorem ipsum dolor sit amets consectetur adipiscing elits Curabitur tortor lectuss viverra non augues,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-06,developer-01
+training-module-05,HFJ-276,2022/07/29 23:59,Detalles,Intermediate,null,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,false,project-07,developer-01
+training-module-06,G-335,2022/07/29 23:58,Detalles,Advanced,2022/07/29 23:59,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,false,project-08,developer-01
+training-module-07,HFJ-356,2022/06/06 23:59,국민경제의 발전을,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-14,developer-01
+training-module-08,FSG-758,2022/06/06 23:59,العظمى واعتلاء,Intermediate,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-15,developer-01
+training-module-09,G-689,2022/06/06 23:59,<h1>!</h1>,Advanced,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-16,developer-01
+training-module-10,KHL-689,2022/06/06 23:59,' or 'A'='A,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,false,project-17,developer-01
+training-module-11,KHL-435,2022/06/06 23:59,Detalles,Intermediate,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,ftp://a,true,project-22,developer-01
+training-module-12,DH-574,2022/06/06 23:59,Detalles,Advanced,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,ftp://a.b,true,project-23,developer-01
+training-module-13,JFK-735,2022/06/06 23:59,Detalles,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,http://www.lorem-ipsum.org/dolor/sit/amets/consectetur/adipiscing/elits/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/,true,project-24,developer-01
+training-module-14,RU-456,2022/06/06 23:59,Detalles,Intermediate,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,http://www.lorem-ipsum.org/dolor/sit/amets/consectetur/adipiscing/elits/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,true,project-25,developer-01
+training-module-15,GHS-357,2022/06/06 23:59,Detalles,Advanced,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,,true,project-01,developer-01
+training-module-16,GHT-678,2022/06/06 23:59,Detalles,Basic,2022/06/30 15:00,2022/08/13 15:00,2022/08/14 17:00,null,true,project-02,developer-01
+training-module-17,GGD-678,2022/06/06 23:59,Detalles,Intermediate,2022/07/29 23:58,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-05,developer-01
+training-module-18,HF-276,2022/06/29 23:59,Detalles,Intermediate,2022/06/30 00:01,2022/08/13 15:00,2022/08/14 17:00,https://hola.com,true,project-07,developer-01
+training-module-19,GD-698,2022/06/06 23:59,Detalles,Intermediate,2022/07/29 23:58,2022/08/13 15:00,2022/08/13 15:01,https://hola.com,true,project-08,developer-01
+training-module-20,HJ-296,2022/06/29 23:59,Detalles,Intermediate,2022/06/30 23:45,2022/08/13 15:00,2022/08/13 15:02,https://hola.com,true,project-14,developer-01
