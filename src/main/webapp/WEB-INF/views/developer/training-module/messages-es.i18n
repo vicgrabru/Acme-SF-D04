@@ -29,6 +29,7 @@ developer.training-module.form.label.startTotalTime=Comienzo del tiempo total
 developer.training-module.form.label.endTotalTime= Final del tiempo total
 developer.training-module.form.label.link= Link= Enlace
 developer.training-module.form.label.draftMode= Es Borrador
+developer.training-module.form.label.projects=Proyecto
 
 developer.training-module.form.training-session=Sesiones de entrenamiento
 

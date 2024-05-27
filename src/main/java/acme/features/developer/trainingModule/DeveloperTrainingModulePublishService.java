@@ -13,6 +13,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.training.Difficulty;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
+import spamDetector.SpamDetector;
 
 @Service
 public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
@@ -54,7 +55,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		updateMoment = MomentHelper.getCurrentMoment();
 
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
+		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "project");
 		object.setUpdateMoment(updateMoment);
 	}
 
@@ -63,16 +64,24 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(!this.repository.findTrainingSessionsOfTrainingModule(object.getId()).isEmpty(), "draftMode", "developer.training-module.form.error.emptyTrainingSessions");
-		if (!super.getBuffer().getErrors().hasErrors("startTotalTime")) {
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
+		if (!super.getBuffer().getErrors().hasErrors("details"))
+			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("details", String.class)), "details", "developer.training-module.form.error.spam");
+		if (!super.getBuffer().getErrors().hasErrors("difficulty"))
+			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
+		if (!super.getBuffer().getErrors().hasErrors("link"))
+			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
+		if (!super.getBuffer().getErrors().hasErrors("startTotalTime"))
 			super.state(object.getStartTotalTime().after(object.getCreationMoment()), "startTotalTime", "developer.training-module.form.error.startTotalTime.not-after-creationMoment");
-			if (!super.getBuffer().getErrors().hasErrors("endTotalTime"))
-				super.state(object.getEndTotalTime().after(object.getStartTotalTime()), "endTotalTime", "developer.training-module.form.error.endTotalTime.not-after-startTotalTime");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("endTotalTime"))
+			super.state(object.getEndTotalTime().after(object.getStartTotalTime()), "endTotalTime", "developer.training-module.form.error.endTotalTime.not-after-startTotalTime");
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -82,11 +91,15 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
-		final SelectChoices choices;
-		choices = SelectChoices.from(Difficulty.class, object.getDifficulty());
-		dataset.put("difficulty", choices.getSelected().getKey());
-		dataset.put("difficulties", choices);
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "project");
+		final SelectChoices difficultyChoices;
+		final SelectChoices projectChoices;
+		difficultyChoices = SelectChoices.from(Difficulty.class, object.getDifficulty());
+		dataset.put("difficulty", difficultyChoices.getSelected().getKey());
+		dataset.put("difficulties", difficultyChoices);
+		projectChoices = SelectChoices.from(this.repository.findProjects(), "title", object.getProject());
+		dataset.put("project", projectChoices.getSelected().getKey());
+		dataset.put("projects", projectChoices);
 		super.getResponse().addData(dataset);
 	}
 }

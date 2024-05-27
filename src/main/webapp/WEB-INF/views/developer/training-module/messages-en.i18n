@@ -29,6 +29,7 @@ developer.training-module.form.label.startTotalTime=Start of total time
 developer.training-module.form.label.endTotalTime= End of total time
 developer.training-module.form.label.link= Link
 developer.training-module.form.label.draftMode= Is DraftMode
+developer.training-module.form.label.projects=Project
 
 developer.training-module.form.training-session=Training sessions
 

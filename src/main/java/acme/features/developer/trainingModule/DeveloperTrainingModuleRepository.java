@@ -18,6 +18,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.project.Project;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
 
@@ -26,6 +27,9 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
 	@Query("select t from TrainingModule t")
 	Collection<TrainingModule> findTrainingModules();
+
+	@Query("select p from Project p")
+	Collection<Project> findProjects();
 
 	@Query("select t from TrainingModule t where t.id = :id")
 	TrainingModule findTrainingModuleById(int id);
