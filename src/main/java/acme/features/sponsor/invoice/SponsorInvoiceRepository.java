@@ -28,4 +28,7 @@ public interface SponsorInvoiceRepository extends AbstractRepository {
 	@Query("select sc.acceptedCurrencies from SystemConfiguration sc")
 	String findAcceptedCurrencies();
 
+	@Query("select i from Invoice i where i.code = :code")
+	Invoice findOneInvoiceByCode(String code);
+
 }
