@@ -48,9 +48,9 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		double devTrainingModuleTime = 0.;
 		double minTrainingModuleTime = Double.MAX_VALUE;
 		double maxTrainingModuleTime = Double.MIN_VALUE;
-		Integer numberOfTrainingModulesWithUpdateMoment = this.repository.numberOfTrainingModulesWithUpdateMoment();
-		Integer numberOfTrainingSessionWithLink = this.repository.numberOfTrainingSessionWithLink();
-		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules());
+		Integer numberOfTrainingModulesWithUpdateMoment = this.repository.numberOfTrainingModulesWithUpdateMoment(super.getRequest().getPrincipal().getActiveRoleId());
+		Integer numberOfTrainingSessionWithLink = this.repository.numberOfTrainingSessionWithLink(super.getRequest().getPrincipal().getActiveRoleId());
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()));
 		for (TrainingModule tm : trainingModules) {
 			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
 			if (seconds < minTrainingModuleTime)
@@ -78,8 +78,8 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	@Override
 	public void unbind(final DeveloperDashboard object) {
 		Dataset dataset;
-		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules());
-		List<TrainingSession> trainingSessions = new ArrayList<>(this.repository.findTrainingSessions());
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()));
+		List<TrainingSession> trainingSessions = new ArrayList<>(this.repository.findTrainingSessions(super.getRequest().getPrincipal().getActiveRoleId()));
 		dataset = super.unbind(object, "numberOfTrainingModulesWithUpdateMoment", "numberOfTrainingSessionWithLink", "averageTrainingModuleTime", "deviationTrainingModuleTime", "maximumTrainingModuleTime", "minimumTrainingModuleTime");
 		if (trainingModules.isEmpty()) {
 			dataset.put("numberOfTrainingModulesWithUpdateMoment", " ");

@@ -23,7 +23,6 @@
 	<acme:input-textbox code="developer.training-session.form.label.instructor" path="instructor"/>
 	<acme:input-textbox code="developer.training-session.form.label.contactEmail" path="contactEmail"/>
 	<acme:input-url code="developer.training-session.form.label.link" path="link"/>
-	<acme:input-checkbox code="developer.training-session.form.label.draftMode" path="draftMode"/>
 	
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
 		<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
@@ -31,7 +30,7 @@
 		<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>
 	</jstl:if>
 	<jstl:if test="${acme:matches(_command, 'create')}">
-		<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create"/>
+		<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
 	</jstl:if>
 </acme:form>
 

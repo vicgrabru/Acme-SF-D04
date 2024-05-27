@@ -37,12 +37,9 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingModuleId;
-		TrainingModule trainingModule;
-
-		trainingModuleId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findTrainingModuleById(trainingModuleId);
-		status = trainingModule != null;
+		int moduleId = super.getRequest().getData("id", int.class);
+		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
+		status = module != null && module.isDraftMode() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -35,12 +35,9 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingSessionId;
-		TrainingSession trainingSession;
-
-		trainingSessionId = super.getRequest().getData("id", int.class);
-		trainingSession = this.repository.findTrainingSessionById(trainingSessionId);
-		status = trainingSession != null;
+		int sessionId = super.getRequest().getData("id", int.class);
+		TrainingSession session = this.repository.findTrainingSessionById(sessionId);
+		status = session != null && session.isDraftMode() && super.getRequest().getPrincipal().hasRole(session.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,7 +56,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		super.bind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link");
 	}
 
 	@Override
@@ -77,6 +74,9 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
 			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
+		long weekSeconds = 7 * 24 * 60 * 60;
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+			super.state((object.getEndPeriod().getTime() - object.getStartPeriod().getTime()) / 1000 >= weekSeconds, "endPeriod", "developer.training-session.form.error.periodNotDuringOneWeek");
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link");
 
 		super.getResponse().addData(dataset);
 	}

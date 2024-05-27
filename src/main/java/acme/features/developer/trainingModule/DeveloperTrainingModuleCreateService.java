@@ -12,8 +12,6 @@
 
 package acme.features.developer.trainingModule;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +43,11 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void load() {
 		TrainingModule object;
-		Date creationMoment;
-
-		creationMoment = MomentHelper.getCurrentMoment();
-
+		Developer developer = this.repository.findDeveloper(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new TrainingModule();
-		object.setCreationMoment(creationMoment);
+		object.setCreationMoment(MomentHelper.getCurrentMoment());
+		object.setDraftMode(true);
+		object.setDeveloper(developer);
 
 		super.getBuffer().addData(object);
 	}
@@ -58,13 +55,16 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
+		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "project");
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean duplicatedCode = this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()).stream().anyMatch(tr -> tr.getCode().equals(object.getCode()));
+			super.state(!duplicatedCode, "code", "developer.training-module.form.error.duplicatedCode");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("details"))
@@ -92,11 +92,15 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode");
-		final SelectChoices choices;
-		choices = SelectChoices.from(Difficulty.class, object.getDifficulty());
-		dataset.put("difficulty", choices.getSelected().getKey());
-		dataset.put("difficulties", choices);
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link");
+		final SelectChoices difficultyChoices;
+		final SelectChoices projectChoices;
+		difficultyChoices = SelectChoices.from(Difficulty.class, object.getDifficulty());
+		dataset.put("difficulty", difficultyChoices.getSelected().getKey());
+		dataset.put("difficulties", difficultyChoices);
+		projectChoices = SelectChoices.from(this.repository.findProjects(), "title", object.getProject());
+		dataset.put("project", projectChoices.getSelected().getKey());
+		dataset.put("projects", projectChoices);
 		super.getResponse().addData(dataset);
 	}
 
