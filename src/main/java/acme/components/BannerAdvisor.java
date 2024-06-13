@@ -26,7 +26,7 @@ public class BannerAdvisor {
 
 
 	@ModelAttribute("banner")
-	public Banner getAdvertisement() {
+	public Banner getBanner() {
 		Banner result;
 
 		try {
