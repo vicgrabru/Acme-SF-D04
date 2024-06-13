@@ -43,7 +43,6 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 		Claim object;
 
 		object = new Claim();
-		object.setDraftMode(true);
 		object.setInstantiationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(object);
@@ -97,7 +96,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link", "draftMode");
+		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link");
 
 		super.getResponse().addData(dataset);
 	}
