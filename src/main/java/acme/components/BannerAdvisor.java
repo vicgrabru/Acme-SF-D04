@@ -25,8 +25,8 @@ public class BannerAdvisor {
 	protected BannerRepository repository;
 
 
-	@ModelAttribute("bannerToDisplay")
-	public Banner getRandomBanner() {
+	@ModelAttribute("banner")
+	public Banner getAdvertisement() {
 		Banner result;
 
 		try {
@@ -36,16 +36,6 @@ public class BannerAdvisor {
 		}
 
 		return result;
-	}
-
-	@ModelAttribute("availableBanners")
-	public Banner[] availableBanners() {
-		return this.repository.findAllDisplayableBanners();
-	}
-
-	@ModelAttribute("nAvailableBanners")
-	public int nAvailableBanners() {
-		return this.repository.countDisplayableBanners();
 	}
 
 }
