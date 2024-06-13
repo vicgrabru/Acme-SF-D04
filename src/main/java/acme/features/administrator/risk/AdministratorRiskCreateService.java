@@ -12,16 +12,12 @@
 
 package acme.features.administrator.risk;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.project.Project;
 import acme.entities.risk.Risk;
 import spamDetector.SpamDetector;
 
@@ -54,7 +50,7 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 	public void bind(final Risk object) {
 		assert object != null;
 
-		super.bind(object, "reference", "identificationDate", "impact", "probability", "description", "link", "project");
+		super.bind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
 
 	}
 
@@ -64,13 +60,6 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 
 		if (!super.getBuffer().getErrors().hasErrors("description"))
 			super.state(!SpamDetector.checkTextValue(object.getDescription()), "description", "administrator.risk.form.error.spam-in-description");
-
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Collection<Project> projects;
-
-			projects = this.repository.findPublishedProjects();
-			super.state(projects.contains(object.getProject()), "project", "administrator.risk.form.error.selected-project-not-published");
-		}
 
 		if (!super.getBuffer().getErrors().hasErrors("reference")) {
 			Risk existing;
@@ -92,16 +81,9 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 		assert object != null;
 
 		Dataset dataset;
-		SelectChoices choicesProject;
-		Collection<Project> projects;
-
-		projects = this.repository.findPublishedProjects();
-		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
 		dataset.put("readOnlyReference", false);
-		dataset.put("project", choicesProject.getSelected());
-		dataset.put("projects", choicesProject);
 
 		super.getResponse().addData(dataset);
 	}

@@ -13,23 +13,20 @@ administrator.risk.list.title = Lista de riesgos
 
 administrator.risk.list.label.reference = Referencia
 administrator.risk.list.label.identification-date = Fecha de Identificación
-administrator.risk.list.label.risk-value = Valor (Impacto x Probabilidad / 100)
+administrator.risk.list.label.value = Valor
 
 administrator.risk.form.label.reference = Referencia
 administrator.risk.form.label.identification-date = Fecha de Identificación
 administrator.risk.form.label.impact = Impacto
 administrator.risk.form.label.probability = Probabilidad
-administrator.risk.form.label.risk-value = Valor (Impacto x Probabilidad)
+administrator.risk.form.label.risk-value = Valor
 administrator.risk.form.label.description = Descripción
 administrator.risk.form.label.link = Enlace
-administrator.risk.form.label.project = Proyecto
 
 administrator.risk.list.button.create = Crear
 administrator.risk.form.button.create = Crear
 administrator.risk.form.button.update = Actualizar
 administrator.risk.form.button.delete = Eliminar
-administrator.risk.form.button.project = Proyecto
 
 administrator.risk.form.error.spam-in-description = Hay spam en la descripción
-administrator.risk.form.error.selected-project-not-published = El Proyecto seleccionado no está publicado
 administrator.risk.form.error.reference-duplicated = Ya hay un Riesgo con la referencia dada

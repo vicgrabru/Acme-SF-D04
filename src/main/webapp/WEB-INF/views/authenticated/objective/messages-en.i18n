@@ -13,13 +13,9 @@ authenticated.objective.list.title= Objective List
 authenticated.objective.form.title=Objective Data
 
 authenticated.objective.list.label.title = Title
-authenticated.objective.list.label.instantiation-moment= Instantiation Moment
-authenticated.objective.list.label.description= Description
 authenticated.objective.list.label.priority= Priority
 authenticated.objective.list.label.isCritical= Critical
-authenticated.objective.list.label.startDateDuration= Start Date
-authenticated.objective.list.label.endDateDuration= End Date
-authenticated.objective.list.label.link= Link
+authenticated.objective.list.label.instantiation-moment= Instantiation Moment
 
 authenticated.objective.form.label.title = Title
 authenticated.objective.form.label.instantiation-moment= Instantiation Moment
