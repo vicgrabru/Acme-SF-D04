@@ -18,7 +18,7 @@
 <acme:list>
 	<acme:list-column code="administrator.risk.list.label.reference" path="reference" width="40%"/>
 	<acme:list-column code="administrator.risk.list.label.identification-date" path="identificationDate" width="30%"/>
-	<acme:list-column code="administrator.risk.list.label.risk-value" path="riskValue" width="30%"/>
+	<acme:list-column code="administrator.risk.list.label.value" path="value" width="30%"/>
 </acme:list>
 
 <acme:button code="administrator.risk.list.button.create" action="/administrator/risk/create"/>

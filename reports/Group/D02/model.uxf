@@ -5,7 +5,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
+      <x>176</x>
       <y>344</y>
       <w>400</w>
       <h>72</h>
@@ -22,8 +22,8 @@ SystemConfiguration
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>184</y>
+      <x>608</x>
+      <y>200</y>
       <w>368</w>
       <h>152</h>
     </coordinates>
@@ -45,7 +45,7 @@ Objective
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
+      <x>176</x>
       <y>200</y>
       <w>384</w>
       <h>120</h>
@@ -65,8 +65,8 @@ Banner
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>192</x>
-      <y>32</y>
+      <x>184</x>
+      <y>48</y>
       <w>376</w>
       <h>120</h>
     </coordinates>
@@ -85,10 +85,10 @@ Notice
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>16</y>
+      <x>608</x>
+      <y>40</y>
       <w>368</w>
-      <h>144</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -100,82 +100,13 @@ Claim
 +description: String {NotBlank, Length(max=100)}
 +department: String {NotBlank, Length(max=100)}
 +email: String {Email, Length(max=255)}
-+link: String {URL, Length(max=255)}
-+draftMode: boolean</panel_attributes>
++link: String {URL, Length(max=255)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>456</y>
-      <w>168</w>
-      <h>64</h>
-    </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
-Project
---
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>584</x>
-      <y>480</y>
-      <w>136</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-x
-m1=1
-m2=0..n
-&lt; Has</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>784</x>
-      <y>328</y>
-      <w>48</w>
-      <h>144</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-x
-m1=1
-m2=0..n
-^ Has</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>632</x>
-      <y>496</y>
-      <w>80</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>+project
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>744</x>
-      <y>392</y>
-      <w>80</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>+project
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>192</x>
+      <x>176</x>
       <y>440</y>
       <w>400</w>
       <h>128</h>
@@ -197,7 +128,7 @@ Risk
     <id>UMLClass</id>
     <coordinates>
       <x>632</x>
-      <y>552</y>
+      <y>480</y>
       <w>328</w>
       <h>88</h>
     </coordinates>
@@ -214,8 +145,8 @@ ExchangeRate
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>600</x>
-      <y>344</y>
+      <x>584</x>
+      <y>392</y>
       <w>152</w>
       <h>48</h>
     </coordinates>
@@ -227,7 +158,7 @@ before endDateDuration</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>32</x>
+      <x>16</x>
       <y>280</y>
       <w>152</w>
       <h>48</h>
@@ -243,18 +174,18 @@ periodEnd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>600</x>
-      <y>288</y>
+      <x>584</x>
+      <y>304</y>
       <w>40</w>
-      <h>72</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;70.0;30.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>176</x>
+      <x>160</x>
       <y>256</y>
       <w>32</w>
       <h>64</h>

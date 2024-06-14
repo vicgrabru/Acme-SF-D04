@@ -17,8 +17,8 @@
 
 <acme:form>
 	<acme:input-textbox code="administrator.objective.form.label.title" path="title"/>
-	<acme:input-textbox code="administrator.objective.form.label.instantiation-moment" path="instantiationMoment"/>
-	<acme:input-textbox code="administrator.objective.form.label.description" path="description"/>
+	<acme:input-moment readonly="true" code="administrator.objective.form.label.instantiation-moment" path="instantiationMoment"/>
+	<acme:input-textarea code="administrator.objective.form.label.description" path="description"/>
 	<acme:input-select code="administrator.objective.form.label.priority" path="priority" choices="${priorities}"/>
 	<acme:input-checkbox code="administrator.objective.form.label.isCritical" path="isCritical"/>
 	<acme:input-moment code="administrator.objective.form.label.startDateDuration" path="startDateDuration"/>
