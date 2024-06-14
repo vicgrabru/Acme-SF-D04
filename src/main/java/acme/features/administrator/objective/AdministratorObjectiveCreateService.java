@@ -85,6 +85,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void perform(final Objective object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
