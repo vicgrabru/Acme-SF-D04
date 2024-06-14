@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientContractPublishService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -14,6 +14,7 @@ package acme.features.client.contract;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,7 +101,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		Collection<Project> projects;
 
-		projects = this.repository.findPublishedProjects();
+		projects = new ArrayList<>();
+		projects.add(object.getProject());
 
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
@@ -109,7 +111,6 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		dataset.put("projects", choicesProject);
 
 		dataset.put("projectId", object.getProject().getId());
-		dataset.put("contractId", object.getId());
 		dataset.put("readOnlyCode", true);
 
 		Money eb = this.exchangeRepo.exchangeMoney(object.getBudget());

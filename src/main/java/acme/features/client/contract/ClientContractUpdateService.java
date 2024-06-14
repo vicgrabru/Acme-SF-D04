@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientContractUpdateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -12,6 +12,7 @@
 
 package acme.features.client.contract;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,7 +110,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		Collection<Project> projects;
 
-		projects = this.repository.findPublishedProjects();
+		projects = new ArrayList<>();
+		projects.add(object.getProject());
 
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
@@ -118,7 +120,6 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		dataset.put("projects", choicesProject);
 
 		dataset.put("projectId", object.getProject().getId());
-		dataset.put("contractId", object.getId());
 		dataset.put("readOnlyCode", true);
 
 		if (!super.getBuffer().getErrors().hasErrors("budget") || super.getBuffer().getErrors().getFirstError("budget").equals("The budget amount can't be higher than the project cost")

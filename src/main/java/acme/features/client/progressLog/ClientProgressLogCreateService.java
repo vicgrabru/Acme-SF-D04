@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientProgressLogCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -40,9 +40,9 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		int contractId;
 		Contract contract;
 
-		contractId = super.getRequest().getData("contractId", int.class);
+		contractId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findContractById(contractId);
-		status = contract != null && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		status = contract != null && !contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,7 +53,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		int contractId;
 		Contract contract;
 
-		contractId = super.getRequest().getData("contractId", int.class);
+		contractId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findContractById(contractId);
 
 		object = new ProgressLog();
@@ -91,6 +91,7 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void perform(final ProgressLog object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
@@ -102,9 +103,9 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 		int contractId;
 
 		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
-		contractId = super.getRequest().getData("contractId", int.class);
+		contractId = super.getRequest().getData("masterId", int.class);
 
-		dataset.put("contractId", contractId);
+		dataset.put("masterId", contractId);
 		dataset.put("readOnlyCode", false);
 
 		super.getResponse().addData(dataset);

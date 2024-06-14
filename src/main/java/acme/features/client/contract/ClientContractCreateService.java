@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientContractCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -101,6 +101,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	public void perform(final Contract object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
