@@ -87,6 +87,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	public void perform(final Claim object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
