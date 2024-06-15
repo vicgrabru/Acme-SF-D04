@@ -17,7 +17,11 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.Priority;
+import acme.entities.project.Project;
 import acme.entities.project.UserStory;
 import acme.entities.project.UserStoryAssign;
 import acme.roles.Manager;
@@ -88,33 +92,33 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		this.repository.delete(object);
 	}
 
-	//	@Override
-	//	public void unbind(final UserStory object) {
-	//		assert object != null;
-	//
-	//		Collection<Project> draftModeProjectsAssigned;
-	//		Collection<Project> draftModeProjectsUnassigned;
-	//		SelectChoices choices;
-	//		Dataset dataset;
-	//
-	//		int managerId, userStoryId;
-	//
-	//		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-	//		userStoryId = object.getId();
-	//
-	//		choices = SelectChoices.from(Priority.class, object.getPriority());
-	//
-	//		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");
-	//		dataset.put("userStoryId", userStoryId);
-	//		dataset.put("priorities", choices);
-	//
-	//		draftModeProjectsAssigned = this.repository.findManyDraftModeProjectsWithUserStoryAssignedByUserStoryId(userStoryId);
-	//		draftModeProjectsUnassigned = this.repository.findManyDraftModeProjectsWithoutUserStoryByManagerIdAndUserStoryId(managerId, userStoryId);
-	//
-	//		dataset.put("showAssignButton", !draftModeProjectsUnassigned.isEmpty());
-	//		dataset.put("showUnassignButton", !draftModeProjectsAssigned.isEmpty());
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
+	@Override
+	public void unbind(final UserStory object) {
+		assert object != null;
+
+		Collection<Project> draftModeProjectsAssigned;
+		Collection<Project> draftModeProjectsUnassigned;
+		SelectChoices choices;
+		Dataset dataset;
+
+		int managerId, userStoryId;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		userStoryId = object.getId();
+
+		choices = SelectChoices.from(Priority.class, object.getPriority());
+
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");
+		dataset.put("userStoryId", userStoryId);
+		dataset.put("priorities", choices);
+
+		draftModeProjectsAssigned = this.repository.findManyDraftModeProjectsWithUserStoryAssignedByUserStoryId(userStoryId);
+		draftModeProjectsUnassigned = this.repository.findManyDraftModeProjectsWithoutUserStoryByManagerIdAndUserStoryId(managerId, userStoryId);
+
+		dataset.put("showAssignButton", !draftModeProjectsUnassigned.isEmpty());
+		dataset.put("showUnassignButton", !draftModeProjectsAssigned.isEmpty());
+
+		super.getResponse().addData(dataset);
+	}
 
 }

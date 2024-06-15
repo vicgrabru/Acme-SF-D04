@@ -102,12 +102,16 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 		Money exchangedCost;
 		Dataset dataset;
+		boolean isAcceptedCurrency, isSystemCurrency;
 
 		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
 		dataset.put("masterId", object.getId());
 		dataset.put("readOnlyCode", true);
 
-		dataset.put("showExchangedCost", !this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency()));
+		isSystemCurrency = this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency());
+		isAcceptedCurrency = this.repository.findAcceptedCurrenciesInSystem().contains(object.getCost().getCurrency());
+
+		dataset.put("showExchangedCost", isAcceptedCurrency && !isSystemCurrency);
 
 		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
 		dataset.put("exchangedCost", exchangedCost);
