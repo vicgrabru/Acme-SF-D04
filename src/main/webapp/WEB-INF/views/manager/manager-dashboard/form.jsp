@@ -19,7 +19,7 @@
 	<acme:message code="manager.manager-dashboard.form.title.general-indicators"/>
 </h2>
 
-<table class="table table-sm" aria-label="manager.manager-dashboard.table-description">
+<table class="table table-sm">
 	<jstl:choose>
 		<jstl:when test="${zeroUserStories}">
 			<tr>
