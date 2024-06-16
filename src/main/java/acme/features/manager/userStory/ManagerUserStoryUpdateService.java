@@ -106,7 +106,8 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		SelectChoices choices;
 		Dataset dataset;
 
-		int managerId, userStoryId;
+		int managerId;
+		int userStoryId;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		userStoryId = object.getId();

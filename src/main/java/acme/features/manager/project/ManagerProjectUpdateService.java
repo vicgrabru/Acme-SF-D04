@@ -102,7 +102,8 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 		Money exchangedCost;
 		Dataset dataset;
-		boolean isAcceptedCurrency, isSystemCurrency;
+		boolean isAcceptedCurrency;
+		boolean isSystemCurrency;
 
 		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
 		dataset.put("masterId", object.getId());

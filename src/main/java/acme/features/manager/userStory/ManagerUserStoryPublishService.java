@@ -92,7 +92,8 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		SelectChoices choices;
 		Dataset dataset;
 
-		int managerId, userStoryId;
+		int managerId;
+		int userStoryId;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		userStoryId = object.getId();
