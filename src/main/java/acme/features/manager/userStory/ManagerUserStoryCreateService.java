@@ -94,6 +94,8 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		Project project;
 		UserStoryAssign relationship;
 
+		object.setId(0);
+
 		this.repository.save(object);
 
 		projectId = super.getRequest().getData("masterId", int.class);

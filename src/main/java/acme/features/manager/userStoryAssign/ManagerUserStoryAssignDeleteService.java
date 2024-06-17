@@ -67,7 +67,7 @@ public class ManagerUserStoryAssignDeleteService extends AbstractService<Manager
 			object = new UserStoryAssign();
 			object.setUserStory(userStory);
 		} else
-			object = options.stream().findFirst().get();
+			object = options.stream().findFirst().orElse(null);
 
 		super.getBuffer().addData(object);
 	}

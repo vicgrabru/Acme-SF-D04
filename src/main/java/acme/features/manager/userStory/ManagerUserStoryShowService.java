@@ -70,7 +70,8 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		SelectChoices choices;
 		Dataset dataset;
 
-		int managerId, userStoryId;
+		int managerId;
+		int userStoryId;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		userStoryId = object.getId();

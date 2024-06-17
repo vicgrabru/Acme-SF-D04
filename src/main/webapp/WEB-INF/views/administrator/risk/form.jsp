@@ -25,12 +25,10 @@
 	</jstl:if>
 	<acme:input-textarea code="administrator.risk.form.label.description" path="description"/>
 	<acme:input-url code="administrator.risk.form.label.link" path="link"/>
-	<acme:input-select code="administrator.risk.form.label.project" path="project" choices="${projects}"/>
 	
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete')}">
-		<acme:submit code="administrator.risk.form.button.update" action="/administrator/risk/update?id=${riskId}"/>
-		<acme:submit code="administrator.risk.form.button.delete" action="/administrator/risk/delete?id=${riskId}"/>
-		<acme:button code="administrator.risk.form.button.project" action="/any/project/show?id=${projectId}"/>
+		<acme:submit code="administrator.risk.form.button.update" action="/administrator/risk/update"/>
+		<acme:submit code="administrator.risk.form.button.delete" action="/administrator/risk/delete"/>
 	</jstl:if>
 	<jstl:if test="${acme:matches(_command, 'create')}">
 		<acme:submit code="administrator.risk.form.button.create" action="/administrator/risk/create"/>

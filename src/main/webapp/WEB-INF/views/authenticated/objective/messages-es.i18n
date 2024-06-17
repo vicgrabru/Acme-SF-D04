@@ -13,13 +13,9 @@ authenticated.objective.list.title= Lista de objetivos
 authenticated.objective.form.title=Datos de objetivo
 
 authenticated.objective.list.label.title = Título
-authenticated.objective.list.label.instantiation-moment= Momento de iniciación
-authenticated.objective.list.label.description= Descripción
 authenticated.objective.list.label.priority= Prioridad
 authenticated.objective.list.label.isCritical= Crítico
-authenticated.objective.list.label.startDateDuration= Fecha de inicio
-authenticated.objective.list.label.endDateDuration= Fecha de finalización
-authenticated.objective.list.label.link= Link
+authenticated.objective.list.label.instantiation-moment= Momento de iniciación
 
 authenticated.objective.form.label.title = Título
 authenticated.objective.form.label.instantiation-moment= Momento de iniciación

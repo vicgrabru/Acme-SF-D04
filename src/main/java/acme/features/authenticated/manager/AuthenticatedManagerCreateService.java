@@ -85,6 +85,7 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 	@Override
 	public void perform(final Manager object) {
 		assert object != null;
+		object.setId(0);
 
 		this.repository.save(object);
 	}

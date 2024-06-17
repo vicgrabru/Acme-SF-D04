@@ -51,4 +51,5 @@ project-49,ZZZ-0004,Project para publicar con 3 User Story asignado,Test abstrac
 project-50,ZZZ-0500,Project para publicar negativo sin User Story asignado,Test abstract,false,EUR 26.99,http://example.org,true,manager-01
 project-51,ZZZ-0501,Project para publicar negativo con 1 User Story sin publicar,Test abstract,false,EUR 26.99,http://example.org,true,manager-01
 project-52,ZZZ-0502,Project para publicar negativo con varios User Story sin publicar,Test abstract,false,EUR 26.99,http://example.org,true,manager-01
-project-53,ZZZ-0100,Project para actualizar,Test abstract,false,EUR 26.99,https://www.example.com,true,manager-01
+project-53,ZZZ-0503,Project para publicar negativo con 1 User Story y con errores fatales,Test abstract,true,EUR 26.99,http://example.org,true,manager-01
+project-54,ZZZ-0100,Project para actualizar,Test abstract,false,EUR 26.99,https://www.example.com,true,manager-01

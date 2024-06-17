@@ -59,7 +59,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void bind(final Objective object) {
 		assert object != null;
 
-		super.bind(object, "instantiationMoment", "title", "description", "priority", "isCritical", "startDateDuration", "endDateDuration", "link");
+		super.bind(object, "title", "description", "priority", "isCritical", "startDateDuration", "endDateDuration", "link");
 	}
 
 	@Override
@@ -85,6 +85,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void perform(final Objective object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

@@ -22,7 +22,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<name>Acme SF</name>
-	<description>This is the project of the group C1.017</description>
+	<description>This is the project of the group C2.017</description>
 	
 	<artifactId>Acme-SF</artifactId>
 	<version>D04</version>
@@ -31,7 +31,7 @@
 	<parent>
 		<groupId>Acme</groupId>
 		<artifactId>Parent-Pom</artifactId>
-		<version>24.4.0</version>
-		<relativePath>../../pom-24.4.0.xml</relativePath>
+		<version>24.5.0</version>
+		<relativePath>../../pom-24.5.0.xml</relativePath>
 	</parent>
 </project>

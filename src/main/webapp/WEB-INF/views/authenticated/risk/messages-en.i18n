@@ -21,4 +21,4 @@ authenticated.risk.form.label.value = Value
 
 authenticated.risk.list.label.reference = Reference
 authenticated.risk.list.label.identificationDate = Identification date
-authenticated.risk.list.label.impact = Impact
+authenticated.risk.list.label.value = Value

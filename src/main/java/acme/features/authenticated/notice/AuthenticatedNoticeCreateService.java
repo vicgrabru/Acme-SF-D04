@@ -92,6 +92,7 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 	public void perform(final Notice object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
