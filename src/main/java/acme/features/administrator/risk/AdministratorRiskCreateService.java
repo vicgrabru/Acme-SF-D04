@@ -73,6 +73,7 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 	public void perform(final Risk object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

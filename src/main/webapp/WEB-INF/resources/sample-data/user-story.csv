@@ -60,3 +60,4 @@ user-story-58,ZUser Story para borrar negativo,Test description,10,Test acceptan
 user-story-59,ZUser Story para publicar positivo,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
 user-story-60,ZUser Story para publicar negativo,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
 user-story-61,ZUser Story para actualizar,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,true,manager-01
+user-story-62,ZUser Story publicado,Test description,10,Test acceptance criteria,MUST,http://example.org/a/b?a&b,false,manager-01
