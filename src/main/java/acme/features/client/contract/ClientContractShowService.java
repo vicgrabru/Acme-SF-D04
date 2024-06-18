@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationShowService.java
+ * ClientContractShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -82,7 +82,6 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		dataset.put("projects", choicesProject);
 
 		dataset.put("projectId", object.getProject().getId());
-		dataset.put("contractId", object.getId());
 		dataset.put("readOnlyCode", true);
 
 		Money eb = this.exchangeRepo.exchangeMoney(object.getBudget());

@@ -19,7 +19,7 @@
 	<acme:input-textbox code="client.contract.form.label.code" path="code" readonly="${readOnlyCode}"/>
 	<acme:input-textarea code="client.contract.form.label.goals" path="goals"/>
 	<acme:input-money code="client.contract.form.label.budget" path="budget"/>
-	<jstl:if test="${acme:anyOf(_command, 'show|publish|update')}">
+	<jstl:if test="${acme:anyOf(_command, 'show|publish|update|delete')}">
 		<acme:input-money readonly="true" code="client.contract.form.label.exchanged-budget" path="exchangedBudget"/>
 		<jstl:if test="${draftMode}">
 			<acme:input-money readonly="true" code="client.contract.form.label.remaining-cost" path="remainingCost"/>
@@ -28,24 +28,26 @@
 	<acme:input-textbox code="client.contract.form.label.provider-name" path="providerName"/>
 	<acme:input-textbox code="client.contract.form.label.customer-name" path="customerName"/>
 	<acme:input-moment readonly="true" code="client.contract.form.label.instantiation-moment" path="instantiationMoment"/>
-	<acme:input-checkbox readonly="true" code="client.contract.form.label.draft-mode" path="draftMode"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|publish')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete')}">
 			<acme:input-select readonly="true" code="client.contract.form.label.project" path="project" choices="${projects}"/>
 			<acme:button code="client.contract.form.button.project" action="/any/project/show?id=${projectId}"/>
-			<acme:button code="client.contract.form.button.progress-log.list" action="/client/progress-log/list?contractId=${contractId}"/>
 		</jstl:when>
 		<jstl:when test="${acme:matches(_command, 'create')}">
 			<acme:input-select code="client.contract.form.label.project" path="project" choices="${projects}"/>
 			<acme:submit code="client.contract.form.button.create" action="/client/contract/create"/>
 		</jstl:when>
 	</jstl:choose>
+	
+	<jstl:if test="${draftMode == false}">
+		<acme:button code="client.contract.form.button.progress-log.list" action="/client/progress-log/list?masterId=${id}"/>
+	</jstl:if>
 
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-		<acme:submit code="client.contract.form.button.update" action="/client/contract/update?id=${contractId}"/>
+		<acme:submit code="client.contract.form.button.update" action="/client/contract/update"/>
 		<acme:submit code="client.contract.form.button.delete" action="/client/contract/delete"/>
-		<acme:submit code="client.contract.form.button.publish" action="/client/contract/publish?id=${contractId}"/>
+		<acme:submit code="client.contract.form.button.publish" action="/client/contract/publish"/>
 	</jstl:if>
 	
 </acme:form>

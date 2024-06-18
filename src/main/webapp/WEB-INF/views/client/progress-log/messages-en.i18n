@@ -22,7 +22,6 @@ client.progress-log.form.completeness-interval = 0.01-100.0
 client.progress-log.form.label.comment = Comment
 client.progress-log.form.label.registration-moment = Registration moment
 client.progress-log.form.label.responsible-person = Responsible person
-client.progress-log.form.label.draft-mode = Draft mode
 
 client.progress-log.list.button.create = Create
 client.progress-log.form.button.create = Create

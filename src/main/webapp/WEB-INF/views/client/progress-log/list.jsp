@@ -1,5 +1,5 @@
 <%--
-- form.jsp
+- list.jsp
 -
 - Copyright (C) 2012-2024 Rafael Corchuelo.
 -
@@ -22,4 +22,4 @@
 	<acme:list-column code="client.progress-log.list.label.draft-mode" path="draftMode"/>
 </acme:list>
 
-<acme:button code="client.progress-log.list.button.create" action="/client/progress-log/create?contractId=${contractId}"/>
+<acme:button code="client.progress-log.list.button.create" action="/client/progress-log/create?masterId=${masterId}"/>
