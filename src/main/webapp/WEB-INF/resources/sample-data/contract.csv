@@ -1,7 +1,7 @@
 key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
 contract-01,A-000,2002/04/14 08:00,Provider,Customer,Goals,EUR 5.00,false,project-01,client-01
 contract-02,AA-000,2002/04/14 08:00,Provider,Customer,Goals,EUR 5.00,false,project-01,client-01
-contract-03,ZZZ-999,2002/04/14 08:00,Provider,Customer,Goals,EUR 5.00,false,project-01,client-01
+contract-03,ZZZ-999,2002/04/14 08:00,Provider,Customer,Goals,EUR 5.00,false,project-01,client-02
 contract-04,A-001,2022/07/29 23:59,Provider,Customer,Goals,EUR 5.00,false,project-01,client-01
 contract-05,A-002,2022/07/29 23:58,Provider,Customer,Goals,EUR 5.00,false,project-01,client-01
 contract-06,A-003,2002/04/14 08:00,P,Customer,Goals,EUR 5.00,false,project-02,client-01
@@ -36,6 +36,7 @@ contract-34,A-031,2002/04/14 08:00,Provider,Customer,Goals,EUR 9999999999.99,tru
 contract-35,A-032,2002/04/14 08:00,Provider,Customer,Goals,EUR 9999999999.98,false,project-22,client-02
 contract-37,A-033,2002/04/14 08:00,Provider,Customer,Goals,USD 0.00,true,project-24,client-02
 contract-38,A-034,2002/04/14 08:00,Provider,Customer,Goals,GBP 0.00,true,project-25,client-02
-contract-39,BP-000,2002/04/14 08:00,Provider,Customer,Goals,EUR 10.00,true,project-01,client-01
-contract-40,BP-001,2002/04/14 08:00,Provider,Customer,Goals,EUR 1.00,true,project-01,client-01
-contract-41,BP-002,2002/04/14 08:00,Provider,Customer,Goals,EUR 0.99,true,project-01,client-01
+contract-39,T-000,2002/04/14 08:00,Provider,Customer,Goals,EUR 10.00,true,project-01,client-01
+contract-40,T-001,2002/04/14 08:00,Provider,Customer,Goals,EUR 1.00,true,project-01,client-01
+contract-41,T-002,2002/04/14 08:00,Provider,Customer,Goals,EUR 0.99,true,project-01,client-01
+contract-42,T-003,2002/04/14 08:00,Provider,Customer,Goals,EUR 5,true,project-23,client-01
