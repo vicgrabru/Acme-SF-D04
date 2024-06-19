@@ -27,7 +27,8 @@ public interface BannerRepository extends AbstractRepository {
 
 	default Banner getRandomBanner() {
 		Banner result;
-		int count, index;
+		int count;
+		int index;
 		Banner[] banners;
 
 		banners = this.findDisplayableBanners();
