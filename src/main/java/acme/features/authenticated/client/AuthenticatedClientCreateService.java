@@ -1,5 +1,5 @@
 /*
- * AuthenticatedConsumerCreateService.java
+ * AuthenticatedClientCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -89,6 +89,7 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 	public void perform(final Client object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

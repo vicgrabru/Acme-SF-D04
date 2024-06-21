@@ -1,5 +1,5 @@
 /*
- * AdvertisementRepository.java
+ * BannerRepository.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -27,7 +27,8 @@ public interface BannerRepository extends AbstractRepository {
 
 	default Banner getRandomBanner() {
 		Banner result;
-		int count, index;
+		int count;
+		int index;
 		Banner[] banners;
 
 		banners = this.findDisplayableBanners();

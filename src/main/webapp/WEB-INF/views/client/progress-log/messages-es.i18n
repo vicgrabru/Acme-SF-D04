@@ -1,4 +1,4 @@
-# messages-en.i18n
+# messages-es.i18n
 #
 # Copyright (C) 2012-2024 Rafael Corchuelo.
 #
@@ -22,7 +22,6 @@ client.progress-log.form.completeness-interval = 0,01-100,0
 client.progress-log.form.label.comment = Comentario
 client.progress-log.form.label.registration-moment = Momento de registro
 client.progress-log.form.label.responsible-person = Persona responsable
-client.progress-log.form.label.draft-mode = Modo borrador
 
 client.progress-log.list.button.create = Crear
 client.progress-log.form.button.create = Crear

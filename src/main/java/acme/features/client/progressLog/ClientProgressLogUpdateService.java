@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientProgressLogUpdateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -40,9 +40,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		progressLogId = super.getRequest().getData("id", int.class);
 		progressLog = this.repository.findProgressLogById(progressLogId);
-		status = progressLog != null && //
-			progressLog.isDraftMode() && //
-			super.getRequest().getPrincipal().hasRole(progressLog.getContract().getClient());
+		status = progressLog != null && progressLog.isDraftMode() && super.getRequest().getPrincipal().hasRole(progressLog.getContract().getClient());
 
 		super.getResponse().setAuthorised(status);
 	}

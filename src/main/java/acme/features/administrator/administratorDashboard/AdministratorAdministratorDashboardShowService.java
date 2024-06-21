@@ -67,7 +67,7 @@ public class AdministratorAdministratorDashboardShowService extends AbstractServ
 
 		List<Integer> numberOfClaimsPerWeek;
 
-		numberOfPrincipalsByRole = new HashMap<String, Integer>();
+		numberOfPrincipalsByRole = new HashMap<>();
 
 		numberOfPrincipalsByRole.put("Administrator", this.repository.numberOfPrincipalsWithAdministratorRole().intValue());
 		numberOfPrincipalsByRole.put("Auditor", this.repository.numberOfPrincipalsWithAuditorRole().intValue());

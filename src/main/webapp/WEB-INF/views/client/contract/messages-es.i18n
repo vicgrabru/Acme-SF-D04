@@ -25,7 +25,6 @@ client.contract.form.label.remaining-cost = Coste restante
 client.contract.form.label.provider-name = Nombre de proveedor
 client.contract.form.label.customer-name = Nombre de cliente
 client.contract.form.label.instantiation-moment = Momento de creación
-client.contract.form.label.draft-mode = Modo borrador
 client.contract.form.label.project = Proyecto
 client.contract.form.button.progress-log.list = Registros de progresos
 

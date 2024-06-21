@@ -1,5 +1,5 @@
 /*
- * Advertisement.java
+ * UserStory.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
