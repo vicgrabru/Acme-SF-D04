@@ -22,7 +22,11 @@
 	<acme:input-moment code="sponsor.sponsorship.form.label.endDuration" path="endDuration"/>
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>
 	<jstl:if test="${acme:anyOf(_command, 'show|update|publish')}">
-		<acme:input-money readonly="true" code="sponsor.invoice.form.label.exchanged-amount" path="exchangedAmount"/>
+		<acme:input-money readonly="true" code="sponsor.sponsorship.form.label.exchanged-amount" path="exchangedAmount"/>
+	</jstl:if>
+	<acme:input-money code="sponsor.sponsorship.form.label.totalAmountOfInvoices" path="totalAmountOfInvoices" readonly="true"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|publish')}">
+		<acme:input-money readonly="true" code="sponsor.sponsorship.form.label.exchangedTotalAmountOfInvoices" path="exchangedTotalAmountOfInvoices"/>
 	</jstl:if>
 	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices="${types}" readonly="${acme:anyOf(status, 'FINANCIAL|IN_KIND')}"/>
 	<acme:input-email code="sponsor.sponsorship.form.label.email" path="email"/>
@@ -36,9 +40,9 @@
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?masterId=${id}"/>			
-			<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
-			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
-			<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
+			<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update?id=${id}"/>
+			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete?id=${id}"/>
+			<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish?id=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create' }">
 			<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>

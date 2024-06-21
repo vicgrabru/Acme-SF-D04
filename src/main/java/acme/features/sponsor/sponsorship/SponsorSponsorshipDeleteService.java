@@ -17,11 +17,17 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.configuration.SystemConfiguration;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
+import acme.entities.sponsorship.Type;
 import acme.roles.Sponsor;
+import acme.utils.MoneyExchangeRepository;
 
 @Service
 public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sponsorship> {
@@ -29,7 +35,10 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
+	private SponsorSponsorshipRepository	repository;
+
+	@Autowired
+	private MoneyExchangeRepository			exchangeRepo;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -88,6 +97,42 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
 		this.repository.deleteAll(invoices);
 		this.repository.delete(object);
+	}
+
+	@Override
+	public void unbind(final Sponsorship object) {
+		assert object != null;
+
+		Collection<Project> projects;
+		SelectChoices choicesProject;
+		SelectChoices choicesType;
+		Dataset dataset;
+		Collection<Invoice> invoices;
+		SystemConfiguration systemConfiguration;
+
+		invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
+		projects = this.repository.findAllProjects();
+		systemConfiguration = this.repository.getSystemConfiguration();
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
+		choicesType = SelectChoices.from(Type.class, object.getType());
+		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
+		dataset.put("types", choicesType);
+
+		Double totalAmount = invoices.stream().mapToDouble(i -> i.totalAmount().getAmount()).sum();
+		Money InvoicesAmount = new Money();
+		InvoicesAmount.setAmount(totalAmount);
+		InvoicesAmount.setCurrency(systemConfiguration.getSystemCurrency());
+		dataset.put("totalAmountOfInvoices", InvoicesAmount);
+
+		Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());
+		dataset.put("exchangedAmount", eb);
+
+		Money eb1 = this.exchangeRepo.exchangeMoney(InvoicesAmount);
+		dataset.put("exchangedTotalAmountOfInvoices", eb1);
+
+		super.getResponse().addData(dataset);
 	}
 
 }

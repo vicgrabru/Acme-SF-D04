@@ -73,8 +73,9 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 		dataset.put("masterId", object.getSponsorship().getId());
 		dataset.put("sponsorship", object.getSponsorship().getCode());
 
-		Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
-		dataset.put("exchangedQuantity", eb);
+		dataset.put("totalAmount", object.totalAmount());
+		Money eb = this.exchangeRepo.exchangeMoney(object.totalAmount());
+		dataset.put("exchangedTotalAmount", eb);
 		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);

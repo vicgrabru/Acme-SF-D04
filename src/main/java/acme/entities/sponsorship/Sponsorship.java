@@ -39,6 +39,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
 public class Sponsorship extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------

@@ -18,6 +18,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.configuration.SystemConfiguration;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
@@ -52,5 +53,8 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 
 	@Query("select sc.acceptedCurrencies from SystemConfiguration sc")
 	String findAcceptedCurrencies();
+
+	@Query("select sc from SystemConfiguration sc")
+	SystemConfiguration getSystemConfiguration();
 
 }
