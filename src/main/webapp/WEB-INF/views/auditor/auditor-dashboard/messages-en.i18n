@@ -18,7 +18,7 @@ auditor.auditor-dashboard.form-label.min-audit-records-per-code-audit = Minimum 
 auditor.auditor-dashboard.form-label.max-audit-records-per-code-audit = Maximum number of audit records per code audit
 auditor.auditor-dashboard.form-label.std-audit-records-per-code-audit = Standard deviation of audit records per code audit
 
-auditor.auditor-dashboard.form-label.avg-audit-record-period-length = Average audit record period length per code audit (in seconds)
-auditor.auditor-dashboard.form-label.min-audit-record-period-length = Minimum audit record period length per code audit (in seconds)
-auditor.auditor-dashboard.form-label.max-audit-record-period-length = Maximum audit record period length per code audit (in seconds)
-auditor.auditor-dashboard.form-label.std-audit-record-period-length = Standard deviation audit record period length per code audit (in seconds)
+auditor.auditor-dashboard.form-label.avg-audit-record-period-length = Average audit record period length (in seconds)
+auditor.auditor-dashboard.form-label.min-audit-record-period-length = Minimum audit record period length (in seconds)
+auditor.auditor-dashboard.form-label.max-audit-record-period-length = Maximum audit record period length (in seconds)
+auditor.auditor-dashboard.form-label.std-audit-record-period-length = Standard deviation audit record period length (in seconds)

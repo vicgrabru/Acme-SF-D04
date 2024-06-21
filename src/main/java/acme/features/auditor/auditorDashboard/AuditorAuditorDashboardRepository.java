@@ -23,10 +23,10 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(ca) from CodeAudit ca where ca.type = 'STATIC' and ca.auditor.id = :auditorId")
+	@Query("select count(ca) from CodeAudit ca where ca.type = acme.entities.codeAudit.Type.STATIC and ca.auditor.id = :auditorId")
 	Integer totalNumberOfStaticCodeAuditsByAuditorId(int auditorId);
 
-	@Query("select count(ca) from CodeAudit ca where ca.type = 'DYNAMIC' and ca.auditor.id = :auditorId")
+	@Query("select count(ca) from CodeAudit ca where ca.type = acme.entities.codeAudit.Type.DYNAMIC and ca.auditor.id = :auditorId")
 	Integer totalNumberOfDynamicCodeAuditsByAuditorId(int auditorId);
 
 	@Query("select avg(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
@@ -35,11 +35,11 @@ public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 
 	@Query("select min(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
 		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
-	Double minAuditRecordsPerCodeAuditByAuditorId(int auditorId);
+	Integer minAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
 	@Query("select max(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
 		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
-	Double maxAuditRecordsPerCodeAuditByAuditorId(int auditorId);
+	Integer maxAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
 	default Double stdAuditRecordsPerCodeAuditByAuditorId(final int auditorId) {
 		Collection<Integer> counts = this.auditRecordsPerCodeAuditByAuditorId(auditorId);
@@ -73,7 +73,10 @@ public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 		+ "WHERE ca.auditor_id = :auditorId", nativeQuery = true)
 	Double maxAuditRecordPeriodLengthByAuditorId(@Param("auditorId") int auditorId);
 
-	@Query(value = "SELECT STDDEV(TIMESTAMPDIFF(second, ar.period_start, ar.period_end)) " //
+	@Query(value = "SELECT CASE " //
+		+ "WHEN COUNT(ar.id) < 2 THEN NULL " //
+		+ "ELSE STDDEV(TIMESTAMPDIFF(second, ar.period_start, ar.period_end)) " //
+		+ "END " //
 		+ "FROM Audit_Record ar JOIN Code_Audit ca ON ar.code_audit_id = ca.id " //
 		+ "WHERE ca.auditor_id = :auditorId", nativeQuery = true)
 	Double stdAuditRecordPeriodLengthByAuditorId(@Param("auditorId") int auditorId);
