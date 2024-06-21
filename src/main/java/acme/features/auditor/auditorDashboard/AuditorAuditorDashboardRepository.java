@@ -35,11 +35,11 @@ public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 
 	@Query("select min(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
 		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
-	Double minAuditRecordsPerCodeAuditByAuditorId(int auditorId);
+	Integer minAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
 	@Query("select max(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
 		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
-	Double maxAuditRecordsPerCodeAuditByAuditorId(int auditorId);
+	Integer maxAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
 	default Double stdAuditRecordsPerCodeAuditByAuditorId(final int auditorId) {
 		Collection<Integer> counts = this.auditRecordsPerCodeAuditByAuditorId(auditorId);
