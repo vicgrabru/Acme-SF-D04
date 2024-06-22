@@ -56,7 +56,7 @@ public class CodeAudit extends AbstractEntity {
 	private Date				executionDate;
 
 	@NotNull
-	private Type				type;
+	private AuditType				type;
 
 	@NotBlank
 	@Length(max = 100)

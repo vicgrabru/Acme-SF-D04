@@ -23,7 +23,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.codeAudit.CodeAudit;
 import acme.entities.codeAudit.Mark;
-import acme.entities.codeAudit.Type;
+import acme.entities.codeAudit.AuditType;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 import spamDetector.SpamDetector;
@@ -100,7 +100,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		projects = this.repository.findAllPublishedProjects();
 
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
-		choicesType = SelectChoices.from(Type.class, object.getType());
+		choicesType = SelectChoices.from(AuditType.class, object.getType());
 
 		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
 			.stream() //

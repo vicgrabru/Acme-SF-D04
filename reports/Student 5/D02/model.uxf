@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>98</x>
-      <y>308</y>
-      <w>77</w>
-      <h>63</h>
+      <x>693</x>
+      <y>306</y>
+      <w>99</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
-Type
+AuditType
 --
 + STATIC
 + DYNAMIC
@@ -21,30 +21,31 @@ bg=GREEN
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>287</y>
-      <w>329</w>
-      <h>105</h>
+      <x>513</x>
+      <y>513</y>
+      <w>423</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Audit
+CodeAudit
 --
 + code: String {Unique, NotBlank, Pattern(regexp = [A-Z]{1,3}-[0-9]{3})}
-+ executionDate: Date {Past, TemporalType(TIMESTAMP)}
-+ type: Type
++ executionDate: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++ type: AuditType {NotNull}
 + correctiveActions: String {NotBlank, Length(max=100)}
-+ mark: Mark
-+ link: String {URL}
++ mark: Mark {NotNull}
++ link: String {URL, Length(max=255)}
++ draftMode: boolean
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>98</x>
-      <y>399</y>
-      <w>77</w>
-      <h>105</h>
+      <x>891</x>
+      <y>297</y>
+      <w>99</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 Mark
@@ -63,28 +64,28 @@ bg=GREEN
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>469</x>
-      <y>21</y>
-      <w>329</w>
-      <h>84</h>
+      <x>972</x>
+      <y>693</y>
+      <w>315</w>
+      <h>108</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
 Auditor
 --
 + firm: String {NotBlank, Length(max=75)}
-+ professionalId: String {NotBlank, Length(max=26)}
-+ certifications: String  {NotBlank, Length(max=101)}
-+ link: String (URL)
++ professionalId: String {NotBlank, Length(max=25)}
++ certifications: String  {NotBlank, Length(max=100)}
++ link: String {URL, Length(Max=255)}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>546</x>
-      <y>140</y>
-      <w>175</w>
-      <h>63</h>
+      <x>1026</x>
+      <y>522</y>
+      <w>225</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Project
@@ -96,67 +97,68 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>462</x>
-      <y>462</y>
-      <w>329</w>
-      <h>98</h>
+      <x>513</x>
+      <y>738</y>
+      <w>423</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 AuditRecord
 --
 + code: String {Unique, NotBlank, Pattern(regexp = AU-[0-9]{4}-[0-9]{3})}
-+ periodStart: Date {Past, TemporalType(TIMESTAMP)}
-+ periodEnd: Date{Past, TemporalType(TIMESTAMP)}
-+ mark: Mark
-+ link: String {URL}
++ periodStart: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++ periodEnd: Date{NotNull, Past, TemporalType(TIMESTAMP)}
++ mark: Mark {NotNull}
++ link: String {URL, Length(Max=255)}
++ draftMode: boolean
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>623</x>
-      <y>385</y>
-      <w>35</w>
-      <h>91</h>
+      <x>720</x>
+      <y>657</y>
+      <w>45</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=1..n
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>623</x>
-      <y>196</y>
-      <w>35</w>
-      <h>105</h>
+      <x>927</x>
+      <y>549</y>
+      <w>117</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 Has
 m1=1
-m2=0..n</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+m2=0..*</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>98</x>
-      <y>91</y>
-      <w>329</w>
-      <h>154</h>
+      <x>162</x>
+      <y>288</y>
+      <w>423</w>
+      <h>198</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AuditDashboard
 --
-+ totalNumberOfStaticAudits: Integer
-+ totalNumberOfDynamicAudits: Integer
-+ avgAuditRecordsPerAudit: Double
-+ minAuditRecordsPerAudit: Double
-+ maxAuditRecordsPerAudit: Double
-+ stdAuditRecordsPerAudit: Double
++ totalNumberOfStaticCodeAudits: Integer
++ totalNumberOfDynamicCodeAudits: Integer
++ avgAuditRecordsPerCodeAudit: Double
++ minAuditRecordsPerCodeAudit: Integer
++ maxAuditRecordsPerCodeAudit: Integer
++ stdAuditRecordsPerCodeAudit: Double
 + avgAuditRecordPeriodLength: Double
 + minAuditRecordPeriodLength: Double
 + maxAuditRecordPeriodLength: Double
@@ -167,10 +169,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>21</y>
-      <w>98</w>
-      <h>35</h>
+      <x>306</x>
+      <y>198</y>
+      <w>126</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 Serializable
@@ -181,10 +183,10 @@ bg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>49</y>
-      <w>21</w>
-      <h>56</h>
+      <x>360</x>
+      <y>234</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
@@ -192,10 +194,10 @@ bg=white
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>245</x>
-      <y>308</y>
-      <w>175</w>
-      <h>63</h>
+      <x>234</x>
+      <y>540</y>
+      <w>225</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>mark will be computed as the mode
 of the marks in the corresponding
@@ -207,10 +209,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>413</x>
-      <y>329</y>
-      <w>63</w>
-      <h>28</h>
+      <x>450</x>
+      <y>567</y>
+      <w>81</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=..
 </panel_attributes>
@@ -219,10 +221,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>294</x>
-      <y>490</y>
-      <w>126</w>
-      <h>42</h>
+      <x>297</x>
+      <y>774</y>
+      <w>162</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>period must be at least
 one hour long
@@ -232,13 +234,27 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>413</x>
-      <y>497</y>
-      <w>63</w>
-      <h>28</h>
+      <x>450</x>
+      <y>783</y>
+      <w>81</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=..
 </panel_attributes>
     <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>927</x>
+      <y>621</y>
+      <w>216</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+Made by &gt;
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>210.0;80.0;210.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

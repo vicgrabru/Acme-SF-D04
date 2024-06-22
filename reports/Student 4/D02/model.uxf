@@ -18,8 +18,8 @@ Sponsorship
 + endDuration: Date {NotNull, Temporal(TIMESTAMP)}
 + amount: Money {NotNull}
 + type: SponsorshipType {NotNull}
-+ link: String {URL, Length{max=255}}
-+ email: String {URL, Length{max=255}}
++ link: String {URL, Length(max=255)}
++ email: String {URL, Length(max=255)}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
@@ -51,7 +51,7 @@ Invoice
 + dueDate: Date {NotNull, Temporal(TIMESTAMP)}
 + quantity: Money {NotNull}
 + tax: Double {NotNull, PositiveOrZero, Max(100)}
-+ link: String {URL, Length{max=255}}
++ link: String {URL, Length(max=255)}
 + draftMode: boolean
 + / totalAmount: Money
 bg=GREEN</panel_attributes>
@@ -276,7 +276,7 @@ bg=YELLOW</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>954</x>
-      <y>729</y>
+      <y>657</y>
       <w>306</w>
       <h>108</h>
     </coordinates>
@@ -285,8 +285,8 @@ Sponsor
 --
 + name: String{NotBlank, Length(max=75)}
 + benefits: String{NotBlank, Length(max=100)}
-+ webPage: String{URL, Length{max=255}}
-+ email: String{Email, Length{max=255}}
++ webPage: String{URL, Length(max=255)}
++ email: String{Email, Length(max=255)}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
@@ -341,12 +341,12 @@ bg=green
       <x>882</x>
       <y>567</y>
       <w>288</w>
-      <h>180</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1=0..*
 m2=1
 Made by &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;290.0;20.0;290.0;180.0</additional_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0;290.0;100.0</additional_attributes>
   </element>
 </diagram>

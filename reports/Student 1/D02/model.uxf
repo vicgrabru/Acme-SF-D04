@@ -15,7 +15,7 @@ Manager
 + degree: String {NotBlank, Length(max=75)}
 + overview: String {NotBlank, Length(max=100)}
 + certifications: String {NotBlank, Length(max=100)}
-+ optionalLink: String {URL, Length{max=255}}
++ optionalLink: String {URL, Length(max=255)}
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -36,9 +36,9 @@ Elicited by &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>510</x>
+      <x>550</x>
       <y>180</y>
-      <w>400</w>
+      <w>360</w>
       <h>240</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
@@ -90,7 +90,7 @@ Project
 + abstract+ title: String {NotBlank, Length(max=100)}
 + hasFatalErrors: boolean
 + cost: Money {NotNull}
-+ optionalLink: String {URL, Length{max=255}}
++ optionalLink: String {URL, Length(max=255)}
 + draftMode: boolean
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -124,7 +124,7 @@ UserStory
 + estimatedCost: Integer {NotNull, Positive}
 + acceptanceCriteria: String {NotBlank, Length(max=100)}
 + priority: UserStoryPriority {NotNull}
-+ optionalLink: String {URL, Length{max=255}}
++ optionalLink: String {URL, Length(max=255)}
 + draftMode: boolean
 
 </panel_attributes>
