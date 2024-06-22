@@ -71,7 +71,7 @@ public class Sponsorship extends AbstractEntity {
 	private Money				amount;
 
 	@NotNull
-	private Type				type;
+	private SponsorshipType				type;
 
 	@Email
 	@Length(max = 255)

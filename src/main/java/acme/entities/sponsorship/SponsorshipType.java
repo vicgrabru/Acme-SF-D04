@@ -12,7 +12,7 @@
 
 package acme.entities.sponsorship;
 
-public enum Type {
+public enum SponsorshipType {
 
 	FINANCIAL, IN_KIND;
 }

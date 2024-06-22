@@ -25,7 +25,7 @@ import acme.entities.configuration.SystemConfiguration;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
-import acme.entities.sponsorship.Type;
+import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 import acme.utils.MoneyExchangeRepository;
 
@@ -114,7 +114,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		projects = this.repository.findAllProjects();
 		systemConfiguration = this.repository.getSystemConfiguration();
 		choicesProject = SelectChoices.from(projects, "code", object.getProject());
-		choicesType = SelectChoices.from(Type.class, object.getType());
+		choicesType = SelectChoices.from(SponsorshipType.class, object.getType());
 		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
