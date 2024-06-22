@@ -88,10 +88,10 @@ Project
 + code: String {Pattern("[A-Z]{3}-[0-9]{4}")}
 + title: String {NotBlank, Length(max=75)}
 + abstract+ title: String {NotBlank, Length(max=100)}
-+ hasFatalErrors: Boolean
-+ cost: Money
++ hasFatalErrors: boolean
++ cost: Money {NotNull}
 + optionalLink: String {URL, Length{max=255}}
-+ draftMode: Boolean
++ draftMode: boolean
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -113,7 +113,7 @@ bg=green</panel_attributes>
       <x>350</x>
       <y>440</y>
       <w>450</w>
-      <h>150</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -121,10 +121,11 @@ UserStory
 --
 + title: String {NotBlank, Length(max=75)}
 + description: String {NotBlank, Length(max=100)}
-+ estimatedCost: Integer {Positive}
++ estimatedCost: Integer {NotNull, Positive}
 + acceptanceCriteria: String {NotBlank, Length(max=100)}
-+ priority: Priority
++ priority: UserStoryPriority {NotNull}
 + optionalLink: String {URL, Length{max=255}}
++ draftMode: boolean
 
 </panel_attributes>
     <additional_attributes/>
@@ -217,11 +218,11 @@ bg=white
     <coordinates>
       <x>1040</x>
       <y>140</y>
-      <w>160</w>
+      <w>130</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
-Priority
+UserStoryPriority
 --
 + MUST
 + SHOULD

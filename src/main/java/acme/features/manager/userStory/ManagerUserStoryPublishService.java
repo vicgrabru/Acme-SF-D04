@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.project.Priority;
+import acme.entities.project.UserStoryPriority;
 import acme.entities.project.Project;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
@@ -98,7 +98,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		userStoryId = object.getId();
 
-		choices = SelectChoices.from(Priority.class, object.getPriority());
+		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");
 		dataset.put("userStoryId", userStoryId);

@@ -23,7 +23,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.objective.Objective;
-import acme.entities.objective.Priority;
+import acme.entities.objective.ObjectivePriority;
 import spamDetector.SpamDetector;
 
 @Service
@@ -97,7 +97,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 
 		dataset = super.unbind(object, "instantiationMoment", "title", "description", "priority", "isCritical", "startDateDuration", "endDateDuration", "link");
 		final SelectChoices choices;
-		choices = SelectChoices.from(Priority.class, object.getPriority());
+		choices = SelectChoices.from(ObjectivePriority.class, object.getPriority());
 		dataset.put("priority", choices.getSelected().getKey());
 		dataset.put("priorities", choices);
 		if (object.isCritical())

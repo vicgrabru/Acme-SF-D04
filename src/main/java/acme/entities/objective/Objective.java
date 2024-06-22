@@ -53,7 +53,7 @@ public class Objective extends AbstractEntity {
 	private String				description;
 
 	@NotNull
-	private Priority			priority;
+	private ObjectivePriority			priority;
 
 	private boolean				isCritical;
 
