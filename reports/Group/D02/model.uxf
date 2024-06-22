@@ -173,13 +173,13 @@ periodEnd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>711</x>
-      <y>306</y>
-      <w>90</w>
-      <h>252</h>
+      <x>729</x>
+      <y>360</y>
+      <w>72</w>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;260.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;200.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
