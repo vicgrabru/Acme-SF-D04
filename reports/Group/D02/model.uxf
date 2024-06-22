@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
   <help_text/>
-  <zoom_level>8</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>176</x>
-      <y>344</y>
-      <w>400</w>
-      <h>72</h>
+      <x>260</x>
+      <y>520</y>
+      <w>500</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -22,10 +22,10 @@ SystemConfiguration
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>608</x>
-      <y>200</y>
-      <w>368</w>
-      <h>152</h>
+      <x>800</x>
+      <y>340</y>
+      <w>460</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -38,17 +38,16 @@ Objective
 +isCritical: boolean
 +startDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
 +endDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
-+duration: Date {TemporalType(TIMESTAMP)}
 +link: String {URL, Length(max=255)}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>176</x>
-      <y>200</y>
-      <w>384</w>
-      <h>120</h>
+      <x>260</x>
+      <y>340</y>
+      <w>480</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -65,10 +64,10 @@ Banner
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>184</x>
-      <y>48</y>
-      <w>376</w>
-      <h>120</h>
+      <x>270</x>
+      <y>150</y>
+      <w>470</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -85,10 +84,10 @@ Notice
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>608</x>
-      <y>40</y>
-      <w>368</w>
-      <h>128</h>
+      <x>800</x>
+      <y>140</y>
+      <w>460</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -106,10 +105,10 @@ Claim
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>176</x>
-      <y>440</y>
-      <w>400</w>
-      <h>128</h>
+      <x>260</x>
+      <y>640</y>
+      <w>500</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -127,10 +126,10 @@ Risk
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>632</x>
-      <y>480</y>
-      <w>328</w>
-      <h>88</h>
+      <x>830</x>
+      <y>690</y>
+      <w>410</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>bg=green
 &lt;&lt;Entity&gt;&gt;
@@ -145,10 +144,10 @@ ExchangeRate
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>584</x>
-      <y>392</y>
-      <w>152</w>
-      <h>48</h>
+      <x>770</x>
+      <y>580</y>
+      <w>190</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>bg=blue
 startDateDuration must be
@@ -158,10 +157,10 @@ before endDateDuration</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>16</x>
-      <y>280</y>
-      <w>152</w>
-      <h>48</h>
+      <x>60</x>
+      <y>440</y>
+      <w>190</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>bg=blue
 periodStart must be
@@ -174,10 +173,10 @@ periodEnd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>584</x>
-      <y>304</y>
-      <w>40</w>
-      <h>104</h>
+      <x>770</x>
+      <y>470</y>
+      <w>50</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;110.0;30.0;10.0</additional_attributes>
@@ -185,10 +184,10 @@ periodEnd
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
-      <y>256</y>
-      <w>32</w>
-      <h>64</h>
+      <x>240</x>
+      <y>410</y>
+      <w>40</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>20.0;10.0;10.0;60.0</additional_attributes>
