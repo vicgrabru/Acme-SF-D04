@@ -6,7 +6,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>270</x>
-      <y>576</y>
+      <y>594</y>
       <w>450</w>
       <h>81</h>
     </coordinates>
@@ -24,7 +24,7 @@ SystemConfiguration
     <coordinates>
       <x>783</x>
       <y>414</y>
-      <w>414</w>
+      <w>450</w>
       <h>162</h>
     </coordinates>
     <panel_attributes>bg=green
@@ -44,8 +44,8 @@ Objective
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>414</y>
+      <x>261</x>
+      <y>261</y>
       <w>432</w>
       <h>135</h>
     </coordinates>
@@ -65,7 +65,7 @@ Banner
     <id>UMLClass</id>
     <coordinates>
       <x>279</x>
-      <y>243</y>
+      <y>441</y>
       <w>423</w>
       <h>135</h>
     </coordinates>
@@ -86,7 +86,7 @@ Notice
     <coordinates>
       <x>783</x>
       <y>720</y>
-      <w>414</w>
+      <w>432</w>
       <h>144</h>
     </coordinates>
     <panel_attributes>bg=green
@@ -106,8 +106,8 @@ Claim
     <id>UMLClass</id>
     <coordinates>
       <x>270</x>
-      <y>684</y>
-      <w>450</w>
+      <y>720</y>
+      <w>468</w>
       <h>144</h>
     </coordinates>
     <panel_attributes>bg=green
@@ -120,7 +120,7 @@ Risk
 +probability: Double {NotNull, Min(0), Max(100), Digits(integer = 3, fraction = 2)}
 +description: String {NotBlank, Length(max=100)}
 +link: String {URL, Length(max=255)}
-+/ value: Double {Transient}</panel_attributes>
++/ value: Double</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -145,7 +145,7 @@ ExchangeRate
     <id>UMLNote</id>
     <coordinates>
       <x>711</x>
-      <y>315</y>
+      <y>342</y>
       <w>171</w>
       <h>54</h>
     </coordinates>
@@ -157,8 +157,8 @@ before endDateDuration</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>72</x>
-      <y>477</y>
+      <x>63</x>
+      <y>189</y>
       <w>171</w>
       <h>54</h>
     </coordinates>
@@ -174,29 +174,29 @@ periodEnd
     <id>Relation</id>
     <coordinates>
       <x>729</x>
-      <y>360</y>
+      <y>387</y>
       <w>72</w>
-      <h>198</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;200.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0;60.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>234</x>
-      <y>477</y>
-      <w>54</w>
-      <h>45</h>
+      <x>117</x>
+      <y>234</y>
+      <w>162</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>160.0;110.0;10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>279</x>
-      <y>108</y>
+      <x>720</x>
+      <y>198</y>
       <w>144</w>
       <h>90</h>
     </coordinates>
@@ -215,7 +215,7 @@ bg=green
     <coordinates>
       <x>918</x>
       <y>171</y>
-      <w>360</w>
+      <w>315</w>
       <h>216</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
