@@ -21,8 +21,7 @@
 	<acme:input-textbox code="developer.training-module.form.label.details" path="details"/>
 	<acme:input-select code="developer.training-module.form.label.difficulty" path="difficulty" choices="${difficulties}"/>
 	<acme:input-moment code="developer.training-module.form.label.updateMoment" path="updateMoment"/>
-	<acme:input-moment code="developer.training-module.form.label.startTotalTime" path="startTotalTime"/>
-	<acme:input-moment code="developer.training-module.form.label.endTotalTime" path="endTotalTime"/>
+	<acme:input-integer code="developer.training-module.form.label.totalTime" path="totalTime"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
 	<acme:input-select code="developer.training-module.form.label.projects" path="project" choices="${projects}"/>
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">

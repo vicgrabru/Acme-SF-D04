@@ -25,8 +25,7 @@ developer.training-module.form.label.creationMoment= Momento de creación
 developer.training-module.form.label.details= Detalles
 developer.training-module.form.label.difficulty=Dificultad
 developer.training-module.form.label.updateMoment= Momento de actualización
-developer.training-module.form.label.startTotalTime=Comienzo del tiempo total
-developer.training-module.form.label.endTotalTime= Final del tiempo total
+developer.training-module.form.label.totalTime=Tiempo total
 developer.training-module.form.label.link= Link= Enlace
 developer.training-module.form.label.draftMode= Es Borrador
 developer.training-module.form.label.projects=Proyecto
@@ -37,5 +36,3 @@ developer.training-module.form.error.spam=Spam Detectado
 developer.training-module.form.error.duplicatedCode=Código Duplicado
 
 developer.training-module.form.error.emptyTrainingSessions= No tienes ningún sesión de entrenamiento asociado
-developer.training-module.form.error.startTotalTime.not-after-creationMoment=El comienzo del tiempo total debe ser posterior al momento de creación
-developer.training-module.form.error.endTotalTime.not-after-startTotalTime=El final del tiempo total debe ser posterior al comienzo

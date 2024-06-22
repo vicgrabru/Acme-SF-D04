@@ -80,10 +80,6 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("startTotalTime"))
-			super.state(object.getStartTotalTime().after(object.getCreationMoment()), "startTotalTime", "developer.training-module.form.error.startTotalTime.not-after-creationMoment");
-		if (!super.getBuffer().getErrors().hasErrors("endTotalTime"))
-			super.state(object.getEndTotalTime().after(object.getStartTotalTime()), "endTotalTime", "developer.training-module.form.error.endTotalTime.not-after-startTotalTime");
 	}
 
 	@Override
@@ -97,7 +93,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "draftMode", "project");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "totalTime", "link", "draftMode", "project");
 		final SelectChoices difficultyChoices;
 		final SelectChoices projectChoices;
 		difficultyChoices = SelectChoices.from(Difficulty.class, object.getDifficulty());
