@@ -12,6 +12,8 @@ administrator.system-configuration.form.title = Configuración del Sistema
 
 administrator.system-configuration.form.label.system-currency = Divisa del Sistema
 administrator.system-configuration.form.label.accepted-currencies = Divisas Aceptadas
+administrator.system-configuration.form.label.spam-terms = Términos de Spam
+administrator.system-configuration.form.label.spam-threshold = Umbral de Spam
 
 administrator.system-configuration.form.button.update = Actualizar
 
