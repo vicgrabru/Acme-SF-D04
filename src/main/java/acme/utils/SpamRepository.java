@@ -16,7 +16,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.configuration.ExchangeRate;
 
 @Repository
 public interface SpamRepository extends AbstractRepository {
@@ -27,10 +26,10 @@ public interface SpamRepository extends AbstractRepository {
 	@Query("select sc.spamThreshold from SystemConfiguration sc")
 	double findSpamThreshold();
 
-	@Query("select er from ExchangeRate er where er.source = :source and er.target = :target")
-	ExchangeRate findExchangeRate(String source, String target);
+	//	@Query("select er from ExchangeRate er where er.source = :source and er.target = :target")
+	//	ExchangeRate findExchangeRate(String source, String target);
 
-	default boolean isOverSpamThreshold(final String textToCheck) {
+	default boolean checkTextValue(final String textToCheck) {
 		boolean result = false;
 		return result;
 	}
