@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -63,12 +64,9 @@ public class TrainingModule extends AbstractEntity {
 	@Past
 	private Date				updateMoment;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				startTotalTime;
-	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
-	private Date				endTotalTime;
+	@Min(1)
+	private Integer				totalTime;
 
 	@URL
 	@Length(max = 255)

@@ -60,7 +60,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		updateMoment = MomentHelper.getCurrentMoment();
 
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "project");
+		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "totalTime", "link", "project");
 		object.setUpdateMoment(updateMoment);
 	}
 
@@ -77,10 +77,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("startTotalTime"))
-			super.state(object.getStartTotalTime().after(object.getCreationMoment()), "startTotalTime", "developer.training-module.form.error.startTotalTime.not-after-creationMoment");
-		if (!super.getBuffer().getErrors().hasErrors("endTotalTime"))
-			super.state(object.getEndTotalTime().after(object.getStartTotalTime()), "endTotalTime", "developer.training-module.form.error.endTotalTime.not-after-startTotalTime");
+
 	}
 
 	@Override
