@@ -75,8 +75,6 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("details", String.class)), "details", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("difficulty"))
 			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
 
 	}
 
