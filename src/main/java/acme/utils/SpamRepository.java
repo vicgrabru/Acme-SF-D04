@@ -35,7 +35,7 @@ public interface SpamRepository extends AbstractRepository {
 		List<String> spamTerms;
 		double spamThreshold;
 
-		spamTerms = new ArrayList<>(List.of(this.findSpamTerms().split(",")));
+		spamTerms = new ArrayList<>(List.of(this.findSpamTerms().split(", ")));
 
 		spamThreshold = this.findSpamThreshold();
 
