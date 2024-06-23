@@ -1,3 +1,14 @@
+/*
+ * SponsorSponsorshipPublishService.java
+ *
+ * Copyright (C) 2012-2024 Rafael Corchuelo.
+ *
+ * In keeping with the traditional purpose of furthering education and research, it is
+ * the policy of the copyright owner to permit non-commercial use and redistribution of
+ * this software. It has been tested carefully, but it is not guaranteed for any particular
+ * purposes. The copyright owner does not offer any warranties or representations, nor do
+ * they accept any liabilities with respect to them.
+ */
 
 package acme.features.sponsor.sponsorship;
 
@@ -12,10 +23,11 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.configuration.SystemConfiguration;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
-import acme.entities.sponsorship.Type;
+import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 import acme.utils.MoneyExchangeRepository;
 
@@ -62,15 +74,6 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
-
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-
-		super.bind(object, "code", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
-		object.setProject(project);
 	}
 
 	@Override
@@ -108,17 +111,30 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		SelectChoices choicesProject;
 		SelectChoices choicesType;
 		Dataset dataset;
+		Collection<Invoice> invoices;
+		SystemConfiguration systemConfiguration;
 
+		invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
 		projects = this.repository.findAllProjects();
+		systemConfiguration = this.repository.getSystemConfiguration();
 		choicesProject = SelectChoices.from(projects, "code", object.getProject());
-		choicesType = SelectChoices.from(Type.class, object.getType());
-		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link");
+		choicesType = SelectChoices.from(SponsorshipType.class, object.getType());
+		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 		dataset.put("types", choicesType);
 
+		Double totalAmount = invoices.stream().mapToDouble(i -> i.totalAmount().getAmount()).sum();
+		Money InvoicesAmount = new Money();
+		InvoicesAmount.setAmount(totalAmount);
+		InvoicesAmount.setCurrency(systemConfiguration.getSystemCurrency());
+		dataset.put("totalAmountOfInvoices", InvoicesAmount);
+
 		Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());
 		dataset.put("exchangedAmount", eb);
+
+		Money eb1 = this.exchangeRepo.exchangeMoney(InvoicesAmount);
+		dataset.put("exchangedTotalAmountOfInvoices", eb1);
 
 		super.getResponse().addData(dataset);
 	}

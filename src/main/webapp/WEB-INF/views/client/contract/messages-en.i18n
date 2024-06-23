@@ -24,7 +24,6 @@ client.contract.form.label.remaining-cost = Remaining cost
 client.contract.form.label.provider-name = Provider name
 client.contract.form.label.customer-name = Customer name
 client.contract.form.label.instantiation-moment = Instantiation moment
-client.contract.form.label.draft-mode = Draft mode
 client.contract.form.label.project = Project
 
 client.contract.list.button.create = Create

@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientContractCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -25,7 +25,7 @@ import acme.entities.contract.Contract;
 import acme.entities.project.Project;
 import acme.roles.Client;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ClientContractCreateService extends AbstractService<Client, Contract> {
@@ -37,6 +37,9 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Autowired
 	private MoneyExchangeRepository		exchangeRepo;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -83,24 +86,24 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			currencies = this.repository.findAcceptedCurrencies();
 			super.state(currencies.contains(object.getBudget().getCurrency()), "budget", "client.contract.form.error.bugdet.invalid-currency");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() >= 0., "budget", "client.contract.form.error.bugdet.negative-budget");
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
+		}
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
 			super.state(this.exchangeRepo.exchangeMoney(object.getBudget()).getAmount() <= this.exchangeRepo.exchangeMoney(object.getProject().getCost()).getAmount(), "budget", "client.contract.form.error.budget.budget-over-project-cost");
 
 		if (!super.getBuffer().getErrors().hasErrors("goals"))
-			super.state(!SpamDetector.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("providerName"))
-			super.state(!SpamDetector.checkTextValue(object.getProviderName()), "providerName", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getProviderName()), "providerName", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("customerName"))
-			super.state(!SpamDetector.checkTextValue(object.getCustomerName()), "customerName", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getCustomerName()), "customerName", "client.contract.form.error.spam");
 	}
 
 	@Override
 	public void perform(final Contract object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

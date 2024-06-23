@@ -1,5 +1,5 @@
 /*
- * AuthenticatedProviderCreateService.java
+ * AuthenticatedDeveloperCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -22,7 +22,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Developer;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AuthenticatedDeveloperCreateService extends AbstractService<Authenticated, Developer> {
@@ -30,7 +30,10 @@ public class AuthenticatedDeveloperCreateService extends AbstractService<Authent
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedDeveloperRepository repository;
+	private AuthenticatedDeveloperRepository	repository;
+
+	@Autowired
+	private SpamRepository						spamRepository;
 
 	// AbstractService<Authenticated, Provider> ---------------------------
 
@@ -72,15 +75,15 @@ public class AuthenticatedDeveloperCreateService extends AbstractService<Authent
 	public void validate(final Developer object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("degree"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("degree", String.class)), "degree", "authenticated.developer.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("degree", String.class)), "degree", "authenticated.developer.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("specialisation"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("specialisation", String.class)), "specialisation", "authenticated.developer.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("specialisation", String.class)), "specialisation", "authenticated.developer.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("skills"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("skills", String.class)), "skills", "authenticated.developer.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("skills", String.class)), "skills", "authenticated.developer.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("email"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("email", String.class)), "email", "authenticated.developer.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("email", String.class)), "email", "authenticated.developer.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "authenticated.developer.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "authenticated.developer.form.error.spam");
 	}
 
 	@Override

@@ -21,12 +21,12 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.codeAudit.AuditType;
 import acme.entities.codeAudit.CodeAudit;
 import acme.entities.codeAudit.Mark;
-import acme.entities.codeAudit.Type;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
@@ -34,7 +34,10 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorCodeAuditRepository repository;
+	private AuditorCodeAuditRepository	repository;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -74,7 +77,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("correctiveActions"))
-			super.state(!SpamDetector.checkTextValue(object.getCorrectiveActions()), //
+			super.state(!this.spamRepository.checkTextValue(object.getCorrectiveActions()), //
 				"correctiveActions", "auditor.code-audit.form.error.spam");
 
 	}
@@ -100,7 +103,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		projects = this.repository.findAllPublishedProjects();
 
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
-		choicesType = SelectChoices.from(Type.class, object.getType());
+		choicesType = SelectChoices.from(AuditType.class, object.getType());
 
 		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
 			.stream() //

@@ -20,7 +20,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.claim.Claim;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AnyClaimCreateService extends AbstractService<Any, Claim> {
@@ -28,7 +28,10 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyClaimRepository repository;
+	private AnyClaimRepository	repository;
+
+	@Autowired
+	private SpamRepository		spamRepository;
 
 	// AbstractService interface  ---------------------------------------------------------	
 
@@ -69,17 +72,17 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 		if (!super.getBuffer().getErrors().hasErrors("confirmation"))
 			super.state(super.getRequest().getData("confirmation", boolean.class), "confirmation", "any.claim.form.error.not-confirmed");
 		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "any.claim.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "any.claim.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("heading"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("heading", String.class)), "heading", "any.claim.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("heading", String.class)), "heading", "any.claim.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("description"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("description", String.class)), "description", "any.claim.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("description", String.class)), "description", "any.claim.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("department"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("department", String.class)), "department", "any.claim.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("department", String.class)), "department", "any.claim.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("email"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("email", String.class)), "email", "any.claim.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("email", String.class)), "email", "any.claim.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "any.claim.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "any.claim.form.error.spam");
 
 	}
 
@@ -87,6 +90,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	public void perform(final Claim object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

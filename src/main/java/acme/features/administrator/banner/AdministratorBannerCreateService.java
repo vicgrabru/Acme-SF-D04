@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * AdministratorBannerCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -23,7 +23,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.banner.Banner;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AdministratorBannerCreateService extends AbstractService<Administrator, Banner> {
@@ -31,7 +31,10 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorBannerRepository repository;
+	private AdministratorBannerRepository	repository;
+
+	@Autowired
+	private SpamRepository					spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -75,13 +78,14 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("slogan"))
-			super.state(!SpamDetector.checkTextValue(object.getSlogan()), "slogan", "administrator.banner.form.error.spam-in-slogan");
+			super.state(!this.spamRepository.checkTextValue(object.getSlogan()), "slogan", "administrator.banner.form.error.spam-in-slogan");
 	}
 
 	@Override
 	public void perform(final Banner object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

@@ -1,5 +1,5 @@
 /*
- * Dashboard.java
+ * AuditorDashboard.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -30,8 +30,8 @@ public class AuditorDashboard extends AbstractForm {
 	private Integer				totalNumberOfDynamicCodeAudits;
 
 	private Double				avgAuditRecordsPerCodeAudit;
-	private Double				minAuditRecordsPerCodeAudit;
-	private Double				maxAuditRecordsPerCodeAudit;
+	private Integer				minAuditRecordsPerCodeAudit;
+	private Integer				maxAuditRecordsPerCodeAudit;
 	private Double				stdAuditRecordsPerCodeAudit;
 
 	private Double				avgAuditRecordPeriodLength;

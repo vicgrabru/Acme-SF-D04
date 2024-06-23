@@ -1,3 +1,14 @@
+/*
+ * SponsorshipInvoicePublishService.java
+ *
+ * Copyright (C) 2012-2024 Rafael Corchuelo.
+ *
+ * In keeping with the traditional purpose of furthering education and research, it is
+ * the policy of the copyright owner to permit non-commercial use and redistribution of
+ * this software. It has been tested carefully, but it is not guaranteed for any particular
+ * purposes. The copyright owner does not offer any warranties or representations, nor do
+ * they accept any liabilities with respect to them.
+ */
 
 package acme.features.sponsor.invoice;
 
@@ -85,9 +96,12 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 		dataset.put("masterId", object.getSponsorship().getId());
+		dataset.put("sponsorship", object.getSponsorship().getCode());
 
-		Money eb = this.exchangeRepo.exchangeMoney(object.getQuantity());
-		dataset.put("exchangedQuantity", eb);
+		dataset.put("totalAmount", object.totalAmount());
+		Money eb = this.exchangeRepo.exchangeMoney(object.totalAmount());
+		dataset.put("exchangedTotalAmount", eb);
+		dataset.put("readOnlyCode", true);
 
 		super.getResponse().addData(dataset);
 	}

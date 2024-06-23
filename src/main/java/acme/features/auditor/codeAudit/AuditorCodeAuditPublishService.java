@@ -25,7 +25,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.codeAudit.AuditRecord;
 import acme.entities.codeAudit.CodeAudit;
 import acme.entities.codeAudit.Mark;
-import acme.entities.codeAudit.Type;
+import acme.entities.codeAudit.AuditType;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 
@@ -129,7 +129,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		projects = this.repository.findAllPublishedProjects();
 
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
-		choicesType = SelectChoices.from(Type.class, object.getType());
+		choicesType = SelectChoices.from(AuditType.class, object.getType());
 
 		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
 			.stream().findFirst().orElse(Mark.None);

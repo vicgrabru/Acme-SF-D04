@@ -1,5 +1,5 @@
 /*
- * AdministratorDashboardRepository.java
+ * ManagerManagerDashboardRepository.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -30,16 +30,16 @@ public interface ManagerManagerDashboardRepository extends AbstractRepository {
 	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false")
 	Integer numberOfUserStoriesByManagerId(int id);
 
-	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.Priority.MUST")
+	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.UserStoryPriority.MUST")
 	Long totalNumberOfUserStoriesWithMustPriorityByManagerId(int id);
 
-	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.Priority.SHOULD")
+	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.UserStoryPriority.SHOULD")
 	Long totalNumberOfUserStoriesWithShouldPriorityByManagerId(int id);
 
-	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.Priority.COULD")
+	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.UserStoryPriority.COULD")
 	Long totalNumberOfUserStoriesWithCouldPriorityByManagerId(int id);
 
-	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.Priority.WONT")
+	@Query("select count(us) from UserStory us where us.manager.id = :id and us.draftMode = false and us.priority = acme.entities.project.UserStoryPriority.WONT")
 	Long totalNumberOfUserStoriesWithWontPriorityByManagerId(int id);
 
 	@Query("select avg(us.estimatedCost) from UserStory us where us.manager.id = :id and us.draftMode = false")

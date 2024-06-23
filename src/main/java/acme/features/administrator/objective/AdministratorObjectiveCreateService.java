@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * AdministratorObjectiveCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -23,8 +23,8 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.objective.Objective;
-import acme.entities.objective.Priority;
-import spamDetector.SpamDetector;
+import acme.entities.objective.ObjectivePriority;
+import acme.utils.SpamRepository;
 
 @Service
 public class AdministratorObjectiveCreateService extends AbstractService<Administrator, Objective> {
@@ -32,7 +32,10 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorObjectiveRepository repository;
+	private AdministratorObjectiveRepository	repository;
+
+	@Autowired
+	private SpamRepository						spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -66,13 +69,13 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void validate(final Objective object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("instantiationMoment", String.class)), "instantiationMoment", "administrator.objective.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("instantiationMoment", String.class)), "instantiationMoment", "administrator.objective.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("title"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("title", String.class)), "title", "administrator.objective.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("title", String.class)), "title", "administrator.objective.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("description"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("description", String.class)), "description", "administrator.objective.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("description", String.class)), "description", "administrator.objective.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "administrator.objective.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "administrator.objective.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("confirm"))
 			super.state(super.getRequest().getData("confirm", boolean.class), "confirm", "administrator.objective.form.notConfirmed");
 		if (!super.getBuffer().getErrors().hasErrors("startDateDuration"))
@@ -85,6 +88,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void perform(final Objective object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
@@ -96,7 +100,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 
 		dataset = super.unbind(object, "instantiationMoment", "title", "description", "priority", "isCritical", "startDateDuration", "endDateDuration", "link");
 		final SelectChoices choices;
-		choices = SelectChoices.from(Priority.class, object.getPriority());
+		choices = SelectChoices.from(ObjectivePriority.class, object.getPriority());
 		dataset.put("priority", choices.getSelected().getKey());
 		dataset.put("priorities", choices);
 		if (object.isCritical())

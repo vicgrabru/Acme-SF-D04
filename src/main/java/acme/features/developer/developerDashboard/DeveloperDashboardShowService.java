@@ -1,5 +1,5 @@
 /*
- * AdministratorDashboardShowService.java
+ * DeveloperDashboardShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -52,7 +52,7 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		Integer numberOfTrainingSessionWithLink = this.repository.numberOfTrainingSessionWithLink(super.getRequest().getPrincipal().getActiveRoleId());
 		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()));
 		for (TrainingModule tm : trainingModules) {
-			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
+			long seconds = tm.getTotalTime();
 			if (seconds < minTrainingModuleTime)
 				minTrainingModuleTime = seconds;
 			if (seconds > maxTrainingModuleTime)
@@ -62,7 +62,7 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		avgTrainingModuleTime = avgTrainingModuleTime / trainingModules.size();
 		double devSum = 0.;
 		for (TrainingModule tm : trainingModules) {
-			long seconds = (tm.getEndTotalTime().getTime() - tm.getStartTotalTime().getTime()) / 1000;
+			long seconds = tm.getTotalTime();
 			devSum += (seconds - avgTrainingModuleTime) * (seconds - avgTrainingModuleTime);
 		}
 		devTrainingModuleTime = Math.sqrt(devSum / trainingModules.size());

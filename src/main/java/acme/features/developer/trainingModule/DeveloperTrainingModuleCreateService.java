@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * DeveloperTrainingModuleCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -22,7 +22,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.training.Difficulty;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
@@ -30,7 +30,10 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingModuleRepository repository;
+	private DeveloperTrainingModuleRepository	repository;
+
+	@Autowired
+	private SpamRepository						spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -55,7 +58,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link", "project");
+		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "totalTime", "link", "project");
 	}
 
 	@Override
@@ -66,17 +69,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(!duplicatedCode, "code", "developer.training-module.form.error.duplicatedCode");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("details"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("details", String.class)), "details", "developer.training-module.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("details", String.class)), "details", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("difficulty"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("startTotalTime"))
-			super.state(object.getStartTotalTime().after(object.getCreationMoment()), "startTotalTime", "developer.training-module.form.error.startTotalTime.not-after-creationMoment");
-		if (!super.getBuffer().getErrors().hasErrors("endTotalTime"))
-			super.state(object.getEndTotalTime().after(object.getStartTotalTime()), "endTotalTime", "developer.training-module.form.error.endTotalTime.not-after-startTotalTime");
+			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
 	}
 
 	@Override
@@ -92,7 +91,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "startTotalTime", "endTotalTime", "link");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "totalTime", "link");
 		final SelectChoices difficultyChoices;
 		final SelectChoices projectChoices;
 		difficultyChoices = SelectChoices.from(Difficulty.class, object.getDifficulty());

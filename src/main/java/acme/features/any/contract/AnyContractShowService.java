@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationShowService.java
+ * AnyContractShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -69,7 +69,7 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 		dataset.put("project", object.getProject().getTitle());
 
 		dataset.put("projectId", object.getProject().getId());
-		dataset.put("contractId", object.getId());
+		dataset.put("masterId", object.getId());
 
 		Money eb = this.exchangeRepo.exchangeMoney(object.getBudget());
 		dataset.put("exchangedBudget", eb);

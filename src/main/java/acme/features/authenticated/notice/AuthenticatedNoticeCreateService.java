@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * AuthenticatedNoticeCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -24,7 +24,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.notice.Notice;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AuthenticatedNoticeCreateService extends AbstractService<Authenticated, Notice> {
@@ -32,7 +32,10 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedNoticeRepository repository;
+	private AuthenticatedNoticeRepository	repository;
+
+	@Autowired
+	private SpamRepository					spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -78,13 +81,13 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 			super.state(confirmation, "confirmation", "authenticated.notice.form.error.confirmation-needed");
 
 		if (!super.getBuffer().getErrors().hasErrors("title"))
-			super.state(!SpamDetector.checkTextValue(object.getTitle()), "title", "authenticated.notice.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getTitle()), "title", "authenticated.notice.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("message"))
-			super.state(!SpamDetector.checkTextValue(object.getMessage()), "message", "authenticated.notice.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getMessage()), "message", "authenticated.notice.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("email"))
-			super.state(!SpamDetector.checkTextValue(object.getEmail()), "email", "authenticated.notice.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getEmail()), "email", "authenticated.notice.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!SpamDetector.checkTextValue(object.getLink()), "link", "authenticated.notice.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getLink()), "link", "authenticated.notice.form.error.spam");
 
 	}
 
@@ -92,6 +95,7 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 	public void perform(final Notice object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

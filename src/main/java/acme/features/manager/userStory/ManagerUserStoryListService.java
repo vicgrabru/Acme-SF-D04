@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationListService.java
+ * ManagerUserStoryListService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *

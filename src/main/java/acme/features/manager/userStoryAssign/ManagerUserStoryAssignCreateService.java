@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ManagerUserStoryAssignCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -109,7 +109,8 @@ public class ManagerUserStoryAssignCreateService extends AbstractService<Manager
 	public void unbind(final UserStoryAssign object) {
 		assert object != null;
 
-		int managerId, userStoryId;
+		int managerId;
+		int userStoryId;
 		Collection<Project> draftModeProjectsNotAssigned;
 		SelectChoices choices;
 		Dataset dataset;

@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationShowService.java
+ * AdministratorSystemConfigurationShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -50,7 +50,7 @@ public class AdministratorSystemConfigurationShowService extends AbstractService
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "systemCurrency", "acceptedCurrencies");
+		dataset = super.unbind(object, "systemCurrency", "acceptedCurrencies", "spamTerms", "spamThreshold");
 
 		super.getResponse().addData(dataset);
 	}

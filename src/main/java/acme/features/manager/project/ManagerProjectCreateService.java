@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ManagerProjectCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -19,7 +19,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ManagerProjectCreateService extends AbstractService<Manager, Project> {
@@ -27,7 +27,10 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository	repository;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -77,16 +80,17 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("title"))
-			super.state(!SpamDetector.checkTextValue(object.getTitle()), "title", "manager.project.form.error.spam-in-title");
+			super.state(!this.spamRepository.checkTextValue(object.getTitle()), "title", "manager.project.form.error.spam-in-title");
 
 		if (!super.getBuffer().getErrors().hasErrors("abstractField"))
-			super.state(!SpamDetector.checkTextValue(object.getAbstractField()), "abstractField", "manager.project.form.error.spam-in-abstract-field");
+			super.state(!this.spamRepository.checkTextValue(object.getAbstractField()), "abstractField", "manager.project.form.error.spam-in-abstract-field");
 
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+		object.setId(0);
 
 		this.repository.save(object);
 	}

@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ManagerProjectDeleteService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -17,10 +17,13 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
 import acme.entities.project.UserStoryAssign;
 import acme.roles.Manager;
+import acme.utils.MoneyExchangeRepository;
 
 @Service
 public class ManagerProjectDeleteService extends AbstractService<Manager, Project> {
@@ -28,10 +31,10 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository	repository;
 
-	//	@Autowired
-	//	private MoneyExchangeRepository		exchangeRepository;
+	@Autowired
+	private MoneyExchangeRepository		exchangeRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -85,23 +88,28 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		this.repository.delete(object);
 	}
 
-	//	@Override
-	//	public void unbind(final Project object) {
-	//		assert object != null;
-	//
-	//		Money exchangedCost;
-	//		Dataset dataset;
-	//
-	//		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
-	//		dataset.put("masterId", object.getId());
-	//		dataset.put("readOnlyCode", true);
-	//
-	//		dataset.put("showExchangedCost", !this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency()));
-	//
-	//		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
-	//		dataset.put("exchangedCost", exchangedCost);
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
+	@Override
+	public void unbind(final Project object) {
+		assert object != null;
+
+		Money exchangedCost;
+		Dataset dataset;
+		boolean isAcceptedCurrency;
+		boolean isSystemCurrency;
+
+		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
+		dataset.put("masterId", object.getId());
+		dataset.put("readOnlyCode", true);
+
+		isSystemCurrency = this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency());
+		isAcceptedCurrency = this.repository.findAcceptedCurrenciesInSystem().contains(object.getCost().getCurrency());
+
+		dataset.put("showExchangedCost", isAcceptedCurrency && !isSystemCurrency);
+
+		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
+		dataset.put("exchangedCost", exchangedCost);
+
+		super.getResponse().addData(dataset);
+	}
 
 }

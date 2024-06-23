@@ -46,8 +46,8 @@ public class AuditorAuditorDashboardShowService extends AbstractService<Auditor,
 		Integer totalNumberOfDynamicCodeAudits;
 
 		Double avgAuditRecordsPerCodeAudit;
-		Double minAuditRecordsPerCodeAudit;
-		Double maxAuditRecordsPerCodeAudit;
+		Integer minAuditRecordsPerCodeAudit;
+		Integer maxAuditRecordsPerCodeAudit;
 		Double stdAuditRecordsPerCodeAudit;
 
 		Double avgAuditRecordPeriodLength;

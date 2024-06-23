@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ClientContractUpdateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -12,6 +12,7 @@
 
 package acme.features.client.contract;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import acme.entities.contract.Contract;
 import acme.entities.project.Project;
 import acme.roles.Client;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ClientContractUpdateService extends AbstractService<Client, Contract> {
@@ -37,6 +38,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	@Autowired
 	private MoneyExchangeRepository		exchangeRepo;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -75,22 +79,24 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	public void validate(final Contract object) {
 		assert object != null;
 		String currencies;
+		super.getBuffer().addGlobal("showExchange", false);
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			currencies = this.repository.findAcceptedCurrencies();
 			super.state(currencies.contains(object.getBudget().getCurrency()), "budget", "client.contract.form.error.bugdet.invalid-currency");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() >= 0., "budget", "client.contract.form.error.bugdet.negative-budget");
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
+		}
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			super.state(this.exchangeRepo.exchangeMoney(object.getBudget()).getAmount() <= this.exchangeRepo.exchangeMoney(object.getProject().getCost()).getAmount(), "budget", "client.contract.form.error.budget.budget-over-project-cost");
+			super.getBuffer().addGlobal("showExchange", true);
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("goals"))
-			super.state(!SpamDetector.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("providerName"))
-			super.state(!SpamDetector.checkTextValue(object.getProviderName()), "providerName", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getProviderName()), "providerName", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("customerName"))
-			super.state(!SpamDetector.checkTextValue(object.getCustomerName()), "customerName", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getCustomerName()), "customerName", "client.contract.form.error.spam");
 	}
 
 	@Override
@@ -109,7 +115,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		Collection<Project> projects;
 
-		projects = this.repository.findPublishedProjects();
+		projects = new ArrayList<>();
+		projects.add(object.getProject());
 
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
@@ -118,11 +125,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		dataset.put("projects", choicesProject);
 
 		dataset.put("projectId", object.getProject().getId());
-		dataset.put("contractId", object.getId());
 		dataset.put("readOnlyCode", true);
 
-		if (!super.getBuffer().getErrors().hasErrors("budget") || super.getBuffer().getErrors().getFirstError("budget").equals("The budget amount can't be higher than the project cost")
-			|| super.getBuffer().getErrors().getFirstError("budget").equals("La cantidad de presupuesto no puede ser superior al coste del proyecto")) {
+		if (!super.getBuffer().getErrors().hasErrors("budget") || (boolean) super.getBuffer().getGlobal("showExchange")) {
 			Money eb = this.exchangeRepo.exchangeMoney(object.getBudget());
 			dataset.put("exchangedBudget", eb);
 		}

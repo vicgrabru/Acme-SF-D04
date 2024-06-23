@@ -11,6 +11,7 @@
 manager.manager-dashboard.form.title = Manager dashboard
 
 manager.manager-dashboard.form.title.general-indicators = General indicators
+manager.manager-dashboard.table-description = A table with various statistics related to the manager
 manager.manager-dashboard.form.title.user-story-priorities = Number of User Stories for each Priority
 
 manager.manager-dashboard.form.label.avg-cost-user-stories =  Average estimated cost of User Stories

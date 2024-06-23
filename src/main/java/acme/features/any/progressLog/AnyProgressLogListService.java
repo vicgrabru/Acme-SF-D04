@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * AnyProgressLogListService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -40,7 +40,7 @@ public class AnyProgressLogListService extends AbstractService<Any, ProgressLog>
 		int contractId;
 		Contract contract;
 
-		contractId = super.getRequest().getData("contractId", int.class);
+		contractId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findContractById(contractId);
 		status = contract != null && !contract.isDraftMode();
 
@@ -52,7 +52,7 @@ public class AnyProgressLogListService extends AbstractService<Any, ProgressLog>
 		Collection<ProgressLog> objects;
 		int contractId;
 
-		contractId = super.getRequest().getData("contractId", int.class);
+		contractId = super.getRequest().getData("masterId", int.class);
 
 		objects = this.repository.findPublishedProgressLogsByContractId(contractId);
 

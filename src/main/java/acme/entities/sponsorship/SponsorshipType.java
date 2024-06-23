@@ -1,5 +1,5 @@
 /*
- * ApplicationStatus.java
+ * Type.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -10,8 +10,9 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.project;
+package acme.entities.sponsorship;
 
-public enum Priority {
-	MUST, SHOULD, COULD, WONT
+public enum SponsorshipType {
+
+	FINANCIAL, IN_KIND;
 }

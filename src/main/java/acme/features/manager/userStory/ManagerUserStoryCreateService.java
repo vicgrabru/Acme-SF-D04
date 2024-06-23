@@ -1,5 +1,5 @@
 /*
- * EmployerApplicationUpdateService.java
+ * ManagerUserStoryCreateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -18,12 +18,12 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.project.Priority;
 import acme.entities.project.Project;
 import acme.entities.project.UserStory;
 import acme.entities.project.UserStoryAssign;
+import acme.entities.project.UserStoryPriority;
 import acme.roles.Manager;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
@@ -31,7 +31,10 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerUserStoryRepository	repository;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -77,13 +80,13 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("title"))
-			super.state(!SpamDetector.checkTextValue(object.getTitle()), "title", "manager.user-story.form.error.spam-in-title");
+			super.state(!this.spamRepository.checkTextValue(object.getTitle()), "title", "manager.user-story.form.error.spam-in-title");
 
 		if (!super.getBuffer().getErrors().hasErrors("description"))
-			super.state(!SpamDetector.checkTextValue(object.getDescription()), "description", "manager.user-story.form.error.spam-in-description");
+			super.state(!this.spamRepository.checkTextValue(object.getDescription()), "description", "manager.user-story.form.error.spam-in-description");
 
 		if (!super.getBuffer().getErrors().hasErrors("acceptanceCriteria"))
-			super.state(!SpamDetector.checkTextValue(object.getAcceptanceCriteria()), "acceptanceCriteria", "manager.user-story.form.error.spam-in-acceptance-criteria");
+			super.state(!this.spamRepository.checkTextValue(object.getAcceptanceCriteria()), "acceptanceCriteria", "manager.user-story.form.error.spam-in-acceptance-criteria");
 	}
 
 	@Override
@@ -93,6 +96,8 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		int projectId;
 		Project project;
 		UserStoryAssign relationship;
+
+		object.setId(0);
 
 		this.repository.save(object);
 
@@ -116,7 +121,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		SelectChoices choices;
 		Dataset dataset;
 
-		choices = SelectChoices.from(Priority.class, object.getPriority());
+		choices = SelectChoices.from(UserStoryPriority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "optionalLink", "draftMode");
 		projectId = super.getRequest().getData("masterId", int.class);

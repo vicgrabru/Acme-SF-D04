@@ -18,7 +18,7 @@ auditor.auditor-dashboard.form-label.min-audit-records-per-code-audit = Mínimo 
 auditor.auditor-dashboard.form-label.max-audit-records-per-code-audit = Máximo número de registros de audiotría por auditoría de código
 auditor.auditor-dashboard.form-label.std-audit-records-per-code-audit = Desviación típica de registros de audiotría por auditoría de código
 
-auditor.auditor-dashboard.form-label.avg-audit-record-period-length = Longitud promedio de registro de auditoría por auditoría de código (en segundos)
-auditor.auditor-dashboard.form-label.min-audit-record-period-length = Longitud mínima de registro de auditoría por auditoría de código (en segundos)
-auditor.auditor-dashboard.form-label.max-audit-record-period-length = Longitud máxima de registro de auditoría por auditoría de código (en segundos)
-auditor.auditor-dashboard.form-label.std-audit-record-period-length = Desviación típica de longitud de registro de auditoría por auditoría de código (en segundos)
+auditor.auditor-dashboard.form-label.avg-audit-record-period-length = Longitud promedio de registro de auditoría (en segundos)
+auditor.auditor-dashboard.form-label.min-audit-record-period-length = Longitud mínima de registro de auditoría (en segundos)
+auditor.auditor-dashboard.form-label.max-audit-record-period-length = Longitud máxima de registro de auditoría (en segundos)
+auditor.auditor-dashboard.form-label.std-audit-record-period-length = Desviación típica de longitud de registro de auditoría (en segundos)
