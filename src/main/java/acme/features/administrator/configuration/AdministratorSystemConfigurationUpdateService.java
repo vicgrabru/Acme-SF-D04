@@ -48,7 +48,7 @@ public class AdministratorSystemConfigurationUpdateService extends AbstractServi
 	public void bind(final SystemConfiguration object) {
 		assert object != null;
 
-		super.bind(object, "systemCurrency", "acceptedCurrencies");
+		super.bind(object, "systemCurrency", "acceptedCurrencies", "spamTerms", "spamThreshold");
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class AdministratorSystemConfigurationUpdateService extends AbstractServi
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "systemCurrency", "acceptedCurrencies");
+		dataset = super.unbind(object, "systemCurrency", "acceptedCurrencies", "spamTerms", "spamThreshold");
 
 		super.getResponse().addData(dataset);
 	}
