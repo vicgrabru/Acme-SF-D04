@@ -42,7 +42,6 @@ public class SystemConfiguration extends AbstractEntity {
 	private String				acceptedCurrencies;
 
 	@NotBlank
-	@Pattern(regexp = "^(\"[^\"]*\"|[^\",]+)(,(\"[^\"]*\"|[^\",]+))*$", message = "{validation.systemConfiguration.spam-terms}")
 	private String				spamTerms;
 
 	@Range(min = 0, max = 1)

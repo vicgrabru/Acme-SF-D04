@@ -21,7 +21,7 @@ import acme.client.services.AbstractService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ManagerProjectUpdateService extends AbstractService<Manager, Project> {
@@ -33,6 +33,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Autowired
 	private MoneyExchangeRepository		exchangeRepository;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -83,10 +86,10 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("title"))
-			super.state(!SpamDetector.checkTextValue(object.getTitle()), "title", "manager.project.form.error.spam-in-title");
+			super.state(!this.spamRepository.checkTextValue(object.getTitle()), "title", "manager.project.form.error.spam-in-title");
 
 		if (!super.getBuffer().getErrors().hasErrors("abstractField"))
-			super.state(!SpamDetector.checkTextValue(object.getAbstractField()), "abstractField", "manager.project.form.error.spam-in-abstract-field");
+			super.state(!this.spamRepository.checkTextValue(object.getAbstractField()), "abstractField", "manager.project.form.error.spam-in-abstract-field");
 	}
 
 	@Override

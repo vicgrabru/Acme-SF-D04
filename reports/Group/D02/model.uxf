@@ -8,15 +8,16 @@
       <x>270</x>
       <y>594</y>
       <w>450</w>
-      <h>81</h>
+      <h>99</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 SystemConfiguration
 --
-+systemCurrency: String {NotBlank, Pattern(regexp=[A-Z]{3})}
-+acceptedCurrencies: String {NotBlank, Pattern(regexp=[A-Z]{3}(,[A-Z]{3})*)}
-</panel_attributes>
++ systemCurrency: String {NotBlank, Pattern(regexp=[A-Z]{3})}
++ acceptedCurrencies: String {NotBlank, Pattern(regexp=[A-Z]{3}(,[A-Z]{3})*)}
++ spamTerms: String {NotBlank}
++ spamThreshold: double {Range(min = 0, max = 1)}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -27,18 +28,18 @@ SystemConfiguration
       <w>450</w>
       <h>162</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Objective
 --
-+instantiationMoment: Date {Past, TemporalType(TIMESTAMP), NotNull}
-+title: String {NotBlank, Length(max=75)}
-+description: String {NotBlank, Length(max=100)}
-+priority: ObjectivePriority {NotNull}
-+isCritical: boolean
-+startDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
-+endDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
-+link: String {URL, Length(max=255)}</panel_attributes>
++ instantiationMoment: Date {Past, TemporalType(TIMESTAMP), NotNull}
++ title: String {NotBlank, Length(max=75)}
++ description: String {NotBlank, Length(max=100)}
++ priority: ObjectivePriority {NotNull}
++ isCritical: boolean
++ startDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
++ endDateDuration: Date {NotNull, TemporalType(TIMESTAMP)}
++ link: String {URL, Length(max=255)}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -49,16 +50,16 @@ Objective
       <w>432</w>
       <h>135</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Banner
 --
-+instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
-+periodStart: Date {NotNull, TemporalType(TIMESTAMP)}
-+periodEnd: Date {NotNull, TemporalType(TIMESTAMP)}
-+pictureLink: String {URL, Length(max=255)}
-+slogan: String {NotBlank, Length(max=75)}
-+webDocumentlink: String {URL, Length(max=255)}</panel_attributes>
++ instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++ periodStart: Date {NotNull, TemporalType(TIMESTAMP)}
++ periodEnd: Date {NotNull, TemporalType(TIMESTAMP)}
++ pictureLink: String {URL, Length(max=255)}
++ slogan: String {NotBlank, Length(max=75)}
++ webDocumentlink: String {URL, Length(max=255)}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -69,16 +70,16 @@ Banner
       <w>423</w>
       <h>135</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Notice
 --
-+instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
-+title: String {NotBlank, Length(max=75)}
-+author: String {NotBlank, Length(max=75)}
-+message: String {NotBlank, Length(max=100)}
-+email: String {Email, Length(max=255)}
-+link: String {URL, Length(max=255)}</panel_attributes>
++ instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++ title: String {NotBlank, Length(max=75)}
++ author: String {NotBlank, Length(max=75)}
++ message: String {NotBlank, Length(max=100)}
++ email: String {Email, Length(max=255)}
++ link: String {URL, Length(max=255)}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -89,17 +90,17 @@ Notice
       <w>432</w>
       <h>144</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Claim
 --
-+code: String {Unique, NotBlank, Pattern(regexp = C-[0-9]{4})}
-+instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
-+heading: String {NotBlank, Length(max=75)}
-+description: String {NotBlank, Length(max=100)}
-+department: String {NotBlank, Length(max=100)}
-+email: String {Email, Length(max=255)}
-+link: String {URL, Length(max=255)}</panel_attributes>
++ code: String {Unique, NotBlank, Pattern(regexp = C-[0-9]{4})}
++ instantiationMoment: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++ heading: String {NotBlank, Length(max=75)}
++ description: String {NotBlank, Length(max=100)}
++ department: String {NotBlank, Length(max=100)}
++ email: String {Email, Length(max=255)}
++ link: String {URL, Length(max=255)}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -110,17 +111,17 @@ Claim
       <w>468</w>
       <h>144</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Risk
 --
-+reference: String {Unique, NotBlank, Pattern(regexp = R-[0-9]{3})}
-+identificationDate: Date {NotNull, Past, TemporalType(TIMESTAMP)}
-+impact: Double {NotNull, Positive, Max(100), Digits(integer = 3, fraction = 2)}
-+probability: Double {NotNull, Min(0), Max(100), Digits(integer = 3, fraction = 2)}
-+description: String {NotBlank, Length(max=100)}
-+link: String {URL, Length(max=255)}
-+/ value: Double</panel_attributes>
++ reference: String {Unique, NotBlank, Pattern(regexp = R-[0-9]{3})}
++ identificationDate: Date {NotNull, Past, TemporalType(TIMESTAMP)}
++ impact: Double {NotNull, Positive, Max(100), Digits(integer = 3, fraction = 2)}
++ probability: Double {NotNull, Min(0), Max(100), Digits(integer = 3, fraction = 2)}
++ description: String {NotBlank, Length(max=100)}
++ link: String {URL, Length(max=255)}
++ / value: Double
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -131,14 +132,14 @@ Risk
       <w>369</w>
       <h>99</h>
     </coordinates>
-    <panel_attributes>bg=green
-&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
 ExchangeRate
 --
-+source: String {NotBlank, Pattern(regexp=[A-Z]{3})}
-+target: String {NotBlank, Pattern(regexp=[A-Z]{3})}
-+rate: double {Positive}
-+instantiationMoment: LocalDate {NotNull}</panel_attributes>
++ source: String {NotBlank, Pattern(regexp=[A-Z]{3})}
++ target: String {NotBlank, Pattern(regexp=[A-Z]{3})}
++ rate: double {Positive}
++ instantiationMoment: LocalDate {NotNull}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -149,9 +150,9 @@ ExchangeRate
       <w>171</w>
       <h>54</h>
     </coordinates>
-    <panel_attributes>bg=blue
-startDateDuration must be
-before endDateDuration</panel_attributes>
+    <panel_attributes>startDateDuration must be
+before endDateDuration
+bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -162,10 +163,10 @@ before endDateDuration</panel_attributes>
       <w>171</w>
       <h>54</h>
     </coordinates>
-    <panel_attributes>bg=blue
-periodStart must be
+    <panel_attributes>periodStart must be
 at least one week before
 periodEnd
+bg=blue
 
 </panel_attributes>
     <additional_attributes/>

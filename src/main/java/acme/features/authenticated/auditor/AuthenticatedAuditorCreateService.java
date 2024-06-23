@@ -22,7 +22,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Auditor;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AuthenticatedAuditorCreateService extends AbstractService<Authenticated, Auditor> {
@@ -30,7 +30,10 @@ public class AuthenticatedAuditorCreateService extends AbstractService<Authentic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedAuditorRepository repository;
+	private AuthenticatedAuditorRepository	repository;
+
+	@Autowired
+	private SpamRepository					spamRepository;
 
 
 	@Override
@@ -71,15 +74,15 @@ public class AuthenticatedAuditorCreateService extends AbstractService<Authentic
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("firm"))
-			super.state(!SpamDetector.checkTextValue(object.getFirm()), "firm", //
+			super.state(!this.spamRepository.checkTextValue(object.getFirm()), "firm", //
 				"authenticated.auditor.form.error.spam-in-firm");
 
 		if (!super.getBuffer().getErrors().hasErrors("professionalId"))
-			super.state(!SpamDetector.checkTextValue(object.getProfessionalId()), "professionalId", //
+			super.state(!this.spamRepository.checkTextValue(object.getProfessionalId()), "professionalId", //
 				"authenticated.auditor.form.error.spam-in-professional-id");
 
 		if (!super.getBuffer().getErrors().hasErrors("certifications"))
-			super.state(!SpamDetector.checkTextValue(object.getCertifications()), "certifications", //
+			super.state(!this.spamRepository.checkTextValue(object.getCertifications()), "certifications", //
 				"authenticated.auditor.form.error.spam-in-certifications");
 	}
 

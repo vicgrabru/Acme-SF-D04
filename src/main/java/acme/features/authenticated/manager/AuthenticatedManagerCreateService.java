@@ -22,7 +22,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Manager;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AuthenticatedManagerCreateService extends AbstractService<Authenticated, Manager> {
@@ -30,7 +30,10 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedManagerRepository repository;
+	private AuthenticatedManagerRepository	repository;
+
+	@Autowired
+	private SpamRepository					spamRepository;
 
 	// AbstractService<Authenticated, Manager> ---------------------------
 
@@ -73,13 +76,13 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("degree"))
-			super.state(!SpamDetector.checkTextValue(object.getDegree()), "degree", "authenticated.manager.form.error.spam-in-degree");
+			super.state(!this.spamRepository.checkTextValue(object.getDegree()), "degree", "authenticated.manager.form.error.spam-in-degree");
 
 		if (!super.getBuffer().getErrors().hasErrors("overview"))
-			super.state(!SpamDetector.checkTextValue(object.getOverview()), "overview", "authenticated.manager.form.error.spam-in-overview");
+			super.state(!this.spamRepository.checkTextValue(object.getOverview()), "overview", "authenticated.manager.form.error.spam-in-overview");
 
 		if (!super.getBuffer().getErrors().hasErrors("certifications"))
-			super.state(!SpamDetector.checkTextValue(object.getCertifications()), "certifications", "authenticated.manager.form.error.spam-in-certifications");
+			super.state(!this.spamRepository.checkTextValue(object.getCertifications()), "certifications", "authenticated.manager.form.error.spam-in-certifications");
 	}
 
 	@Override

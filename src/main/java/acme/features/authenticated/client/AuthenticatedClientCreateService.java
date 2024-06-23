@@ -24,7 +24,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.roles.Client;
 import acme.roles.ClientType;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AuthenticatedClientCreateService extends AbstractService<Authenticated, Client> {
@@ -32,7 +32,10 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedClientRepository repository;
+	private AuthenticatedClientRepository	repository;
+
+	@Autowired
+	private SpamRepository					spamRepository;
 
 	// AbstractService<Authenticated, Manager> ---------------------------
 
@@ -81,7 +84,7 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("companyName"))
-			super.state(!SpamDetector.checkTextValue(object.getCompanyName()), "companyName", "authenticated.client.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getCompanyName()), "companyName", "authenticated.client.form.error.spam");
 
 	}
 

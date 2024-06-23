@@ -26,7 +26,7 @@ import acme.entities.contract.Contract;
 import acme.entities.project.Project;
 import acme.roles.Client;
 import acme.utils.MoneyExchangeRepository;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ClientContractUpdateService extends AbstractService<Client, Contract> {
@@ -38,6 +38,9 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 	@Autowired
 	private MoneyExchangeRepository		exchangeRepo;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -89,11 +92,11 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("goals"))
-			super.state(!SpamDetector.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getGoals()), "goals", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("providerName"))
-			super.state(!SpamDetector.checkTextValue(object.getProviderName()), "providerName", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getProviderName()), "providerName", "client.contract.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("customerName"))
-			super.state(!SpamDetector.checkTextValue(object.getCustomerName()), "customerName", "client.contract.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getCustomerName()), "customerName", "client.contract.form.error.spam");
 	}
 
 	@Override
