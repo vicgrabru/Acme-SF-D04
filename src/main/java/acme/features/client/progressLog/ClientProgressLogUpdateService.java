@@ -19,7 +19,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contract.ProgressLog;
 import acme.roles.Client;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
@@ -27,7 +27,10 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientProgressLogRepository repository;
+	private ClientProgressLogRepository	repository;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -68,9 +71,9 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("comment"))
-			super.state(!SpamDetector.checkTextValue(object.getComment()), "comment", "client.progress-log.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getComment()), "comment", "client.progress-log.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("responsiblePerson"))
-			super.state(!SpamDetector.checkTextValue(object.getResponsiblePerson()), "responsiblePerson", "client.progress-log.form.error.spam");
+			super.state(!this.spamRepository.checkTextValue(object.getResponsiblePerson()), "responsiblePerson", "client.progress-log.form.error.spam");
 	}
 
 	@Override

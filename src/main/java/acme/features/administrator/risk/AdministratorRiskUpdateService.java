@@ -19,7 +19,7 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.risk.Risk;
-import spamDetector.SpamDetector;
+import acme.utils.SpamRepository;
 
 @Service
 public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
@@ -27,7 +27,10 @@ public class AdministratorRiskUpdateService extends AbstractService<Administrato
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorRiskRepository repository;
+	private AdministratorRiskRepository	repository;
+
+	@Autowired
+	private SpamRepository				spamRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -68,7 +71,7 @@ public class AdministratorRiskUpdateService extends AbstractService<Administrato
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("description"))
-			super.state(!SpamDetector.checkTextValue(object.getDescription()), "description", "administrator.risk.form.error.spam-in-description");
+			super.state(!this.spamRepository.checkTextValue(object.getDescription()), "description", "administrator.risk.form.error.spam-in-description");
 	}
 
 	@Override
