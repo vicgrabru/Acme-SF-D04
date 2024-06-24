@@ -47,9 +47,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		status = project != null && //
-			project.isDraftMode() && //
-			super.getRequest().getPrincipal().hasRole(project.getManager());
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(project.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
