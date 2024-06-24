@@ -21,7 +21,7 @@
 	<acme:input-textarea code="manager.project.form.label.abstract-field" path="abstractField"/>
 	<acme:input-checkbox code="manager.project.form.label.has-fatal-errors" path="hasFatalErrors"/>
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
-	<jstl:if test="${showExchangedCost}">
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 		<acme:input-money code="manager.project.form.label.exchanged-cost" path="exchangedCost" readonly="true"/>
 	</jstl:if>
 	<acme:input-url code="manager.project.form.label.optional-link" path="optionalLink"/>

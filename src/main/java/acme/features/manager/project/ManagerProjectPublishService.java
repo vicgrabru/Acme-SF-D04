@@ -105,8 +105,6 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		dataset.put("masterId", object.getId());
 		dataset.put("readOnlyCode", true);
 
-		dataset.put("showExchangedCost", !this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency()));
-
 		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
 		dataset.put("exchangedCost", exchangedCost);
 
