@@ -42,14 +42,12 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		boolean status;
 		int userStoryId;
 		UserStory userStory;
-		Collection<UserStoryAssign> relationships;
 
 		userStoryId = super.getRequest().getData("id", int.class);
 
-		relationships = this.repository.findManyUserStoryAssignsByUserStoryId(userStoryId);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
 
-		status = userStory != null && userStory.isDraftMode() && relationships.stream().allMatch(x -> x.getProject().isDraftMode()) && super.getRequest().getPrincipal().hasRole(userStory.getManager());
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
