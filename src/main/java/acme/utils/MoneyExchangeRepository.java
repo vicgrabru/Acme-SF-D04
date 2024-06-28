@@ -96,4 +96,9 @@ public interface MoneyExchangeRepository extends AbstractRepository {
 		return result;
 	}
 
+	// Mock for testing
+	// private double getExchangeRate(final String source, final String target) {
+	//	return 1.00;
+	//}
+
 }
