@@ -108,7 +108,14 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		dataset.put("masterId", object.getId());
 		dataset.put("readOnlyCode", true);
 
-		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
+		if (!super.getBuffer().getErrors().hasErrors("cost"))
+			exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
+		else {
+			exchangedCost = new Money();
+			exchangedCost.setAmount(0.0);
+			exchangedCost.setCurrency(this.exchangeRepository.findSystemCurrency());
+		}
+
 		dataset.put("exchangedCost", exchangedCost);
 
 		super.getResponse().addData(dataset);
