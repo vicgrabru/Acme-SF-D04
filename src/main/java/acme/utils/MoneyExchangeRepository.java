@@ -85,13 +85,11 @@ public interface MoneyExchangeRepository extends AbstractRepository {
 	private double getExchangeRate(final String source, final String target) {
 		Double result;
 
-		List<String> profilesToCheck;
 		List<String> activeProfiles;
 
-		profilesToCheck = List.of("testing", "tester");
 		activeProfiles = Arrays.asList(FactoryHelper.getContext().getEnvironment().getActiveProfiles());
 
-		if (activeProfiles.containsAll(profilesToCheck))
+		if (activeProfiles.contains("testing"))
 			result = 1.0;
 		else
 			try {
