@@ -13,6 +13,8 @@
 package acme.entities.configuration;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -25,6 +27,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "spam_terms"), @Index(columnList = "spam_threshold"), @Index(columnList = "accepted_currencies"), @Index(columnList = "system_currency")
+})
 public class SystemConfiguration extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
