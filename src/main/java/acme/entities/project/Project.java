@@ -35,7 +35,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "code"), @Index(columnList = "draft_mode")
+	@Index(columnList = "code"), @Index(columnList = "draftMode")
 })
 public class Project extends AbstractEntity {
 

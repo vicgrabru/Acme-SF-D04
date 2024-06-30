@@ -28,7 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "spam_terms"), @Index(columnList = "spam_threshold"), @Index(columnList = "accepted_currencies"), @Index(columnList = "system_currency")
+	@Index(columnList = "spamTerms"), @Index(columnList = "spamThreshold"), @Index(columnList = "acceptedCurrencies"), @Index(columnList = "systemCurrency")
 })
 public class SystemConfiguration extends AbstractEntity {
 
