@@ -13,13 +13,19 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Comparator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.codeAudit.AuditRecord;
+import acme.entities.codeAudit.AuditType;
 import acme.entities.codeAudit.CodeAudit;
+import acme.entities.codeAudit.Mark;
+import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
@@ -80,6 +86,42 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 			this.repository.deleteAll(relationships);
 
 		this.repository.delete(object);
+	}
+
+	@Override
+	public void unbind(final CodeAudit object) {
+		assert object != null;
+
+		Dataset dataset;
+		SelectChoices choicesProject;
+		SelectChoices choicesType;
+
+		Collection<Project> projects;
+		Mark mark;
+
+		projects = this.repository.findAllPublishedProjects();
+
+		choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		choicesType = SelectChoices.from(AuditType.class, object.getType());
+
+		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
+			.stream() //
+			.sorted(Comparator.comparingInt(Mark::ordinal)) //
+			.findFirst() //
+			.orElse(Mark.None);
+
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "auditor", "draftMode");
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
+		dataset.put("type", choicesType.getSelected());
+		dataset.put("types", choicesType);
+		dataset.put("mark", mark);
+
+		dataset.put("projectId", object.getProject().getId());
+		dataset.put("codeAuditId", object.getId());
+		dataset.put("readOnlyCode", true);
+
+		super.getResponse().addData(dataset);
 	}
 
 }

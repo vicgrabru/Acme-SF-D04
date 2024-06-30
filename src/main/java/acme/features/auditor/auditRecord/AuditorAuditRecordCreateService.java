@@ -102,6 +102,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void perform(final AuditRecord object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
