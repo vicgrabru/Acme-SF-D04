@@ -69,7 +69,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
 
 	}
 
@@ -99,7 +99,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void perform(final Invoice object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

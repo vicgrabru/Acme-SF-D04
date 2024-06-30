@@ -19,8 +19,8 @@ invoice-17,IN-8000-8000,2022/07/29 23:00,2022/07/29 23:00,EUR 100.00,36,http://w
 invoice-18,IN-8500-8500,2000/12/31 23:58,2000/12/31 23:58,EUR 0.00,0.01,http://example.org?a=1&b=2,true,sponsorship-16
 invoice-19,IN-9000-9000,2000/12/31 23:59,2000/12/31 23:59,EUR 0.01,99.99,http://example.org?a,true,sponsorship-17
 invoice-20,IN-9500-9500,2001/01/01 00:00,2001/01/01 00:00,USD 0.00,0,http://example.org?a&b,false,sponsorship-20
-invoice-21,IN-9999-9501,2001/01/01 20:00,2001/03/01 00:00,GBP 0.00,100,http://example.org?a&b,false,sponsorship-20
-invoice-22,IN-0007-0001,2020/03/03 12:00,2020/03/06 12:00,EUR 50,21,null,true,sponsorship-34
+invoice-21,IN-0007-0016,2020/03/03 12:00,2020/03/06 12:00,USD 0,21,null,false,sponsorship-33
+invoice-22,IN-0007-0001,2020/03/03 12:00,2020/03/06 12:00,USD 0,21,null,true,sponsorship-34
 invoice-23,IN-0007-0002,2020/03/03 12:00,2020/04/06 12:00,EUR 50,21,null,true,sponsorship-34
 invoice-24,IN-0007-0003,2020/03/03 12:00,2020/04/06 12:00,EUR 50,21,null,true,sponsorship-34
 invoice-25,IN-0007-0004,2020/03/03 12:00,2020/04/06 12:00,EUR 50,21,null,false,sponsorship-25

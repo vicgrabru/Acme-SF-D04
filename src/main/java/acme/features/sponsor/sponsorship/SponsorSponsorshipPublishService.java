@@ -23,7 +23,6 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.configuration.SystemConfiguration;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
@@ -112,11 +111,9 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		SelectChoices choicesType;
 		Dataset dataset;
 		Collection<Invoice> invoices;
-		SystemConfiguration systemConfiguration;
 
-		invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
+		invoices = this.repository.findManyPublishedInvoicesBySponsorshipId(object.getId());
 		projects = this.repository.findAllProjects();
-		systemConfiguration = this.repository.getSystemConfiguration();
 		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(SponsorshipType.class, object.getType());
 		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
@@ -127,7 +124,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Double totalAmount = invoices.stream().mapToDouble(i -> i.totalAmount().getAmount()).sum();
 		Money InvoicesAmount = new Money();
 		InvoicesAmount.setAmount(totalAmount);
-		InvoicesAmount.setCurrency(systemConfiguration.getSystemCurrency());
+		InvoicesAmount.setCurrency(object.getAmount().getCurrency());
 		dataset.put("totalAmountOfInvoices", InvoicesAmount);
 
 		Money eb = this.exchangeRepo.exchangeMoney(object.getAmount());

@@ -44,3 +44,4 @@ sponsor.sponsorship.form.error.notEqualAmount = The amount of the sponsorship mu
 sponsor.sponsorship.form.error.AllInvoicesMustBePublished = All of the sponsorship invoices must be published
 sponsor.sponsorship.form.error.amount.no-negative = No negative money
 sponsor.sponsorship.form.error.amount.invalid-currency = Invalid currency
+sponsor.sponsorship.form.error.amount.currencyMustMatchCurrenciesOfTheInvoices = Currency must match currencies of the invoices
