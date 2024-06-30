@@ -47,9 +47,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		status = project != null && //
-			project.isDraftMode() && //
-			super.getRequest().getPrincipal().hasRole(project.getManager());
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(project.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -106,8 +104,6 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
 		dataset.put("masterId", object.getId());
 		dataset.put("readOnlyCode", true);
-
-		dataset.put("showExchangedCost", !this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency()));
 
 		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
 		dataset.put("exchangedCost", exchangedCost);
