@@ -12,7 +12,6 @@
 
 package acme.features.sponsor.sponsorship;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
@@ -79,12 +77,6 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void validate(final Sponsorship object) {
 		Collection<Invoice> invoices;
 		invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
-
-		if (!super.getBuffer().getErrors().hasErrors("startDuration"))
-			super.state(MomentHelper.isAfter(object.getStartDuration(), object.getMoment()), "startDuration", "sponsor.sponsorship.form.error.durationAfter");
-
-		if (!super.getBuffer().getErrors().hasErrors("endDuration"))
-			super.state(MomentHelper.isLongEnough(object.getStartDuration(), object.getEndDuration(), 1, ChronoUnit.MONTHS), "endDuration", "sponsor.sponsorship.form.error.atLeast1MonthLong");
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			Double totalAmount = invoices.stream().mapToDouble(i -> i.totalAmount().getAmount()).sum();
