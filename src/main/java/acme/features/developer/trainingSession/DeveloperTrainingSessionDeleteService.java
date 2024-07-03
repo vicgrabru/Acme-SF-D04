@@ -67,5 +67,8 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 
 		this.repository.delete(object);
 	}
-
+	@Override
+	public void unbind(final TrainingSession object) {
+		assert object != null;
+	}
 }

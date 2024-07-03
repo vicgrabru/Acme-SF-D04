@@ -20,11 +20,11 @@
 	<acme:input-moment code="developer.training-module.form.label.creationMoment" path="creationMoment"  readonly="true"/>
 	<acme:input-textbox code="developer.training-module.form.label.details" path="details"/>
 	<acme:input-select code="developer.training-module.form.label.difficulty" path="difficulty" choices="${difficulties}"/>
-	<acme:input-moment code="developer.training-module.form.label.updateMoment" path="updateMoment"/>
+	<acme:input-moment code="developer.training-module.form.label.updateMoment" path="updateMoment" readonly="true"/>
 	<acme:input-integer code="developer.training-module.form.label.totalTime" path="totalTime"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
-	<acme:input-select code="developer.training-module.form.label.projects" path="project" choices="${projects}"/>
-	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode==true}">
+	<acme:input-select code="developer.training-module.form.label.projects" path="project" choices="${projects}" readonly="${acme:anyOf(_command, 'show|update|delete|publish')}"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 	<acme:button code="developer.training-module.form.training-session" action="/developer/training-session/list?masterId=${id}"/>
 	</jstl:if>
 	<jstl:if test="${acme:matches(_command, 'create')}">

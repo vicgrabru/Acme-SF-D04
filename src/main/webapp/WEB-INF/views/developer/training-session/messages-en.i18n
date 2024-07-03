@@ -31,6 +31,7 @@ developer.training-session.form.label.link= Link
 developer.training-session.form.label.draftMode=Is DraftMode
 
 developer.training-session.form.error.spam=Spam Detected
-developer.training-module.form.error.duplicatedCode=Duplicated Code
+developer.training-session.form.error.duplicatedCode=Duplicated Code
 developer.training-session.form.error.periodNotDuringOneWeek= Period must be at least one week long
 developer.training-session.form.error.endPeriod.not-after-startPeriod=Period start date must be before period end date
+developer.training-session.form.error.periodNotStartAWeekAfterCreationMoment= Period must start at least a week after Training Module creation moment
