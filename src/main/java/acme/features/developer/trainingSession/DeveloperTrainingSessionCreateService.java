@@ -77,16 +77,10 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			boolean duplicatedCode = this.repository.findTrainingSessions().stream().anyMatch(ts -> ts.getCode().equals(object.getCode()));
 			super.state(!duplicatedCode, "code", "developer.training-session.form.error.duplicatedCode");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("location"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("location", String.class)), "location", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("instructor"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("instructor", String.class)), "instructor", "developer.training-session.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("contactEmail"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("contactEmail", String.class)), "contactEmail", "developer.training-session.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-session.form.error.spam");
 		long weekSeconds = 7 * 24 * 60 * 60;
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
 			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");

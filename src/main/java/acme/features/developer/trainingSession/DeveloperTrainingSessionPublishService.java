@@ -59,9 +59,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
-			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
 	}
 
 	@Override
