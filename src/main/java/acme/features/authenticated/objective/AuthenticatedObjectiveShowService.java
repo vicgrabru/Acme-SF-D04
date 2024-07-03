@@ -61,7 +61,7 @@ public class AuthenticatedObjectiveShowService extends AbstractService<Authentic
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "instantiationMoment", "title", "description", "priority", "isCritical", "startDateDuration", "endDateDuration", "link");
+		dataset = super.unbind(object, "instantiationMoment", "title", "description", "priority", "startDateDuration", "endDateDuration", "link");
 		if (object.isCritical())
 			dataset.put("isCritical", "✓");
 		else
