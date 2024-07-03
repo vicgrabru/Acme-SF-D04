@@ -20,7 +20,7 @@
 	<acme:input-textbox code="authenticated.developer.form.label.specialisation" path="specialisation"/>
 	<acme:input-textbox code="authenticated.developer.form.label.skills" path="skills"/>
 	<acme:input-textbox code="authenticated.developer.form.label.email" path="email"/>
-	<acme:input-textbox code="authenticated.developer.form.label.link" path="link"/>
+	<acme:input-url code="authenticated.developer.form.label.link" path="link"/>
 	
 	<acme:submit test="${_command == 'create'}" code="authenticated.developer.form.button.create" action="/authenticated/developer/create"/>
 	<acme:submit test="${_command == 'update'}" code="authenticated.developer.form.button.update" action="/authenticated/developer/update"/>

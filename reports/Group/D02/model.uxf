@@ -58,7 +58,7 @@ Banner
 + periodEnd: Date {NotNull, TemporalType(TIMESTAMP)}
 + pictureLink: String {URL, Length(max=255)}
 + slogan: String {NotBlank, Length(max=75)}
-+ webDocumentlink: String {URL, Length(max=255)}
++ webDocumentLink: String {URL, Length(max=255)}
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>

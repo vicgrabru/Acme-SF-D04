@@ -26,16 +26,22 @@ public interface DeveloperDashBoardRepository extends AbstractRepository {
 
 	@Query("select avg(t.totalTime) from TrainingModule t")
 	public double avgTrainingModuleTime();
+
 	@Query("select stddev(t.totalTime) from TrainingModule t")
 	public double devTrainingModuleTime();
+
 	@Query("select min(t.totalTime) from TrainingModule t")
 	public double minTrainingModuleTime();
+
 	@Query("select max(t.totalTime) from TrainingModule t")
 	public double maxTrainingModuleTime();
-	@Query("select count(t) from TrainingModule t where t.updateMoment!=null and t.developer.id= :id")
+
+	@Query("select count(t) from TrainingModule t where not t.updateMoment=null and t.developer.id= :id")
 	public Integer numberOfTrainingModulesWithUpdateMoment(int id);
-	@Query("select count(t) from TrainingSession t where t.link!=null and length(t.link)>0 and t.trainingModule.developer.id = :id")
+
+	@Query("select count(t) from TrainingSession t where not t.link=null and length(t.link)>0 and t.trainingModule.developer.id = :id")
 	public Integer numberOfTrainingSessionWithLink(int id);
+
 	@Query("select t from TrainingModule t where t.developer.id= :id")
 	public Collection<TrainingModule> findTrainingModules(int id);
 
