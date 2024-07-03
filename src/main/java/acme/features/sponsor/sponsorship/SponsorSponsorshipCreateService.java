@@ -67,7 +67,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link", "draftMode");
+		super.bind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "email", "link");
 		object.setProject(project);
 	}
 
@@ -102,7 +102,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

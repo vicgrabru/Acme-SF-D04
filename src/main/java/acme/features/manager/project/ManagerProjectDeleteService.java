@@ -47,9 +47,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		status = project != null && //
-			project.isDraftMode() && //
-			super.getRequest().getPrincipal().hasRole(project.getManager());
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(project.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -94,17 +92,10 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 
 		Money exchangedCost;
 		Dataset dataset;
-		boolean isAcceptedCurrency;
-		boolean isSystemCurrency;
 
 		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
 		dataset.put("masterId", object.getId());
 		dataset.put("readOnlyCode", true);
-
-		isSystemCurrency = this.exchangeRepository.findSystemCurrency().equals(object.getCost().getCurrency());
-		isAcceptedCurrency = this.repository.findAcceptedCurrenciesInSystem().contains(object.getCost().getCurrency());
-
-		dataset.put("showExchangedCost", isAcceptedCurrency && !isSystemCurrency);
 
 		exchangedCost = this.exchangeRepository.exchangeMoney(object.getCost());
 		dataset.put("exchangedCost", exchangedCost);

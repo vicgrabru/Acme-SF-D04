@@ -22,7 +22,6 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
 import acme.entities.project.UserStory;
-import acme.entities.project.UserStoryAssign;
 import acme.entities.project.UserStoryPriority;
 import acme.roles.Manager;
 import acme.utils.SpamRepository;
@@ -46,17 +45,12 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		boolean status;
 		int userStoryId;
 		UserStory userStory;
-		Collection<UserStoryAssign> relationships;
 
 		userStoryId = super.getRequest().getData("id", int.class);
 
-		relationships = this.repository.findManyUserStoryAssignsByUserStoryId(userStoryId);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
 
-		status = userStory != null && //
-			userStory.isDraftMode() && //
-			relationships.stream().allMatch(x -> x.getProject().isDraftMode()) && //
-			super.getRequest().getPrincipal().hasRole(userStory.getManager());
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
