@@ -73,8 +73,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("details"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("details", String.class)), "details", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("difficulty"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
 	}
 
 	@Override
