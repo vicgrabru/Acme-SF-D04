@@ -35,3 +35,4 @@ developer.training-session.form.error.spam=Spam Detectectado
 developer.training-session.form.error.duplicatedCode=Código Duplicado
 developer.training-session.form.error.periodNotDuringOneWeek= El periodo debe durar un mínimo de una semana
 developer.training-session.form.error.endPeriod.not-after-startPeriod=La fecha del comienzo del periodo debe ser anterior a la fecha del fin del periodo
+developer.training-session.form.error.periodNotStartAWeekAfterCreationMoment= El periodo debe empezar al menos una semana después de la fecha de creación del módulo de entrenamiento

@@ -75,6 +75,7 @@ public class AuthenticatedSponsorCreateService extends AbstractService<Authentic
 	@Override
 	public void perform(final Sponsor object) {
 		assert object != null;
+		object.setId(0);
 
 		this.repository.save(object);
 	}

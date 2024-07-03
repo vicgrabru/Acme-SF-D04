@@ -23,9 +23,9 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.codeAudit.AuditRecord;
+import acme.entities.codeAudit.AuditType;
 import acme.entities.codeAudit.CodeAudit;
 import acme.entities.codeAudit.Mark;
-import acme.entities.codeAudit.AuditType;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 
@@ -49,6 +49,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		codeAuditId = super.getRequest().getData("id", int.class);
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
 		status = codeAudit != null && //
+			codeAudit.isDraftMode() && //
 			super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
 
 		super.getResponse().setAuthorised(status);
@@ -132,7 +133,10 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		choicesType = SelectChoices.from(AuditType.class, object.getType());
 
 		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
-			.stream().findFirst().orElse(Mark.None);
+			.stream() //
+			.sorted(Comparator.comparingInt(Mark::ordinal)) //
+			.findFirst() //
+			.orElse(Mark.None);
 
 		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "auditor", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());

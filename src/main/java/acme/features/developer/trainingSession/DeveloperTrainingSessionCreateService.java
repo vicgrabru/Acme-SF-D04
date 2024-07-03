@@ -42,7 +42,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		int moduleId = super.getRequest().getData("masterId", int.class);
 		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
-		status = module != null && module.isDraftMode() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
+		status = module != null && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -87,17 +87,21 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("contactEmail", String.class)), "contactEmail", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("link"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-session.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
-			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
 		long weekSeconds = 7 * 24 * 60 * 60;
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
+			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
 			super.state((object.getEndPeriod().getTime() - object.getStartPeriod().getTime()) / 1000 >= weekSeconds, "endPeriod", "developer.training-session.form.error.periodNotDuringOneWeek");
+		}
+		int moduleId = super.getRequest().getData("masterId", int.class);
+		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
+		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
+			super.state((object.getStartPeriod().getTime() - module.getCreationMoment().getTime()) / 1000 >= weekSeconds, "startPeriod", "developer.training-session.form.error.periodNotStartAWeekAfterCreationMoment");
 	}
 
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

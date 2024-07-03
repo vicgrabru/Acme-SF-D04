@@ -21,9 +21,7 @@
 	<acme:input-textarea code="any.project.form.label.abstract-field" path="abstractField"/>
 	<acme:input-checkbox code="any.project.form.label.has-fatal-errors" path="hasFatalErrors"/>
 	<acme:input-money code="any.project.form.label.cost" path="cost"/>
-	<jstl:if test="${showExchangedCost}">
-		<acme:input-money code="any.project.form.label.exchanged-cost" path="exchangedCost" readonly="true"/>
-	</jstl:if>
+	<acme:input-money code="any.project.form.label.exchanged-cost" path="exchangedCost" readonly="true"/>
 	<acme:input-textbox code="any.project.form.label.optional-link" path="optionalLink"/>
 	<acme:input-checkbox code="any.project.form.label.draft-mode" path="draftMode"/>
 	<acme:input-textbox code="any.project.form.label.manager-username" path="managerUsername"/>
