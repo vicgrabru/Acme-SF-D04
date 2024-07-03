@@ -38,7 +38,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		boolean status;
 		int moduleId = super.getRequest().getData("masterId", int.class);
 		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
-		status = module != null && module.isDraftMode() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
+		status = module != null && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,7 +57,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "location", "instructor", "contactEmail", "link", "draftMode");
+		dataset = super.unbind(object, "code", "draftMode");
 		if (object.isDraftMode())
 			dataset.put("draftMode", "✓");
 		else

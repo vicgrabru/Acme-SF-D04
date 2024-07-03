@@ -66,6 +66,10 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean duplicatedCode = this.repository.findTrainingSessions().stream().anyMatch(ts -> ts.getCode().equals(object.getCode()));
+			super.state(!duplicatedCode, "code", "developer.training-session.form.error.duplicatedCode");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-session.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("location"))
@@ -81,8 +85,8 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
 			super.state((object.getEndPeriod().getTime() - object.getStartPeriod().getTime()) / 1000 >= weekSeconds, "endPeriod", "developer.training-session.form.error.periodNotDuringOneWeek");
 		}
-		int moduleId = super.getRequest().getData("masterId", int.class);
-		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
+		int sessionId = super.getRequest().getData("id", int.class);
+		TrainingModule module = this.repository.findTrainingModuleByTrainingSessionId(sessionId);
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
 			super.state((object.getStartPeriod().getTime() - module.getCreationMoment().getTime()) / 1000 >= weekSeconds, "startPeriod", "developer.training-session.form.error.periodNotStartAWeekAfterCreationMoment");
 	}

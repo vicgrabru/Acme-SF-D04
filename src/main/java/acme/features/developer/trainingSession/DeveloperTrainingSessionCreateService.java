@@ -42,7 +42,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		int moduleId = super.getRequest().getData("masterId", int.class);
 		TrainingModule module = this.repository.findTrainingModuleById(moduleId);
-		status = module != null && module.isDraftMode() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
+		status = module != null && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -97,11 +97,23 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
 			super.state((object.getStartPeriod().getTime() - module.getCreationMoment().getTime()) / 1000 >= weekSeconds, "startPeriod", "developer.training-session.form.error.periodNotStartAWeekAfterCreationMoment");
 	}
-
+	/*
+	 * if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
+	 * super.state(object.getEndPeriod().after(object.getStartPeriod()), "startPeriod", "developer.training-session.form.error.endPeriod.not-after-startPeriod");
+	 * long days = ChronoUnit.DAYS.between(object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), object.getEndPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+	 * super.state(days >= 7, "endPeriod", "developer.training-session.form.error.periodNotDuringOneWeek");
+	 * }
+	 * int moduleId = super.getRequest().getData("masterId", int.class);
+	 * TrainingModule module = this.repository.findTrainingModuleById(moduleId);
+	 * long days = ChronoUnit.DAYS.between(module.getCreationMoment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), object.getStartPeriod().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+	 * if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
+	 * super.state(days >= 7, "startPeriod", "developer.training-session.form.error.periodNotStartAWeekAfterCreationMoment");
+	 * }
+	 */
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

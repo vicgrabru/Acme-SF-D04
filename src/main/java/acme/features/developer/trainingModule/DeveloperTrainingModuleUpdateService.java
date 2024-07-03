@@ -68,13 +68,17 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 
 		updateMoment = MomentHelper.getCurrentMoment();
 
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "totalTime", "link", "project");
+		super.bind(object, "code", "details", "difficulty", "totalTime", "link", "project");
 		object.setUpdateMoment(updateMoment);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean duplicatedCode = this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()).stream().anyMatch(tr -> tr.getCode().equals(object.getCode()));
+			super.state(!duplicatedCode, "code", "developer.training-module.form.error.duplicatedCode");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("details"))
