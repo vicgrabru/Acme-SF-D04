@@ -104,7 +104,6 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		dataset = super.unbind(object, "code", "title", "abstractField", "hasFatalErrors", "cost", "optionalLink", "draftMode");
 		dataset.put("masterId", object.getId());
 		dataset.put("readOnlyCode", false);
-		dataset.put("showExchangedCode", false);
 
 		super.getResponse().addData(dataset);
 	}

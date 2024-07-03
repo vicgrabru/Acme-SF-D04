@@ -101,6 +101,7 @@ public class ManagerUserStoryAssignCreateService extends AbstractService<Manager
 	@Override
 	public void perform(final UserStoryAssign object) {
 		assert object != null;
+		object.setId(0);
 
 		this.repository.save(object);
 	}

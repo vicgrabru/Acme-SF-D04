@@ -40,3 +40,4 @@ sponsor.invoice.form.error.duplicated = Código duplicado
 sponsor.invoice.form.error.atLeast1MonthLong = La fecha límite debe ser al menos un mes
 sponsor.invoice.form.error.quantity.no-negative = Dinero no negativo
 sponsor.sponsorship.form.error.quantity.invalid-currency = Moneda invalida
+sponsor.invoice.form.error.currencyMustMatchSponsorshipCurrency = Moneda debe coincidir con la moneda del patrocinio

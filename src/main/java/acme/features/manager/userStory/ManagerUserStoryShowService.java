@@ -20,9 +20,9 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.project.UserStoryPriority;
 import acme.entities.project.Project;
 import acme.entities.project.UserStory;
+import acme.entities.project.UserStoryPriority;
 import acme.roles.Manager;
 
 @Service
@@ -44,8 +44,7 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 		userStoryId = super.getRequest().getData("id", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
-		status = userStory != null && //
-			super.getRequest().getPrincipal().hasRole(userStory.getManager());
+		status = userStory != null && super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
