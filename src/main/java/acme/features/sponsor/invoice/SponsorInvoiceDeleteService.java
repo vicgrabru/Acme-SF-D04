@@ -66,8 +66,6 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void bind(final Invoice object) {
 		assert object != null;
-
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 	}
 
 	@Override

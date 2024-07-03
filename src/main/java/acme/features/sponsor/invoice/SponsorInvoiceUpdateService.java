@@ -73,7 +73,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 		assert object != null;
 
-		super.bind(object, "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		super.bind(object, "registrationTime", "dueDate", "quantity", "tax", "link");
 
 	}
 
