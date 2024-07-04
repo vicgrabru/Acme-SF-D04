@@ -41,10 +41,14 @@ public class ManagerUserStoryAssignDeleteService extends AbstractService<Manager
 		boolean status;
 		int userStoryId;
 		UserStory userStory;
+		Collection<Project> candidates;
 
 		userStoryId = super.getRequest().getData("userStoryId", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
+		candidates = this.repository.findManyDraftModeProjectsWithUserStoryAssignedByUserStoryId(userStoryId);
+
 		status = userStory != null && //
+			!candidates.isEmpty() && //
 			super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
@@ -54,20 +58,13 @@ public class ManagerUserStoryAssignDeleteService extends AbstractService<Manager
 	public void load() {
 		int userStoryId;
 
-		UserStory userStory;
 		UserStoryAssign object;
 		Collection<UserStoryAssign> options;
 
 		userStoryId = super.getRequest().getData("userStoryId", int.class);
 		options = this.repository.findManyUserStoryAssignsWithDraftModeProjectByUserStoryId(userStoryId);
 
-		if (options.isEmpty()) {
-			userStory = this.repository.findOneUserStoryById(userStoryId);
-
-			object = new UserStoryAssign();
-			object.setUserStory(userStory);
-		} else
-			object = options.stream().findFirst().orElse(null);
+		object = options.stream().findFirst().orElse(null);
 
 		super.getBuffer().addData(object);
 	}
@@ -95,16 +92,14 @@ public class ManagerUserStoryAssignDeleteService extends AbstractService<Manager
 	public void validate(final UserStoryAssign object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Collection<Project> projectsAssigned;
+		Collection<Project> projectsAssigned;
 
-			projectsAssigned = this.repository.findManyProjectsWithUserStoryAssignedByUserStoryId(object.getUserStory().getId());
+		projectsAssigned = this.repository.findManyDraftModeProjectsWithUserStoryAssignedByUserStoryId(object.getUserStory().getId());
 
-			super.state(projectsAssigned.contains(object.getProject()), "project", "manager.user-story-assign.form.error.unassigning-user-story-not-assigned-to-project");
-			super.state(object.getProject() != null, "project", "manager.user-story-assign.form.error.project-is-null");
-			if (object.getProject() != null)
-				super.state(object.getProject().isDraftMode(), "project", "manager.user-story-assign.form.error.project-is-published");
-		}
+		super.state(projectsAssigned.contains(object.getProject()), "project", "manager.user-story-assign.form.error.unassigning-user-story-not-assigned-to-project");
+		super.state(object.getProject() != null, "project", "manager.user-story-assign.form.error.project-is-null");
+		if (object.getProject() != null)
+			super.state(object.getProject().isDraftMode(), "project", "manager.user-story-assign.form.error.project-is-published");
 	}
 
 	@Override
@@ -126,7 +121,7 @@ public class ManagerUserStoryAssignDeleteService extends AbstractService<Manager
 		SelectChoices choices;
 		Dataset dataset;
 
-		draftModeProjects = this.repository.findManyProjectsWithUserStoryAssignedByUserStoryId(super.getRequest().getData("userStoryId", int.class));
+		draftModeProjects = this.repository.findManyDraftModeProjectsWithUserStoryAssignedByUserStoryId(super.getRequest().getData("userStoryId", int.class));
 
 		choices = SelectChoices.from(draftModeProjects, "title", object.getProject());
 
