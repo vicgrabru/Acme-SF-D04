@@ -15,6 +15,7 @@ package acme.entities.configuration;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -47,6 +48,7 @@ public class SystemConfiguration extends AbstractEntity {
 	private String				acceptedCurrencies;
 
 	@NotBlank
+	@Max(255)
 	private String				spamTerms;
 
 	@Range(min = 0, max = 1)
