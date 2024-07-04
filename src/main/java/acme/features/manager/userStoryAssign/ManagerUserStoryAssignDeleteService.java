@@ -41,10 +41,14 @@ public class ManagerUserStoryAssignDeleteService extends AbstractService<Manager
 		boolean status;
 		int userStoryId;
 		UserStory userStory;
+		Collection<Project> candidates;
 
 		userStoryId = super.getRequest().getData("userStoryId", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
+		candidates = this.repository.findManyProjectsWithUserStoryAssignedByUserStoryId(userStoryId);
+
 		status = userStory != null && //
+			!candidates.isEmpty() && //
 			super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
