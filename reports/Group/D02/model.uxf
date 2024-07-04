@@ -15,7 +15,7 @@ SystemConfiguration
 --
 + systemCurrency: String {NotBlank, Pattern(regexp=[A-Z]{3})}
 + acceptedCurrencies: String {NotBlank, Pattern(regexp=[A-Z]{3}(,[A-Z]{3})*)}
-+ spamTerms: String {NotBlank}
++ spamTerms: String {NotBlank, Length(max=100)}
 + spamThreshold: double {Range(min = 0, max = 1)}
 bg=green</panel_attributes>
     <additional_attributes/>
