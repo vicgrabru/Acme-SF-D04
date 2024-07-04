@@ -22,7 +22,7 @@ import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
 
 @Repository
-public interface DeveloperDashBoardRepository extends AbstractRepository {
+public interface DeveloperDashboardRepository extends AbstractRepository {
 
 	@Query("select avg(t.totalTime) from TrainingModule t")
 	public double avgTrainingModuleTime();
