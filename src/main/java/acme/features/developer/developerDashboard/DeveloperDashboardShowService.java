@@ -31,7 +31,7 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperDashBoardRepository repository;
+	private DeveloperDashboardRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
