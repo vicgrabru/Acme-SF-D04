@@ -40,11 +40,17 @@ public class ManagerUserStoryAssignCreateService extends AbstractService<Manager
 	public void authorise() {
 		boolean status;
 		int userStoryId;
+		int managerId;
 		UserStory userStory;
+		Collection<Project> candidates;
 
 		userStoryId = super.getRequest().getData("userStoryId", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		candidates = this.repository.findManyDraftModeProjectsWithoutUserStoryByManagerIdAndUserStoryId(managerId, userStoryId);
+
 		status = userStory != null && //
+			!candidates.isEmpty() && //
 			super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
