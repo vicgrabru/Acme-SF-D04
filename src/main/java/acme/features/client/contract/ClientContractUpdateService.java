@@ -86,7 +86,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			super.state(currencies.contains(object.getBudget().getCurrency()), "budget", "client.contract.form.error.bugdet.invalid-currency");
 			super.state(object.getBudget().getAmount() >= 0., "budget", "client.contract.form.error.bugdet.negative-budget");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
 			super.state(this.exchangeRepo.exchangeMoney(object.getBudget()).getAmount() <= this.exchangeRepo.exchangeMoney(object.getProject().getCost()).getAmount(), "budget", "client.contract.form.error.budget.budget-over-project-cost");
 			super.getBuffer().addGlobal("showExchange", true);
 		}
