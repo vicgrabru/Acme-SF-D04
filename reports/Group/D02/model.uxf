@@ -15,7 +15,7 @@ SystemConfiguration
 --
 + systemCurrency: String {NotBlank, Pattern(regexp=[A-Z]{3})}
 + acceptedCurrencies: String {NotBlank, Pattern(regexp=[A-Z]{3}(,[A-Z]{3})*)}
-+ spamTerms: String {NotBlank}
++ spamTerms: String {NotBlank, Length(max=255)}
 + spamThreshold: double {Range(min = 0, max = 1)}
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -58,7 +58,7 @@ Banner
 + periodEnd: Date {NotNull, TemporalType(TIMESTAMP)}
 + pictureLink: String {URL, Length(max=255)}
 + slogan: String {NotBlank, Length(max=75)}
-+ webDocumentlink: String {URL, Length(max=255)}
++ webDocumentLink: String {URL, Length(max=255)}
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>

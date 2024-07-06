@@ -40,3 +40,4 @@ sponsor.invoice.form.error.duplicated = Code Duplicated
 sponsor.invoice.form.error.atLeast1MonthLong = Due Date must be at least 1 month after
 sponsor.invoice.form.error.quantity.no-negative = No negative money
 sponsor.invoice.form.error.quantity.invalid-currency = Invalid currency
+sponsor.invoice.form.error.currencyMustMatchSponsorshipCurrency = Currency must match sponsorship currency

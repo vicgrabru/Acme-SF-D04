@@ -17,8 +17,6 @@
 
 <acme:list>
 	<acme:list-column code="developer.training-session.list.label.code" path="code" width="40%"/>
-	<acme:list-column code="developer.training-session.list.label.instructor" path="instructor" width="20%"/>
-	<acme:list-column code="developer.training-session.list.label.contactEmail" path="contactEmail" width="20%"/>
 	<acme:list-column code="developer.training-session.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>
 

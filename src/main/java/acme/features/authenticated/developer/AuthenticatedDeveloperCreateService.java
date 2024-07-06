@@ -89,7 +89,7 @@ public class AuthenticatedDeveloperCreateService extends AbstractService<Authent
 	@Override
 	public void perform(final Developer object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

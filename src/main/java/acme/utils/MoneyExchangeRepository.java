@@ -15,6 +15,8 @@ package acme.utils;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpEntity;
@@ -27,6 +29,7 @@ import acme.client.data.datatypes.Money;
 import acme.client.helpers.MomentHelper;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.configuration.ExchangeRate;
+import acme.internals.helpers.FactoryHelper;
 
 @Repository
 public interface MoneyExchangeRepository extends AbstractRepository {
@@ -81,18 +84,26 @@ public interface MoneyExchangeRepository extends AbstractRepository {
 
 	private double getExchangeRate(final String source, final String target) {
 		Double result;
-		try {
-			RestTemplate api = new RestTemplate();
-			HttpHeaders headers = new HttpHeaders();
-			headers.set("apikey", "gmLPUQdRBtFyAg2zzuw4lQxj4PmEE4kO");
-			HttpEntity<?> entity = new HttpEntity<>(headers);
-			String uri = "https://api.apilayer.com/exchangerates_data/convert?to=" + target + "&from=" + source + "&amount=1";
-			result = api.exchange(uri, HttpMethod.GET, entity, Rate.class).getBody().getResult();
 
-			MomentHelper.sleep(1000);
-		} catch (final Throwable oops) {
-			result = -1.0;
-		}
+		List<String> activeProfiles;
+
+		activeProfiles = Arrays.asList(FactoryHelper.getContext().getEnvironment().getActiveProfiles());
+
+		if (activeProfiles.contains("testing"))
+			result = 1.0;
+		else
+			try {
+				RestTemplate api = new RestTemplate();
+				HttpHeaders headers = new HttpHeaders();
+				headers.set("apikey", "gmLPUQdRBtFyAg2zzuw4lQxj4PmEE4kO");
+				HttpEntity<?> entity = new HttpEntity<>(headers);
+				String uri = "https://api.apilayer.com/exchangerates_data/convert?to=" + target + "&from=" + source + "&amount=1";
+				result = api.exchange(uri, HttpMethod.GET, entity, Rate.class).getBody().getResult();
+
+				MomentHelper.sleep(1000);
+			} catch (final Throwable oops) {
+				result = -1.0;
+			}
 		return result;
 	}
 

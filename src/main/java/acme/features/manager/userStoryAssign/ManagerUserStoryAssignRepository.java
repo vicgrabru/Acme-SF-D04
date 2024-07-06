@@ -31,6 +31,9 @@ public interface ManagerUserStoryAssignRepository extends AbstractRepository {
 	@Query("select usa.project from UserStoryAssign usa where usa.userStory.id = :id")
 	Collection<Project> findManyProjectsWithUserStoryAssignedByUserStoryId(int id);
 
+	@Query("select usa.project from UserStoryAssign usa where usa.userStory.id = :id and usa.project.draftMode = true")
+	Collection<Project> findManyDraftModeProjectsWithUserStoryAssignedByUserStoryId(int id);
+
 	@Query("select usa from UserStoryAssign usa where usa.userStory.id = :id and usa.project.draftMode = true")
 	Collection<UserStoryAssign> findManyUserStoryAssignsWithDraftModeProjectByUserStoryId(int id);
 

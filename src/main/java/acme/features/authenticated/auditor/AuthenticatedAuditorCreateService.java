@@ -89,6 +89,7 @@ public class AuthenticatedAuditorCreateService extends AbstractService<Authentic
 	@Override
 	public void perform(final Auditor object) {
 		assert object != null;
+		object.setId(0);
 
 		this.repository.save(object);
 	}

@@ -49,6 +49,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		Developer developer = this.repository.findDeveloper(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new TrainingModule();
 		object.setCreationMoment(MomentHelper.getCurrentMoment());
+		object.setUpdateMoment(MomentHelper.getCurrentMoment());
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
 
@@ -58,7 +59,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-		super.bind(object, "code", "creationMoment", "details", "difficulty", "updateMoment", "totalTime", "link", "project");
+		super.bind(object, "code", "details", "difficulty", "totalTime", "link", "project");
 	}
 
 	@Override
@@ -68,20 +69,14 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			boolean duplicatedCode = this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()).stream().anyMatch(tr -> tr.getCode().equals(object.getCode()));
 			super.state(!duplicatedCode, "code", "developer.training-module.form.error.duplicatedCode");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("code", String.class)), "code", "developer.training-module.form.error.spam");
 		if (!super.getBuffer().getErrors().hasErrors("details"))
 			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("details", String.class)), "details", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("difficulty"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("difficulty", String.class)), "difficulty", "developer.training-module.form.error.spam");
-		if (!super.getBuffer().getErrors().hasErrors("link"))
-			super.state(!this.spamRepository.checkTextValue(super.getRequest().getData("link", String.class)), "link", "developer.training-module.form.error.spam");
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 
