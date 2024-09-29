@@ -74,7 +74,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void validate(final TrainingSession object) {
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			boolean duplicatedCode = this.repository.findTrainingSessions().stream().anyMatch(ts -> ts.getCode().equals(object.getCode()));
+			boolean duplicatedCode = this.repository.findTrainingSessions().stream().anyMatch(ts -> ts.getCode().equals(object.getCode()) && ts.getId() != object.getId());
 			super.state(!duplicatedCode, "code", "developer.training-session.form.error.duplicatedCode");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("location"))
