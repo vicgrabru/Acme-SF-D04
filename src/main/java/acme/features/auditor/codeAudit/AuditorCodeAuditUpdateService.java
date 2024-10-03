@@ -13,7 +13,6 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
-import java.util.Comparator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,12 +70,20 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "type", "correctiveActions", "link");
+		super.bind(object, "code", "type", "correctiveActions", "link");
 	}
 
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			boolean duplicatedCode = this.repository.findAllCodeAudits() //
+				.stream().anyMatch(ca -> ca.getCode().equals(object.getCode()) && ca.getId() != object.getId());
+			super.state(!duplicatedCode, "code", "auditor.code-audit.form.error.duplicated-code");
+
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("correctiveActions"))
 			super.state(!this.spamRepository.checkTextValue(object.getCorrectiveActions()), //
@@ -109,9 +116,16 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 
 		mark = this.repository.findOrderedMarkAmountsByCodeAuditId(object.getId()) //
 			.stream() //
-			.sorted(Comparator.comparingInt(Mark::ordinal)) //
-			.findFirst() //
-			.orElse(Mark.None);
+			.min((m1, m2) -> {
+				Mark mark1 = (Mark) m1[0];
+				Mark mark2 = (Mark) m2[0];
+				Long count1 = (Long) m1[1];
+				Long count2 = (Long) m2[1];
+				int frequencyComparison = count2.compareTo(count1);
+				if (frequencyComparison == 0)
+					return Integer.compare(mark1.ordinal(), mark2.ordinal());
+				return frequencyComparison;
+			}).map(entry -> (Mark) entry[0]).orElse(Mark.None);
 
 		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "auditor", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
