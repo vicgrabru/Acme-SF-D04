@@ -17,7 +17,7 @@
 
 <acme:form>
 
-	<acme:input-textbox code="auditor.code-audit.form.label.code" path="code" readonly="${readOnlyCode}"/>	
+	<acme:input-textbox code="auditor.code-audit.form.label.code" path="code"/>	
 	<acme:input-moment readonly="true" code="auditor.code-audit.form.label.execution-date" path="executionDate"/>
 	<acme:input-select code="auditor.code-audit.form.label.type" path="type" choices="${types}"/>
 	<acme:input-textarea code="auditor.code-audit.form.label.corrective-actions" path="correctiveActions"/>
