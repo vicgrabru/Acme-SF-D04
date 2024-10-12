@@ -107,9 +107,8 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			super.state(auditRecords.stream().allMatch(x -> !x.isDraftMode()), //
 				"*", "auditor.code-audit.form.error.has-draft-audit-records");
 
-			if (!super.getBuffer().getErrors().hasErrors("mark"))
-				super.state(pass.contains(mark), //
-					"mark", "auditor.code-audit.form.error.minimum-mark-not-reached");
+			super.state(pass.contains(mark), //
+				"mark", "auditor.code-audit.form.error.minimum-mark-not-reached");
 		}
 
 	}
