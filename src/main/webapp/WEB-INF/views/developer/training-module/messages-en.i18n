@@ -37,5 +37,6 @@ developer.training-module.form.error.duplicatedCode=Duplicated Code
 
 
 developer.training-module.form.error.emptyTrainingSessions= You do not have any Training Session associated
+developer.training-module.notPublishedTrainingSessions= You cannot publish a Training Module without all Training Sessions published
 developer.training-module.deletingWithTrainingSessions=You cannot delete a Training Module with Training Sessions associated
 developer.training-module.publishingWithTrainingSessions=You cannot publish a Training Module without Training Sessions associated

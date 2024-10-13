@@ -49,6 +49,8 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		int masterId = super.getRequest().getData("masterId", int.class);
 		objects = this.repository.findTrainingSessionsOfTrainingModule(masterId);
 		super.getResponse().addGlobal("masterId", masterId);
+		TrainingModule module = this.repository.findTrainingModuleById(super.getRequest().getData("masterId", int.class));
+		super.getResponse().addGlobal("masterDraftMode", module.isDraftMode());
 		super.getBuffer().addData(objects);
 	}
 	@Override
