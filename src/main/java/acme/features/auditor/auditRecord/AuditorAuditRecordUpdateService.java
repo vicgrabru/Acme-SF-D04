@@ -64,12 +64,18 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "periodStart", "periodEnd", "mark", "link");
+		super.bind(object, "code", "periodStart", "periodEnd", "mark", "link");
 	}
 
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean duplicatedCode = this.repository.findAllAuditRecords().stream() //
+				.anyMatch(ar -> ar.getCode().equals(object.getCode()) && ar.getId() != object.getId());
+			super.state(!duplicatedCode, "code", "auditor.audit-record.form.error.duplicated-code");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("periodStart") && //
 			!super.getBuffer().getErrors().hasErrors("periodEnd")) {
