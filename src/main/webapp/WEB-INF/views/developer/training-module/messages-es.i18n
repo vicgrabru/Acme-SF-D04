@@ -35,6 +35,7 @@ developer.training-module.form.training-session=Sesiones de entrenamiento
 developer.training-module.form.error.spam=Spam Detectado
 developer.training-module.form.error.duplicatedCode=Código Duplicado
 
-developer.training-module.form.error.emptyTrainingSessions= No tienes ningún sesión de entrenamiento asociado
+developer.training-module.form.error.emptyTrainingSessions=No tienes ningún sesión de entrenamiento asociado
+developer.training-module.notPublishedTrainingSessions=No puedes publicar un módulo de entrenamiento sin tener todas las sesiones de entrenamiento publicadas
 developer.training-module.deletingWithTrainingSessions=No puedes eliminar un módulo de entrenamiento con sesiones de entrenamiento asociados
 developer.training-module.publishingWithTrainingSessions= No puedes publicar un módulo de entrenamiento sin sesiones de entrenamiento asociados

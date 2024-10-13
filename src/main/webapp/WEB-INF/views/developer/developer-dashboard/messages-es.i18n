@@ -14,10 +14,10 @@ developer.developer-dashboard.form.label.numUpdateMoments=Módulos de entrenamie
 
 developer.developer-dashboard.form.label.numLinks=Sesiones de entrenamiento con enlace
 
-developer.developer-dashboard.form.label.avg=Media de tiempo en módulos de entrenamiento
+developer.developer-dashboard.form.label.avg=Media de tiempo en módulos de entrenamiento (en segundos)
 
-developer.developer-dashboard.form.label.deviation=Desviación de tiempo en módulos de entrenamiento
+developer.developer-dashboard.form.label.deviation=Desviación de tiempo en módulos de entrenamiento (en segundos)
 
-developer.developer-dashboard.form.label.max=Tiempo máximo en módulos de entrenamiento
+developer.developer-dashboard.form.label.max=Tiempo máximo en módulos de entrenamiento (en segundos)
 
-developer.developer-dashboard.form.label.min=Tiempo mínimo en módulos de entrenamiento
+developer.developer-dashboard.form.label.min=Tiempo mínimo en módulos de entrenamiento (en segundos)
