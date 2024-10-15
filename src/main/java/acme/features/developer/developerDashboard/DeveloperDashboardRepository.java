@@ -24,17 +24,17 @@ import acme.entities.training.TrainingSession;
 @Repository
 public interface DeveloperDashboardRepository extends AbstractRepository {
 
-	@Query("select avg(t.totalTime) from TrainingModule t")
-	public double avgTrainingModuleTime();
+	@Query("select avg(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	public Double avgTrainingModuleTime(int id);
 
-	@Query("select stddev(t.totalTime) from TrainingModule t")
-	public double devTrainingModuleTime();
+	@Query("select stddev(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	public Double devTrainingModuleTime(int id);
 
-	@Query("select min(t.totalTime) from TrainingModule t")
-	public double minTrainingModuleTime();
+	@Query("select min(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	public Double minTrainingModuleTime(int id);
 
-	@Query("select max(t.totalTime) from TrainingModule t")
-	public double maxTrainingModuleTime();
+	@Query("select max(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	public Double maxTrainingModuleTime(int id);
 
 	@Query("select count(t) from TrainingModule t where not t.updateMoment=null and t.developer.id= :id")
 	public Integer numberOfTrainingModulesWithUpdateMoment(int id);

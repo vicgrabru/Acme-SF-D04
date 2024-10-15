@@ -68,6 +68,10 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 		List<TrainingSession> sessions = new ArrayList<>(this.repository.findTrainingSessionsOfTrainingModule(object.getId()));
 		super.state(!sessions.isEmpty(), "*", "developer.training-module.publishingWithTrainingSessions");
+
+		//notPublishedTrainingSessions
+		boolean allpublished = sessions.stream().allMatch(ts -> !ts.isDraftMode());
+		super.state(allpublished, "*", "developer.training-module.notPublishedTrainingSessions");
 	}
 
 	@Override

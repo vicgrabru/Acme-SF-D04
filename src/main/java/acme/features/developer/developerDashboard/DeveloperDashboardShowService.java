@@ -44,10 +44,10 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	@Override
 	public void load() {
 		DeveloperDashboard dashboard = new DeveloperDashboard();
-		double avgTrainingModuleTime = this.repository.avgTrainingModuleTime();
-		double devTrainingModuleTime = this.repository.devTrainingModuleTime();
-		double minTrainingModuleTime = this.repository.minTrainingModuleTime();
-		double maxTrainingModuleTime = this.repository.maxTrainingModuleTime();
+		Double avgTrainingModuleTime = this.repository.avgTrainingModuleTime(super.getRequest().getPrincipal().getActiveRoleId());
+		Double devTrainingModuleTime = this.repository.devTrainingModuleTime(super.getRequest().getPrincipal().getActiveRoleId());
+		Double minTrainingModuleTime = this.repository.minTrainingModuleTime(super.getRequest().getPrincipal().getActiveRoleId());
+		Double maxTrainingModuleTime = this.repository.maxTrainingModuleTime(super.getRequest().getPrincipal().getActiveRoleId());
 		Integer numberOfTrainingModulesWithUpdateMoment = this.repository.numberOfTrainingModulesWithUpdateMoment(super.getRequest().getPrincipal().getActiveRoleId());
 		Integer numberOfTrainingSessionWithLink = this.repository.numberOfTrainingSessionWithLink(super.getRequest().getPrincipal().getActiveRoleId());
 		dashboard.setAverageTrainingModuleTime(avgTrainingModuleTime);

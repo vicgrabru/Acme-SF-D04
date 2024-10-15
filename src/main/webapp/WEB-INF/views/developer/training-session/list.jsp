@@ -20,4 +20,6 @@
 	<acme:list-column code="developer.training-session.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>
 
-<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
+<jstl:if test="${masterDraftMode==true}">
+		<acme:button code="developer.training-session.list.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
+</jstl:if>
