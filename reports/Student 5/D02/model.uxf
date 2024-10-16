@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>138</y>
+      <x>462</x>
+      <y>150</y>
       <w>66</w>
       <h>54</h>
     </coordinates>
@@ -21,8 +21,8 @@ bg=GREEN
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>276</y>
+      <x>342</x>
+      <y>288</y>
       <w>282</w>
       <h>102</h>
     </coordinates>
@@ -42,8 +42,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>672</x>
-      <y>132</y>
+      <x>594</x>
+      <y>144</y>
       <w>66</w>
       <h>96</h>
     </coordinates>
@@ -65,8 +65,8 @@ bg=GREEN
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>726</x>
-      <y>396</y>
+      <x>648</x>
+      <y>408</y>
       <w>210</w>
       <h>72</h>
     </coordinates>
@@ -83,8 +83,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>762</x>
-      <y>282</y>
+      <x>684</x>
+      <y>294</y>
       <w>150</w>
       <h>54</h>
     </coordinates>
@@ -98,8 +98,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>426</y>
+      <x>342</x>
+      <y>438</y>
       <w>282</w>
       <h>90</h>
     </coordinates>
@@ -118,8 +118,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>558</x>
-      <y>372</y>
+      <x>480</x>
+      <y>384</y>
       <w>30</w>
       <h>66</h>
     </coordinates>
@@ -132,8 +132,8 @@ m2=1..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>300</y>
+      <x>618</x>
+      <y>312</y>
       <w>78</w>
       <h>30</h>
     </coordinates>
@@ -146,8 +146,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>186</x>
-      <y>126</y>
+      <x>108</x>
+      <y>138</y>
       <w>282</w>
       <h>132</h>
     </coordinates>
@@ -170,8 +170,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>282</x>
-      <y>66</y>
+      <x>204</x>
+      <y>78</y>
       <w>84</w>
       <h>30</h>
     </coordinates>
@@ -184,8 +184,8 @@ bg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>318</x>
-      <y>90</y>
+      <x>240</x>
+      <y>102</y>
       <w>18</w>
       <h>48</h>
     </coordinates>
@@ -195,8 +195,8 @@ bg=white
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>234</x>
-      <y>294</y>
+      <x>156</x>
+      <y>288</y>
       <w>150</w>
       <h>54</h>
     </coordinates>
@@ -210,20 +210,20 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
+      <x>300</x>
       <y>312</y>
       <w>54</w>
-      <h>24</h>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=..
 </panel_attributes>
-    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
+    <additional_attributes>10.0;10.0;70.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>276</x>
-      <y>450</y>
+      <x>198</x>
+      <y>462</y>
       <w>108</w>
       <h>36</h>
     </coordinates>
@@ -235,8 +235,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>456</y>
+      <x>300</x>
+      <y>468</y>
       <w>54</w>
       <h>24</h>
     </coordinates>
@@ -247,8 +247,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>348</y>
+      <x>618</x>
+      <y>360</y>
       <w>144</w>
       <h>60</h>
     </coordinates>
@@ -257,5 +257,30 @@ Made by &gt;
 m1=1
 m2=0..*</panel_attributes>
     <additional_attributes>210.0;80.0;210.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>156</x>
+      <y>360</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>for a code audit to be published,
+the mark must be, at least, “C”
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>348</y>
+      <w>54</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=..
+</panel_attributes>
+    <additional_attributes>10.0;50.0;70.0;10.0</additional_attributes>
   </element>
 </diagram>
