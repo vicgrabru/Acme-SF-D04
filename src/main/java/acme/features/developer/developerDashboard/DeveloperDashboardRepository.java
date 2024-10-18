@@ -24,22 +24,22 @@ import acme.entities.training.TrainingSession;
 @Repository
 public interface DeveloperDashboardRepository extends AbstractRepository {
 
-	@Query("select avg(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	@Query("select avg(t.totalTime) from TrainingModule t where t.developer.id= :id and t.draftMode= false")
 	public Double avgTrainingModuleTime(int id);
 
-	@Query("select stddev(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	@Query("select stddev(t.totalTime) from TrainingModule t where t.developer.id= :id and t.draftMode= false")
 	public Double devTrainingModuleTime(int id);
 
-	@Query("select min(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	@Query("select min(t.totalTime) from TrainingModule t where t.developer.id= :id and t.draftMode= false")
 	public Double minTrainingModuleTime(int id);
 
-	@Query("select max(t.totalTime) from TrainingModule t where t.developer.id= :id")
+	@Query("select max(t.totalTime) from TrainingModule t where t.developer.id= :id and t.draftMode= false")
 	public Double maxTrainingModuleTime(int id);
 
-	@Query("select count(t) from TrainingModule t where not t.updateMoment=null and t.developer.id= :id")
+	@Query("select count(t) from TrainingModule t where not t.updateMoment=null and t.developer.id= :id and t.draftMode= false")
 	public Integer numberOfTrainingModulesWithUpdateMoment(int id);
 
-	@Query("select count(t) from TrainingSession t where not t.link=null and length(t.link)>0 and t.trainingModule.developer.id = :id")
+	@Query("select count(t) from TrainingSession t where not t.link=null and length(t.link)>0 and t.trainingModule.developer.id = :id and t.draftMode= false")
 	public Integer numberOfTrainingSessionWithLink(int id);
 
 	@Query("select t from TrainingModule t where t.developer.id= :id")
