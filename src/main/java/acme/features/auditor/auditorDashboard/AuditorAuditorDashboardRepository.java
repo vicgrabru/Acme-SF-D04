@@ -12,7 +12,7 @@
 
 package acme.features.auditor.auditorDashboard;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,26 +23,26 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 
-	@Query("select count(ca) from CodeAudit ca where ca.type = acme.entities.codeAudit.AuditType.STATIC and ca.auditor.id = :auditorId")
+	@Query("select count(ca) from CodeAudit ca where ca.type = acme.entities.codeAudit.AuditType.STATIC and ca.auditor.id = :auditorId and ca.draftMode = false")
 	Integer totalNumberOfStaticCodeAuditsByAuditorId(int auditorId);
 
-	@Query("select count(ca) from CodeAudit ca where ca.type = acme.entities.codeAudit.AuditType.DYNAMIC and ca.auditor.id = :auditorId")
+	@Query("select count(ca) from CodeAudit ca where ca.type = acme.entities.codeAudit.AuditType.DYNAMIC and ca.auditor.id = :auditorId and ca.draftMode = false")
 	Integer totalNumberOfDynamicCodeAuditsByAuditorId(int auditorId);
 
-	@Query("select avg(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
-		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
+	@Query("select avg(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id and ar.draftMode = false) " //
+		+ "from CodeAudit ca where ca.auditor.id = :auditorId and ca.draftMode = false")
 	Double avgAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
-	@Query("select min(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
-		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
+	@Query("select min(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id and ar.draftMode = false) " //
+		+ "from CodeAudit ca where ca.auditor.id = :auditorId and ca.draftMode = false")
 	Integer minAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
-	@Query("select max(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id) " //
-		+ "from CodeAudit ca where ca.auditor.id = :auditorId")
+	@Query("select max(select count(ar) from AuditRecord ar where ar.codeAudit.id = ca.id and ar.draftMode = false) " //
+		+ "from CodeAudit ca where ca.auditor.id = :auditorId and ca.draftMode = false")
 	Integer maxAuditRecordsPerCodeAuditByAuditorId(int auditorId);
 
 	default Double stdAuditRecordsPerCodeAuditByAuditorId(final int auditorId) {
-		Collection<Integer> counts = this.auditRecordsPerCodeAuditByAuditorId(auditorId);
+		List<Integer> counts = this.auditRecordsPerCodeAuditByAuditorId(auditorId);
 
 		if (counts == null || counts.size() < 2)
 			return null;
@@ -55,22 +55,22 @@ public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 	}
 
 	@Query("select count(*) from AuditRecord ar join CodeAudit ca on ar.codeAudit.id = ca.id " //
-		+ "where ca.auditor.id = :auditorId group by ca.id")
-	Collection<Integer> auditRecordsPerCodeAuditByAuditorId(int auditorId);
+		+ "where ca.auditor.id = :auditorId and ca.draftMode = false and ar.draftMode = false group by ca.id")
+	List<Integer> auditRecordsPerCodeAuditByAuditorId(int auditorId);
 
 	@Query(value = "SELECT AVG(TIMESTAMPDIFF(second, ar.period_start, ar.period_end)) " //
 		+ "FROM Audit_Record ar JOIN Code_Audit ca ON ar.code_audit_id = ca.id " //
-		+ "WHERE ca.auditor_id = :auditorId", nativeQuery = true)
+		+ "WHERE ca.auditor_id = :auditorId AND ca.draft_mode = false AND ar.draft_mode = false", nativeQuery = true)
 	Double avgAuditRecordPeriodLengthByAuditorId(@Param("auditorId") int auditorId);
 
 	@Query(value = "SELECT MIN(TIMESTAMPDIFF(second, ar.period_start, ar.period_end)) " //
 		+ "FROM Audit_Record ar JOIN Code_Audit ca ON ar.code_audit_id = ca.id " //
-		+ "WHERE ca.auditor_id = :auditorId", nativeQuery = true)
+		+ "WHERE ca.auditor_id = :auditorId AND ca.draft_mode = false AND ar.draft_mode = false", nativeQuery = true)
 	Double minAuditRecordPeriodLengthByAuditorId(@Param("auditorId") int auditorId);
 
 	@Query(value = "SELECT MAX(TIMESTAMPDIFF(second, ar.period_start, ar.period_end)) " //
 		+ "FROM Audit_Record ar JOIN Code_Audit ca ON ar.code_audit_id = ca.id " //
-		+ "WHERE ca.auditor_id = :auditorId", nativeQuery = true)
+		+ "WHERE ca.auditor_id = :auditorId AND ca.draft_mode = false AND ar.draft_mode = false", nativeQuery = true)
 	Double maxAuditRecordPeriodLengthByAuditorId(@Param("auditorId") int auditorId);
 
 	@Query(value = "SELECT CASE " //
@@ -78,7 +78,6 @@ public interface AuditorAuditorDashboardRepository extends AbstractRepository {
 		+ "ELSE STDDEV(TIMESTAMPDIFF(second, ar.period_start, ar.period_end)) " //
 		+ "END " //
 		+ "FROM Audit_Record ar JOIN Code_Audit ca ON ar.code_audit_id = ca.id " //
-		+ "WHERE ca.auditor_id = :auditorId", nativeQuery = true)
+		+ "WHERE ca.auditor_id = :auditorId AND ca.draft_mode = false AND ar.draft_mode = false", nativeQuery = true)
 	Double stdAuditRecordPeriodLengthByAuditorId(@Param("auditorId") int auditorId);
-
 }
