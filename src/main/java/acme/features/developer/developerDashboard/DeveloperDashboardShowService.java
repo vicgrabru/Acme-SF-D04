@@ -14,6 +14,7 @@ package acme.features.developer.developerDashboard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,11 +63,10 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	@Override
 	public void unbind(final DeveloperDashboard object) {
 		Dataset dataset;
-		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId()));
-		List<TrainingSession> trainingSessions = new ArrayList<>(this.repository.findTrainingSessions(super.getRequest().getPrincipal().getActiveRoleId()));
+		List<TrainingModule> trainingModules = new ArrayList<>(this.repository.findTrainingModules(super.getRequest().getPrincipal().getActiveRoleId())).stream().filter(tm -> !tm.isDraftMode()).collect(Collectors.toList());
+		List<TrainingSession> trainingSessions = new ArrayList<>(this.repository.findTrainingSessions(super.getRequest().getPrincipal().getActiveRoleId())).stream().filter(ts -> !ts.isDraftMode()).collect(Collectors.toList());
 		dataset = super.unbind(object, "numberOfTrainingModulesWithUpdateMoment", "numberOfTrainingSessionWithLink", "averageTrainingModuleTime", "deviationTrainingModuleTime", "maximumTrainingModuleTime", "minimumTrainingModuleTime");
 		if (trainingModules.isEmpty()) {
-			dataset.put("numberOfTrainingModulesWithUpdateMoment", "-");
 			dataset.put("numberOfTrainingModulesWithUpdateMoment", "-");
 			dataset.put("averageTrainingModuleTime", "-");
 			dataset.put("deviationTrainingModuleTime", "-");
